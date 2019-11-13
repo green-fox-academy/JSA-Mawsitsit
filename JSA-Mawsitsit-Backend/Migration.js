@@ -1,14 +1,5 @@
-const mysql = require('mysql');
+require('dotenv').config();
 const migration = require('mysql-migrations');
+const mysqlConnection = require('./Database');
 
-const connection = mysql.createPool({
-    connectionLimit : 10,
-    host:'localhost',
-    user:'root',
-    password:'password',
-    database:'mawsitsit',
-});
-
-migration.init(connection, __dirname + '/migrations');
-
-// console.log(__dirname);
+migration.init(mysqlConnection, __dirname + '/migrations');
