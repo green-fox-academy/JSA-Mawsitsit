@@ -5,6 +5,7 @@
   "main": "Server.js",
   "scripts": {
     "start": "nodemon",
+    "lint": "eslint --ext .js .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
