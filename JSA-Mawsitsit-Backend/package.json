@@ -4,6 +4,8 @@
   "description": "",
   "main": "Server.js",
   "scripts": {
+    "add_migration":"node migration.js add migration",
+    "add_seed":"node migration.js add seed",
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

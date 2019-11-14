@@ -1,4 +1,4 @@
 module.exports = {
-    "up": "",
+    "up": "create_table_users",
     "down": ""
 }
