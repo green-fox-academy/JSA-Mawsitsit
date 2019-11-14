@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { gray } from 'ansi-colors';
 
 const initState = {
@@ -58,6 +58,14 @@ const Register = () => {
                 autoCapitalize='none'
                 placeholder='password'
             />
+            <View>
+                {checked === 0 ? (
+                    <View style={styles.passwordcheck}>
+                        <Text >Weak password</Text>
+                        <View style={styles.bar}></View>
+                    </View>
+                ) : (<Text ></Text>)}
+            </View>
             <Text style={styles.text}>Password confirmation</Text>
             <TextInput
                 style={styles.textinput}
@@ -65,7 +73,20 @@ const Register = () => {
                 autoCapitalize='none'
                 placeholder='password'
             />
-            <Button style={styles.button} title='Register'></Button>
+            <View>
+                {checked === 0 ? (
+                    <Text style={styles.text}>Password has to match!</Text>
+                ) : (<Text ></Text>)}
+            </View>
+            <View style={styles.buttoncontainer}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={this.onPress}
+                >
+                    <Text style={styles.buttontext}>Register</Text>
+                </TouchableOpacity>
+            </View>
+
         </View>
 
     )
@@ -78,6 +99,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
 
     },
+    bar: {
+        height: 8,
+        width: 150,
+        backgroundColor: '#48BBEC'
+    },
     text: {
         marginTop: 10
     },
@@ -86,14 +112,30 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "gray"
     },
+    buttontext: {
+        color: 'white',
+        fontSize: 23,
+    },
+    buttoncontainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    passwordcheck: {
+        marginTop: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
     button: {
-        height: 36,
+        marginTop: 120,
+        height: 60,
+        width: 120,
         backgroundColor: '#48BBEC',
         borderColor: '#48BBEC',
         borderWidth: 1,
-        borderRadius: 8,
+        borderRadius: 2,
         marginBottom: 10,
-        alignSelf: 'stretch',
+        alignItems: 'center',
         justifyContent: 'center'
     }
 
