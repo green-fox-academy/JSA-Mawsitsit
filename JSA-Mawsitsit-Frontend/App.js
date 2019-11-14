@@ -1,19 +1,20 @@
 // External Dependencies
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import Register from './Register'
 
-// Local Variables
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Register></Register>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  }
 });
 
 // Component Definition
