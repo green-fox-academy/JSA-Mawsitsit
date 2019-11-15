@@ -2,74 +2,22 @@ import React, { useState } from 'react';
 import {
   StyleSheet, Text, TextInput, View, TouchableOpacity,
 } from 'react-native';
-import { emailValidate, phoneNumberValidate, passwordValidate } from './validation';
+import {
+  emailValidate, phoneNumberValidate, passwordValidate, passwordCheck,
+} from './validation';
+import registerStyles from './Styles';
 
-
+const styles = StyleSheet.create(registerStyles);
 const initState = {
   email: '',
   emailError: '',
-  phone_number: '',
+  phoneNumber: '',
   phoneNumberError: '',
   password: '',
   passwordMessage: '',
   passwordConfirm: '',
+  checkMessage: '',
 };
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 100,
-    marginLeft: 20,
-    width: '90%',
-    backgroundColor: '#fff',
-
-  },
-  bar: {
-    height: 8,
-    width: 150,
-    backgroundColor: '#48BBEC',
-  },
-  text: {
-    marginTop: 10,
-  },
-  warningtext: {
-    color: 'red',
-    marginTop: 10,
-  },
-  textinput: {
-    marginTop: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: 'gray',
-  },
-  buttontext: {
-    color: 'white',
-    fontSize: 23,
-  },
-  buttoncontainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  passwordcheck: {
-    marginTop: 10,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  button: {
-    marginTop: 120,
-    height: 60,
-    width: 120,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    marginBottom: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 const Register = () => {
   const [state, setState] = useState(initState);
@@ -79,8 +27,24 @@ const Register = () => {
       [name]: value,
     });
   };
-  // eslint-disable-next-line no-console
-  console.log(state);
+  const postResult = (object) => {
+    fetch('http://localhost:3000/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(object),
+    });
+  };
+
+  const handleSubmit = () => {
+    const register = {
+      email: state.email,
+      phone_number: state.phoneNumber,
+      password: state.password,
+    };
+    setState(initState);
+    postResult(register);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>E-mail</Text>
@@ -105,11 +69,11 @@ const Register = () => {
       <Text style={styles.text}>Phone number</Text>
       <TextInput
         style={styles.textinput}
-        value={state.phone_number}
+        value={state.phoneNumber}
         textContentType="telephoneNumber"
         autoCapitalize="none"
         placeholder="phone number"
-        onChangeText={(value) => handleChange('phone_number', value)}
+        onChangeText={(value) => handleChange('phoneNumber', value)}
         onBlur={(value) => {
           const phoneNumberError = phoneNumberValidate(value.nativeEvent.text);
           setState({
@@ -126,6 +90,7 @@ const Register = () => {
       <TextInput
         style={styles.textinput}
         value={state.password}
+        secureTextEntry
         textContentType="password"
         autoCapitalize="none"
         placeholder="password"
@@ -140,7 +105,7 @@ const Register = () => {
       />
       <View>
         {Boolean(state.passwordMessage) && (
-          <View style={styles.passwordcheck}>
+          <View style={styles.passwordStrength}>
             <Text style={styles.warningtext}>{state.passwordMessage}</Text>
             <View style={styles.bar} />
           </View>
@@ -150,23 +115,32 @@ const Register = () => {
       <TextInput
         style={styles.textinput}
         value={state.passwordConfirm}
+        secureTextEntry
         textContentType="password"
         autoCapitalize="none"
         placeholder="password"
+        onChangeText={(value) => handleChange('passwordConfirm', value)}
+        onBlur={(value) => {
+          const checkMessage = passwordCheck(state.password, value.nativeEvent.text);
+          setState({
+            ...state,
+            checkMessage,
+          });
+        }}
       />
       <View>
-        {Boolean(state.passwordConfirm)
-          && <Text style={styles.warningtext}>Password has to match!</Text>}
+        {Boolean(state.checkMessage)
+          && <Text style={styles.warningtext}>{state.checkMessage}</Text>}
       </View>
       <View style={styles.buttoncontainer}>
         <TouchableOpacity
           style={styles.button}
+          onPress={handleSubmit}
         >
           <Text style={styles.buttontext}>Register</Text>
         </TouchableOpacity>
       </View>
     </View>
-
   );
 };
 
