@@ -3,5 +3,6 @@
   "plugins": ["react-hooks"],
   "rules": {
     "react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"] }]
-  }
+  },
+  "root": true
 }
