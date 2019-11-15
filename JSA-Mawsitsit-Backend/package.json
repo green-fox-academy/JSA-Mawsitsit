@@ -4,8 +4,8 @@
   "description": "",
   "main": "Server.js",
   "scripts": {
-    "add_migration":"node migration.js add migration",
-    "add_seed":"node migration.js add seed",
+    "add_migration": "node migration.js add migration",
+    "add_seed": "node migration.js add seed",
     "start": "nodemon",
     "lint": "eslint --ext .js .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,9 +23,6 @@
   "devDependencies": {
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.2.0"
+    "eslint-plugin-import": "^2.18.2"
   }
 }
