@@ -45,11 +45,20 @@ const Register = () => {
     postResult(register);
   };
 
+  const {
+    textStyle,
+    warningTextColor,
+    textInputStyle,
+    warningBorderColor,
+  } = styles;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>E-mail</Text>
+      <Text style={state.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
+        E-mail
+      </Text>
       <TextInput
-        style={styles.textinput}
+        style={state.emailError ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
         value={state.email}
         textContentType="emailAddress"
         autoCapitalize="none"
@@ -64,11 +73,15 @@ const Register = () => {
         }}
       />
       <View>
-        {Boolean(state.emailError) && <Text style={styles.warningtext}>{state.emailError}</Text>}
+        {Boolean(state.emailError)
+          && <Text style={{ ...textStyle, ...warningTextColor }}>{state.emailError}</Text>}
       </View>
-      <Text style={styles.text}>Phone number</Text>
+      <Text style={state.phoneNumberError ? { ...textStyle, ...warningTextColor } : textStyle}>
+        Phone number
+      </Text>
       <TextInput
-        style={styles.textinput}
+        style={state.phoneNumberError
+          ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
         value={state.phoneNumber}
         textContentType="telephoneNumber"
         autoCapitalize="none"
@@ -84,11 +97,14 @@ const Register = () => {
       />
       <View>
         {Boolean(state.phoneNumberError)
-          && <Text style={styles.warningtext}>{state.phoneNumberError}</Text>}
+          && <Text style={{ ...textStyle, ...warningTextColor }}>{state.phoneNumberError}</Text>}
       </View>
-      <Text style={styles.text}>Password</Text>
+      <Text style={state.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
+        Password
+      </Text>
       <TextInput
-        style={styles.textinput}
+        style={state.passwordMessage
+          ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
         value={state.password}
         secureTextEntry
         textContentType="password"
@@ -106,14 +122,16 @@ const Register = () => {
       <View>
         {Boolean(state.passwordMessage) && (
           <View style={styles.passwordStrength}>
-            <Text style={styles.warningtext}>{state.passwordMessage}</Text>
+            <Text style={{ ...textStyle, ...warningTextColor }}>{state.passwordMessage}</Text>
             <View style={styles.bar} />
           </View>
         )}
       </View>
-      <Text style={styles.text}>Password confirmation</Text>
+      <Text style={state.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
+        Password confirmation
+      </Text>
       <TextInput
-        style={styles.textinput}
+        style={state.checkMessage ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
         value={state.passwordConfirm}
         secureTextEntry
         textContentType="password"
@@ -130,12 +148,13 @@ const Register = () => {
       />
       <View>
         {Boolean(state.checkMessage)
-          && <Text style={styles.warningtext}>{state.checkMessage}</Text>}
+          && <Text style={{ ...textStyle, ...warningTextColor }}>{state.checkMessage}</Text>}
       </View>
       <View style={styles.buttoncontainer}>
         <TouchableOpacity
           style={styles.button}
           onPress={handleSubmit}
+          disabled={!(state.email && state.phoneNumber && state.password && state.password)}
         >
           <Text style={styles.buttontext}>Register</Text>
         </TouchableOpacity>

@@ -12,20 +12,39 @@ const registerStyles = {
     width: 180,
     backgroundColor: '#48BBEC',
   },
-  text: {
+  weekbar: {
+    marginTop: 10,
+    height: 12,
+    width: 60,
+    backgroundColor: 'red',
+  },
+  mediumbar: {
+    marginTop: 10,
+    height: 12,
+    width: 60,
+    backgroundColor: 'yellow',
+  },
+  strongbar: {
+    marginTop: 10,
+    height: 12,
+    width: 60,
+    backgroundColor: 'green',
+  },
+  textStyle: {
     marginTop: 10,
     fontSize: 14,
   },
-  warningtext: {
-    marginTop: 10,
+  warningTextColor: {
     color: 'red',
-    fontSize: 14,
   },
-  textinput: {
+  textInputStyle: {
     marginTop: 10,
     fontSize: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#b9c6c3',
+  },
+  warningBorderColor: {
+    borderBottomColor: 'red',
   },
   buttontext: {
     color: 'white',
