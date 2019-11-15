@@ -1,27 +1,31 @@
 const registerStyles = {
   container: {
-    marginTop: 100,
+    marginTop: 60,
     marginLeft: 20,
     width: '90%',
     backgroundColor: '#fff',
 
   },
   bar: {
-    marginTop: 5,
-    height: 10,
-    width: 150,
+    marginTop: 10,
+    height: 12,
+    width: 180,
     backgroundColor: '#48BBEC',
   },
   text: {
     marginTop: 10,
+    fontSize: 14,
   },
   warningtext: {
+    marginTop: 10,
     color: 'red',
+    fontSize: 14,
   },
   textinput: {
     marginTop: 10,
+    fontSize: 16,
     borderBottomWidth: 1,
-    borderBottomColor: 'gray',
+    borderBottomColor: '#b9c6c3',
   },
   buttontext: {
     color: 'white',
@@ -32,7 +36,6 @@ const registerStyles = {
     alignItems: 'center',
   },
   passwordStrength: {
-    marginTop: 10,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
