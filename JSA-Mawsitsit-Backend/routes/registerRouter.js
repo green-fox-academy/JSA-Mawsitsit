@@ -1,11 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
 
-router.post('/register', (req, res) => {
-  const { email } = req.body;
-  const { phone_number: phoneNumber } = req.body;
-  const { password } = req.body;
+router.post('/', (req, res) => {
+  const { email, phone_number: phoneNumber, password } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
@@ -19,7 +16,7 @@ router.post('/register', (req, res) => {
       message += 'Missing email. ';
     }
     if (!phoneNumber) {
-      message += 'Missing phoneNumbers. ';
+      message += 'Missing phone numbers. ';
     }
     if (!password) {
       message += 'Missing password. ';
