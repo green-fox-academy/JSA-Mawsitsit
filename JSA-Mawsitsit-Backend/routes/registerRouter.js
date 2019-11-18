@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 
     if (!password) {
       message += 'Missing password. ';
-    }else if(passwordStrength(email) === 0){
+    }else if(passwordStrength(password) === 0){
       message += 'Too weak password. ';
     }
 
