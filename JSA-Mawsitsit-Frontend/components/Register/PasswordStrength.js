@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -13,8 +14,6 @@ const PasswordStrength = (props) => {
   const {
     textStyle,
     warningTextColor,
-    textInputStyle,
-    warningBorderColor,
   } = styles;
 
   let bar = '';
@@ -36,5 +35,13 @@ const PasswordStrength = (props) => {
     </View>
   );
 }
+
+PasswordStrength.propTypes = {
+  passwordMessage: PropTypes.string,
+};
+
+PasswordStrength.defaultProps = {
+  passwordMessage: '',
+};
 
 export default PasswordStrength;

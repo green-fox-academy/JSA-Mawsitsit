@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import Register from './Register/Register';
+import Register from './components/Register/Register';
 
 export default function App() {
   return (

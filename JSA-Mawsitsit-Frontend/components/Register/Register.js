@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import {
   emailValidate, phoneNumberValidate, passwordValidate, passwordCheck,
-} from '../validation/validation';
+} from '../../validation/validation';
 import PasswordStrength from './PasswordStrength'
 import registerStyles from './Styles';
 
