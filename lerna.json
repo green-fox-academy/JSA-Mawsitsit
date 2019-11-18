@@ -1,0 +1,7 @@
+{
+  "version": "^3.18.4",
+  "packages": [
+    "JSA-Mawsitsit-Backend",
+    "JSA-Mawsitsit-Frontend"
+  ]
+}
