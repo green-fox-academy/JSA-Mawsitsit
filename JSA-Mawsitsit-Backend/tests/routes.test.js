@@ -34,8 +34,6 @@ describe('Missing content-type', () => {
       const res = await request(server)
         .post('/register')
         .set('content-type', 'img')
-        // .send(JSON.stringify(666))
-        // .send('666')
       expect(res.statusCode).toEqual(415)
       expect(res.body).toHaveProperty('message')
     })
