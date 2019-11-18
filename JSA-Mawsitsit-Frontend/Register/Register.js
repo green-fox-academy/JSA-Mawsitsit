@@ -4,7 +4,8 @@ import {
 } from 'react-native';
 import {
   emailValidate, phoneNumberValidate, passwordValidate, passwordCheck,
-} from './validation';
+} from '../validation/validation';
+import PasswordStrength from './PasswordStrength'
 import registerStyles from './Styles';
 
 const styles = StyleSheet.create(registerStyles);
@@ -18,6 +19,7 @@ const initState = {
   passwordConfirm: '',
   checkMessage: '',
 };
+
 
 const Register = () => {
   const [state, setState] = useState(initState);
@@ -44,6 +46,8 @@ const Register = () => {
     setState(initState);
     postResult(register);
   };
+
+
 
   const {
     textStyle,
@@ -120,12 +124,7 @@ const Register = () => {
         }}
       />
       <View>
-        {Boolean(state.passwordMessage) && (
-          <View style={styles.passwordStrength}>
-            <Text style={{ ...textStyle, ...warningTextColor }}>{state.passwordMessage}</Text>
-            <View style={styles.bar} />
-          </View>
-        )}
+        {Boolean(state.passwordMessage) && (<PasswordStrength passwordMessage={state.passwordMessage} />)}
       </View>
       <Text style={state.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
         Password confirmation

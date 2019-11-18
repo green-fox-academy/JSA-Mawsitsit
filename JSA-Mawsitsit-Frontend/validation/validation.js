@@ -1,14 +1,18 @@
 const passwordStrength = (password) => {
-  let result = 0;
   // eslint-disable-next-line no-useless-escape
   const strongRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*-])(?=.{8,})');
   const mediumRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})');
+  const weakRegex = new RegExp('^((?=.*[a-z])|(?=.*[0-9])|(?=.*[A-Z]))(?=.{8,})');
   if (strongRegex.test(password)) {
-    result = 2;
-  } else if (mediumRegex.test(password)) {
-    result = 1;
+    return 3;
   }
-  return result;
+  if (mediumRegex.test(password)) {
+    return 2;
+  }
+  if (weakRegex.test(password)) {
+    return 1;
+  }
+  return 0;
 };
 
 export const emailValidate = (email) => {
@@ -33,12 +37,14 @@ export const phoneNumberValidate = (phoneNumber) => {
 
 export const passwordValidate = (password) => {
   let passwordMessage = '';
-  if (passwordStrength(password) === 2) {
+  if (passwordStrength(password) === 3) {
     passwordMessage = 'Strong password';
-  } else if (passwordStrength(password) === 1) {
+  } else if (passwordStrength(password) === 2) {
     passwordMessage = 'Medium password';
-  } else {
+  } else if (passwordStrength(password) === 1) {
     passwordMessage = 'Weak password';
+  } else {
+    passwordMessage = 'Please input a valid password!';
   }
   return passwordMessage;
 };

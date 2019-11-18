@@ -6,28 +6,36 @@ const registerStyles = {
     backgroundColor: '#fff',
 
   },
+  //password strength  
+  passwordStrength: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   bar: {
     marginTop: 10,
     height: 12,
-    width: 180,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  baseBar: {
+    borderRadius: 2,
     backgroundColor: '#48BBEC',
   },
-  weekbar: {
-    marginTop: 10,
-    height: 12,
+  weakbar: {
     width: 60,
+    borderRadius: 2,
     backgroundColor: 'red',
   },
   mediumbar: {
-    marginTop: 10,
-    height: 12,
-    width: 60,
+    width: 120,
+    borderRadius: 2,
     backgroundColor: 'yellow',
   },
   strongbar: {
-    marginTop: 10,
-    height: 12,
-    width: 60,
+    width: 180,
+    borderRadius: 2,
     backgroundColor: 'green',
   },
   textStyle: {
@@ -54,13 +62,8 @@ const registerStyles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  passwordStrength: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   button: {
-    marginTop: 80,
+    marginTop: 200,
     height: 60,
     width: 120,
     backgroundColor: '#48BBEC',
