@@ -1,10 +1,8 @@
-// External Dependencies
-require('dotenv').config();
 const express = require('express');
-
+const registerRouter = require('./routes/registerRouter');
 const server = express();
-const { PORT } = process.env;
 
 server.use(express.json());
+server.use('/register', registerRouter);
 
-server.listen(PORT, () => console.log(`server started on port ${PORT}`));
+module.exports = server;
