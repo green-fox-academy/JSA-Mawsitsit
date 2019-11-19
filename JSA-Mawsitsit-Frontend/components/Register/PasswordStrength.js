@@ -32,19 +32,20 @@ const PasswordStrength = (props) => {
     'Password must at least 8 characters!': {
       bar: '',
       width: 0,
-    }
-  }
-  const { bar, width } = strengths[props.passwordMessage]
+    },
+  };
+  const { passwordMessage } = props;
+  const { bar, width } = strengths[passwordMessage];
   return (
     <View style={styles.passwordStrength}>
-      <Text style={{ ...textStyle, ...warningTextColor }}>{props.passwordMessage}</Text>
+      <Text style={{ ...textStyle, ...warningTextColor }}>{passwordMessage}</Text>
       <View style={styles.bar}>
         <View style={styles[bar]} />
-        <View style={{ ...styles.baseBar, width: width }} />
+        <View style={{ ...styles.baseBar, width }} />
       </View>
     </View>
   );
-}
+};
 
 PasswordStrength.propTypes = {
   passwordMessage: PropTypes.string,

@@ -6,15 +6,16 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import { URL } from 'react-native-dotenv';
 import {
   emailValidate,
   phoneNumberValidate,
   passwordValidate,
   passwordCheck,
 } from '../../validation/validation';
-import PasswordStrength from './PasswordStrength'
+import PasswordStrength from './PasswordStrength';
 import registerStyles from './Styles';
-import { URL } from 'react-native-dotenv'
+
 
 const styles = StyleSheet.create(registerStyles);
 const initInputText = {
@@ -28,7 +29,7 @@ const initInputError = {
   phoneNumberError: '',
   passwordMessage: '',
   checkMessage: '',
-}
+};
 
 const Register = () => {
   const [inputText, setInputText] = useState(initInputText);
@@ -73,7 +74,8 @@ const Register = () => {
         E-mail
       </Text>
       <TextInput
-        style={inputError.emailError ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+        style={inputError.emailError
+          ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
         value={inputText.email}
         textContentType="emailAddress"
         autoCapitalize="none"
@@ -111,8 +113,11 @@ const Register = () => {
         }}
       />
       <View>
-        {Boolean(inputError.phoneNumberError)
-          && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.phoneNumberError}</Text>}
+        {Boolean(inputError.phoneNumberError) && (
+          <Text style={{ ...textStyle, ...warningTextColor }}>
+            {inputError.phoneNumberError}
+          </Text>
+        )}
       </View>
       <Text style={inputError.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
         Password
@@ -142,13 +147,15 @@ const Register = () => {
         }}
       />
       <View>
-        {Boolean(inputError.passwordMessage) && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
+        {Boolean(inputError.passwordMessage)
+          && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
       </View>
       <Text style={inputError.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
         Password confirmation
       </Text>
       <TextInput
-        style={inputError.checkMessage ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+        style={inputError.checkMessage
+          ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
         value={inputText.passwordConfirm}
         secureTextEntry
         textContentType="password"
@@ -180,7 +187,7 @@ const Register = () => {
           onPress={handleSubmit}
           disabled={!validated}
         >
-          <Text style={styles.buttontext}>Register</Text>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     </View>

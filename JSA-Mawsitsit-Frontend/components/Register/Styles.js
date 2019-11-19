@@ -6,7 +6,7 @@ const registerStyles = {
     backgroundColor: '#fff',
 
   },
-  //password strength  
+  // password strength
   passwordStrength: {
     display: 'flex',
     flexDirection: 'row',

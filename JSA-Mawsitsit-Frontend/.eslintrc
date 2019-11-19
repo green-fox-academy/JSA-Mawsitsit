@@ -5,6 +5,9 @@
     "react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"] }]
   },
   "globals": {
-    "fetch": false
+    "fetch": true,
+    "describe": true,
+    "it": true,
+    "expect": true
   }
 }

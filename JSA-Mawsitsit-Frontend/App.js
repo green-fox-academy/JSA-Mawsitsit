@@ -6,14 +6,6 @@ import {
 } from 'react-native';
 import Register from './components/Register/Register';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Register></Register>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
