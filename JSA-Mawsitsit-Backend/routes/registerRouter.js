@@ -32,7 +32,6 @@ router.post('/', (req, res) => {
     res.status(400).json({
       errorMessage,
     }); 
-
     return;
   }
 
@@ -40,6 +39,7 @@ router.post('/', (req, res) => {
     user_id: 'id',
     email,
   });
+  return;
 });
 
 module.exports = router;
