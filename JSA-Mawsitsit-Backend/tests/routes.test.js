@@ -6,7 +6,7 @@ describe('Post Endpoints', () => {
     const res = await request(server)
       .post('/register')
       .send({
-        email: "email",
+        email: "email@",
         phone_number: 123456789,
         password: "password"
       })
@@ -16,16 +16,16 @@ describe('Post Endpoints', () => {
   })
 })
 
-describe('Missing property from request body', () => {
-    it('should fill the request body', async () => {
+describe('Error from request body', () => {
+    it('should correct request body', async () => {
       const res = await request(server)
         .post('/register')
         .send({
           email: "email",
-          phone_number: 123456789
+          phone_number: "123456789"
         })
       expect(res.statusCode).toEqual(400)
-      expect(res.body).toHaveProperty('message')
+      expect(res.body).toHaveProperty('errorMessage')
     })
 })
 

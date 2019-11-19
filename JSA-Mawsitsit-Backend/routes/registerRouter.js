@@ -1,48 +1,54 @@
 const express = require('express');
 const router = express.Router();
 
-const passwordStrength = (password) => {
-  const weakRegex = new RegExp('^((?=.[a-z])|(?=.[0-9])|(?=.*[A-Z]))(?=.{8,})');
-  if (weakRegex.test(password)) {
-    return 1;
-  }
-  return 0;
-};
+let errorMessage = '';
+const weakRegex = new RegExp('^((?=.[a-z])|(?=.[0-9])|(?=.*[A-Z]))(?=.{8,})');
+const validateEmail = (email) => {
+    if(!email || (email.indexOf('@') == -1)){
+      if(errorMessage.indexOf('Error in email. ') == -1){
+        errorMessage += 'Error in email. '
+      }
+      return false
+    }
+    return true
+}
+const validatePhoneNumber = (phoneNumber) => {
+    if(!phoneNumber || (phoneNumber.length < 8)){
+      if(errorMessage.indexOf('Error in phone number. ') == -1){
+        errorMessage += 'Error in phone number. '
+      }
+      return false
+    }
+    return true
+}
+const validatePassword= (password) => {
+    if(!password || (!weakRegex.test(password))){
+      if(errorMessage.indexOf('Error in password. ') == -1){
+        errorMessage += 'Error in password. '
+      }
+      return false
+    }
+    
+    return true
+}
 
 router.post('/', (req, res) => {
   const { email, phone_number: phoneNumber, password } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
-      message: 'Content-type must be application/json.',
+      message: 'Content-type must be application/json.'
     });
     return;
   }
 
-  if (!email || !phoneNumber || !password) {
-    let message = '';
-
-    if (!email) {
-      message += 'Missing email. ';
-    }else if (str.indexOf(email) == -1) {
-      message += 'Incorrect email format. ';
-    }
-
-    if (!phoneNumber) {
-      message += 'Missing phone numbers. ';
-    }else if(phoneNumber.length < 8){
-      message += 'Too short phone numbers. ';
-    }
-
-    if (!password) {
-      message += 'Missing password. ';
-    }else if(passwordStrength(password) === 0){
-      message += 'Too weak password. ';
-    }
-
+  validateEmail(email);
+  validatePhoneNumber(phoneNumber);
+  validatePassword(password);
+  if(errorMessage.length > 0){ 
     res.status(400).json({
-      message,
-    });
+      errorMessage,
+    });  
     return;
   }
 
