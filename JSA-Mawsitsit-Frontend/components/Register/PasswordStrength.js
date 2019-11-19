@@ -29,7 +29,7 @@ const PasswordStrength = (props) => {
       bar: 'strongbar',
       width: 0,
     },
-    'Please input a valid password!': {
+    'Password must at least 8 characters!': {
       bar: '',
       width: 0,
     }

@@ -20,22 +20,18 @@ const registerStyles = {
     justifyContent: 'space-between',
   },
   baseBar: {
-    borderRadius: 2,
     backgroundColor: '#48BBEC',
   },
   weakbar: {
     width: 60,
-    borderRadius: 2,
     backgroundColor: 'red',
   },
   mediumbar: {
     width: 120,
-    borderRadius: 2,
-    backgroundColor: 'yellow',
+    backgroundColor: 'orange',
   },
   strongbar: {
     width: 180,
-    borderRadius: 2,
     backgroundColor: 'green',
   },
   textStyle: {

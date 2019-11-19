@@ -7,34 +7,42 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  emailValidate, phoneNumberValidate, passwordValidate, passwordCheck,
+  emailValidate,
+  phoneNumberValidate,
+  passwordValidate,
+  passwordCheck,
 } from '../../validation/validation';
 import PasswordStrength from './PasswordStrength'
 import registerStyles from './Styles';
+import { URL } from 'react-native-dotenv'
 
 const styles = StyleSheet.create(registerStyles);
-const initState = {
+const initInputText = {
   email: '',
-  emailError: '',
   phoneNumber: '',
-  phoneNumberError: '',
   password: '',
-  passwordMessage: '',
   passwordConfirm: '',
-  checkMessage: '',
 };
-
+const initInputError = {
+  emailError: '',
+  phoneNumberError: '',
+  passwordMessage: '',
+  checkMessage: '',
+}
 
 const Register = () => {
-  const [state, setState] = useState(initState);
+  const [inputText, setInputText] = useState(initInputText);
+  const [inputError, setInputError] = useState(initInputError);
+  const validated = (!Object.values(inputText).includes(''))
+    && (!inputError.emailError && !inputError.phoneNumberError && !inputError.checkMessage);
   const handleChange = (name, value) => {
-    setState({
-      ...state,
+    setInputText({
+      ...inputText,
       [name]: value,
     });
   };
   const postResult = (object) => {
-    fetch('http://localhost:3000/register', {
+    fetch(`${URL}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(object),
@@ -43,11 +51,12 @@ const Register = () => {
 
   const handleSubmit = () => {
     const register = {
-      email: state.email,
-      phone_number: state.phoneNumber,
-      password: state.password,
+      email: inputText.email,
+      phone_number: inputText.phoneNumber,
+      password: inputText.password,
     };
-    setState(initState);
+    setInputText(initInputText);
+    setInputError(initInputError);
     postResult(register);
   };
 
@@ -60,102 +69,116 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={state.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
+      <Text style={inputError.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
         E-mail
       </Text>
       <TextInput
-        style={state.emailError ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-        value={state.email}
+        style={inputError.emailError ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+        value={inputText.email}
         textContentType="emailAddress"
         autoCapitalize="none"
         placeholder="Email"
         onChangeText={(value) => handleChange('email', value)}
-        onBlur={(value) => {
-          const emailError = emailValidate(value.nativeEvent.text);
-          setState({
-            ...state,
+        onBlur={() => {
+          const emailError = emailValidate(inputText.email);
+          setInputError({
+            ...inputError,
             emailError,
           });
         }}
       />
       <View>
-        {Boolean(state.emailError)
-          && <Text style={{ ...textStyle, ...warningTextColor }}>{state.emailError}</Text>}
+        {Boolean(inputError.emailError)
+          && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.emailError}</Text>}
       </View>
-      <Text style={state.phoneNumberError ? { ...textStyle, ...warningTextColor } : textStyle}>
+      <Text style={inputError.phoneNumberError ? { ...textStyle, ...warningTextColor } : textStyle}>
         Phone number
       </Text>
       <TextInput
-        style={state.phoneNumberError
+        style={inputError.phoneNumberError
           ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-        value={state.phoneNumber}
+        value={inputText.phoneNumber}
         textContentType="telephoneNumber"
         autoCapitalize="none"
         placeholder="phone number"
         onChangeText={(value) => handleChange('phoneNumber', value)}
-        onBlur={(value) => {
-          const phoneNumberError = phoneNumberValidate(value.nativeEvent.text);
-          setState({
-            ...state,
+        onBlur={() => {
+          const phoneNumberError = phoneNumberValidate(inputText.phoneNumber);
+          setInputError({
+            ...inputError,
             phoneNumberError,
           });
         }}
       />
       <View>
-        {Boolean(state.phoneNumberError)
-          && <Text style={{ ...textStyle, ...warningTextColor }}>{state.phoneNumberError}</Text>}
+        {Boolean(inputError.phoneNumberError)
+          && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.phoneNumberError}</Text>}
       </View>
-      <Text style={state.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
+      <Text style={inputError.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
         Password
       </Text>
       <TextInput
-        style={state.passwordMessage
+        style={inputError.passwordMessage
           ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-        value={state.password}
+        value={inputText.password}
         secureTextEntry
         textContentType="password"
         autoCapitalize="none"
         placeholder="password"
-        onChangeText={(value) => handleChange('password', value)}
-        onBlur={(value) => {
-          const passwordMessage = passwordValidate(value.nativeEvent.text);
-          setState({
-            ...state,
+        onChangeText={(value) => {
+          handleChange('password', value);
+          const passwordMessage = passwordValidate(value);
+          setInputError({
+            ...inputError,
+            passwordMessage,
+          });
+        }}
+        onBlur={() => {
+          const passwordMessage = passwordValidate(inputText.password);
+          setInputError({
+            ...inputError,
             passwordMessage,
           });
         }}
       />
       <View>
-        {Boolean(state.passwordMessage) && (<PasswordStrength passwordMessage={state.passwordMessage} />)}
+        {Boolean(inputError.passwordMessage) && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
       </View>
-      <Text style={state.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
+      <Text style={inputError.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
         Password confirmation
       </Text>
       <TextInput
-        style={state.checkMessage ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-        value={state.passwordConfirm}
+        style={inputError.checkMessage ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+        value={inputText.passwordConfirm}
         secureTextEntry
         textContentType="password"
         autoCapitalize="none"
         placeholder="password"
-        onChangeText={(value) => handleChange('passwordConfirm', value)}
-        onBlur={(value) => {
-          const checkMessage = passwordCheck(state.password, value.nativeEvent.text);
-          setState({
-            ...state,
+        onChangeText={(value) => {
+          handleChange('passwordConfirm', value);
+          const checkMessage = passwordCheck(inputText.password, value);
+          setInputError({
+            ...inputError,
+            checkMessage,
+          });
+        }}
+        onBlur={() => {
+          const checkMessage = passwordCheck(inputText.password, inputText.passwordConfirm);
+          setInputError({
+            ...inputError,
             checkMessage,
           });
         }}
       />
       <View>
-        {Boolean(state.checkMessage)
-          && <Text style={{ ...textStyle, ...warningTextColor }}>{state.checkMessage}</Text>}
+        {Boolean(inputError.checkMessage)
+          && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.checkMessage}</Text>}
       </View>
       <View style={styles.buttoncontainer}>
         <TouchableOpacity
           style={styles.button}
           onPress={handleSubmit}
-          disabled={!(state.email && state.phoneNumber && state.password && state.password)}
+          disabled={!validated}
         >
           <Text style={styles.buttontext}>Register</Text>
         </TouchableOpacity>

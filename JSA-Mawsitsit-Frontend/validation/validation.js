@@ -44,7 +44,7 @@ export const passwordValidate = (password) => {
   } else if (passwordStrength(password) === 1) {
     passwordMessage = 'Weak password';
   } else {
-    passwordMessage = 'Please input a valid password!';
+    passwordMessage = 'Password must at least 8 characters!';
   }
   return passwordMessage;
 };
