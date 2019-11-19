@@ -16,15 +16,25 @@ const PasswordStrength = (props) => {
     warningTextColor,
   } = styles;
 
-  let bar = '';
-  let width = 180;
-  switch (props.passwordMessage) {
-    case 'Weak password': bar = 'weakbar', width = 120; break;
-    case 'Medium password': bar = 'mediumbar', width = 60; break;
-    case 'Strong password': bar = 'strongbar', width = 0; break;
-    default: bar = '', width = 0; break;
+  const strengths = {
+    'Weak password': {
+      bar: 'weakbar',
+      width: 120,
+    },
+    'Medium password': {
+      bar: 'mediumbar',
+      width: 60,
+    },
+    'Strong password': {
+      bar: 'strongbar',
+      width: 0,
+    },
+    'Please input a valid password!': {
+      bar: '',
+      width: 0,
+    }
   }
-
+  const { bar, width } = strengths[props.passwordMessage]
   return (
     <View style={styles.passwordStrength}>
       <Text style={{ ...textStyle, ...warningTextColor }}>{props.passwordMessage}</Text>

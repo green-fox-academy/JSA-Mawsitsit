@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, Text, TextInput, View, TouchableOpacity,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
 } from 'react-native';
 import {
   emailValidate, phoneNumberValidate, passwordValidate, passwordCheck,
@@ -46,8 +50,6 @@ const Register = () => {
     setState(initState);
     postResult(register);
   };
-
-
 
   const {
     textStyle,
