@@ -32,5 +32,10 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
   }
 }

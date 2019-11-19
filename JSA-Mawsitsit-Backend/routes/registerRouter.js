@@ -1,37 +1,35 @@
 const express = require('express');
-const router = express.Router();
-
 const { validateEmail } = require('../helper/validation');
 const { validatePhoneNumber } = require('../helper/validation');
 const { validatePassword } = require('../helper/validation');
 
+const router = express.Router();
 
 router.post('/', (req, res) => {
   const { email, phone_number: phoneNumber, password } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
-      message: 'Content-type must be application/json.'
+      message: 'Content-type must be application/json.',
     });
     return;
   }
 
   let errorMessage = '';
-  if(validateEmail(email)){
+  if (validateEmail(email)) {
     errorMessage += 'Error in email. ';
   }
-  if(validatePhoneNumber(phoneNumber)){
+  if (validatePhoneNumber(phoneNumber)) {
     errorMessage += 'Error in phone number. ';
   }
-  if(validatePassword(password)){
+  if (validatePassword(password)) {
     errorMessage += 'Error in phone password. ';
   }
-  
-  
-  if(errorMessage.length > 0){ 
+
+  if (errorMessage.length > 0) {
     res.status(400).json({
       errorMessage,
-    }); 
+    });
     return;
   }
 
@@ -39,7 +37,6 @@ router.post('/', (req, res) => {
     user_id: 'id',
     email,
   });
-  return;
 });
 
 module.exports = router;
