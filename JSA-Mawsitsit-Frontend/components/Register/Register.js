@@ -194,4 +194,9 @@ const Register = () => {
   );
 };
 
+// Navigation Configuration
+Register.navigationOptions = {
+  headerShown: false,
+};
+
 export default Register;
