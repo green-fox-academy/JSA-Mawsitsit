@@ -1,22 +1,12 @@
 // External Dependencies
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
-import Register from './components/Register/Register';
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-  },
-});
+// Internal Dependencies
+import AppNavigation from './components/App/AppNavigation';
 
 // Component Definition
 const App = () => (
-  <View style={styles.container}>
-    <Register />
-  </View>
+  <AppNavigation />
 );
 
 export default App;
