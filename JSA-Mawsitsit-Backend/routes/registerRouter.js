@@ -3,7 +3,7 @@ const {
   validatePassword,
   validateEmail,
   validatePhoneNumber,
-} = require('../helper/validation');
+} = require('../services/validation');
 
 const registerRouter = express.Router();
 
