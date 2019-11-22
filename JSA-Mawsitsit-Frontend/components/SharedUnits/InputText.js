@@ -7,14 +7,17 @@ import {
 import { Item, Input } from 'native-base';
 
 // Internal Dependencies
-import styles from '../Login/Styles';
+import LoginStyle from '../Login/LoginStyle';
+
+// Local Variables
+const { textInputStyle } = LoginStyle;
 
 // Component Definition
 const InputText = (props) => {
   const { placeholder } = props;
   return (
     <View>
-      <Item regular style={styles.textInputStyle}>
+      <Item regular style={textInputStyle}>
         <Input placeholder={placeholder} />
       </Item>
     </View>

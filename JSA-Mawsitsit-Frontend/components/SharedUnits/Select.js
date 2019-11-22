@@ -8,14 +8,20 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import styles from '../Login/Styles';
+import LoginStyle from '../Login/LoginStyle';
+
+// Local Variables
+const {
+  selectStyle,
+  selectTextStyle,
+} = LoginStyle;
 
 
 const Select = (props) => {
   const { selectItem } = props;
   return (
-    <View style={styles.selectStyle}>
-      <Text style={styles.selectText}>{selectItem}</Text>
+    <View style={selectStyle}>
+      <Text style={selectTextStyle}>{selectItem}</Text>
       <Switch
         // thumbColor={[status? '#c1d045':'#fff')]}
         // thumb color will change by the switch status

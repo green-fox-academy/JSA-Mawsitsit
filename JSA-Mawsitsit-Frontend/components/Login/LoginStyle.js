@@ -1,20 +1,20 @@
 // External Dependencies
 import { StyleSheet } from 'react-native';
 
-const loginStyles = {
+const LoginStyle = StyleSheet.create({
   rootStyle: {
     flex: 1,
   },
-  header: {
+  headerStyle: {
     flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  headerText: {
+  headerTextStyle: {
     fontSize: 38,
     fontWeight: '700',
   },
-  input: {
+  inputStyle: {
     flex: 3,
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -28,14 +28,14 @@ const loginStyles = {
     borderWidth: 10,
     borderColor: '#000',
   },
-  button: {
+  buttonStyle: {
     backgroundColor: '#fff',
     width: 150,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  btnText: {
+  btnTextStyle: {
     fontSize: 25,
     fontWeight: 'bold',
   },
@@ -46,51 +46,48 @@ const loginStyles = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  selectText: {
+  selectTextStyle: {
     color: '#fff',
     fontSize: 17,
     fontWeight: 'bold',
   },
-  footer: {
+  footerStyle: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  footerFrame: {
+  footerFrameStyle: {
     width: 230,
     top: 20,
   },
-  footerFrameInside: {
+  footerFrameInsideStyle: {
     width: 230,
     height: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  footerText: {
+  footerTextStyle: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  linkText: {
+  linkTextStyle: {
     color: '#fff',
     fontSize: 20,
     textDecorationLine: 'underline',
     fontWeight: 'bold',
   },
-  variantClick: {
+  variantClickStyle: {
     fontStyle: 'italic',
   },
-  variantPSW: {
+  variantPswStyle: {
     fontSize: 15,
   },
-  footerBottom: {
+  footerBottomStyle: {
     width: 200,
     alignItems: 'center',
     bottom: 30,
   },
+});
 
-};
-
-const styles = StyleSheet.create(loginStyles);
-
-export default styles;
+export default LoginStyle;

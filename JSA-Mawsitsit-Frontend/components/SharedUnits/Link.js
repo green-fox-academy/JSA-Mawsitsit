@@ -9,7 +9,11 @@ import {
 import { Button } from 'native-base';
 
 // Internal Dependencies
-import styles from '../Login/Styles';
+import LoginStyle from '../Login/LoginStyle';
+
+// Local Variables
+const { linkTextStyle } = LoginStyle;
+
 
 // Component Definition
 const Link = (props) => {
@@ -21,7 +25,7 @@ const Link = (props) => {
   return (
     <View>
       <Button transparent>
-        <Text style={{ ...styles.linkText, ...variantStyle }}>{linkText}</Text>
+        <Text style={{ ...linkTextStyle, ...variantStyle }}>{linkText}</Text>
       </Button>
     </View>
   );

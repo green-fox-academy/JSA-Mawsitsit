@@ -7,23 +7,30 @@ import {
 import { Button } from 'native-base';
 
 // Internal Dependencies
-import styles from './Styles';
+import LoginStyle from './LoginStyle';
 import InputText from '../SharedUnits/InputText';
 import Select from '../SharedUnits/Select';
 
+// Local Variables
+const {
+  inputStyle,
+  buttonStyle,
+  btnTextStyle,
+} = LoginStyle;
+
+
 // Component Definition
 const Input = () => (
-  <View style={styles.input}>
+  <View style={inputStyle}>
     <InputText placeholder="Email Address or Phone number" />
     <InputText placeholder="Password" />
-    <Button bordered style={styles.button}>
-      <Text style={styles.btnText}> Login </Text>
+    <Button bordered style={buttonStyle}>
+      <Text style={btnTextStyle}> Login </Text>
     </Button>
     <Select selectItem="Remember Email/Phone" />
     <Select selectItem="Remember Password" />
     <Select selectItem="Auto login" />
   </View>
 );
-
 
 export default Input;

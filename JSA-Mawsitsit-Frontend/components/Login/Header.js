@@ -6,12 +6,18 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import styles from './Styles';
+import LoginStyle from './LoginStyle';
+
+// Local Variables
+const {
+  headerStyle,
+  headerTextStyle,
+} = LoginStyle;
 
 // Component Definition
 const Header = () => (
-  <View style={styles.header}>
-    <Text style={styles.headerText}>JSA ShenZhen</Text>
+  <View style={headerStyle}>
+    <Text style={headerTextStyle}>JSA ShenZhen</Text>
   </View>
 );
 
