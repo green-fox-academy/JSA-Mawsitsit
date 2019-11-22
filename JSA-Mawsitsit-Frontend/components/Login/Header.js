@@ -1,16 +1,12 @@
 // External Dependencies
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 
 // Internal Dependencies
-import loginStyles from './Styles';
-
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
+import styles from './Styles';
 
 // Component Definition
 const Header = () => (

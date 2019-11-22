@@ -3,18 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
-  StyleSheet,
   View,
   ViewPropTypes,
 } from 'react-native';
 import { Button } from 'native-base';
 
 // Internal Dependencies
-import loginStyles from '../Login/Styles';
+import styles from '../Login/Styles';
 
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
-
+// Component Definition
 const Link = (props) => {
   const {
     linkText,

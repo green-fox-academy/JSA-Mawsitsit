@@ -1,17 +1,13 @@
 // External Dependencies
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 
 // Internal Dependencies
-import loginStyles from './Styles';
+import styles from './Styles';
 import Link from '../SharedUnits/Link';
-
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
 
 // Component Definition
 const Footer = () => (

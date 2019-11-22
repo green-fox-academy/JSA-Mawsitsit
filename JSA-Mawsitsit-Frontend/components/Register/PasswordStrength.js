@@ -1,32 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  StyleSheet,
   View,
   Text,
 } from 'react-native';
-import registerStyles from './Styles';
+import RegisterStyle from './RegisterStyle';
 
-
-const styles = StyleSheet.create(registerStyles);
-
+// Component Definition
 const PasswordStrength = (props) => {
   const {
-    textStyle,
     warningTextColor,
-  } = styles;
+    barStyle,
+    baseBarStyle,
+    textStyle,
+    passwordStrengthStyle,
+  } = RegisterStyle;
 
   const strengths = {
     'Weak password': {
-      bar: 'weakbar',
+      bar: 'weakBarStyle',
       width: 120,
     },
     'Medium password': {
-      bar: 'mediumbar',
+      bar: 'mediumBarStyle',
       width: 60,
     },
     'Strong password': {
-      bar: 'strongbar',
+      bar: 'strongBarStyle',
       width: 0,
     },
     'Password must at least 8 characters!': {
@@ -37,11 +37,11 @@ const PasswordStrength = (props) => {
   const { passwordMessage } = props;
   const { bar, width } = strengths[passwordMessage];
   return (
-    <View style={styles.passwordStrength}>
+    <View style={passwordStrengthStyle}>
       <Text style={{ ...textStyle, ...warningTextColor }}>{passwordMessage}</Text>
-      <View style={styles.bar}>
-        <View style={styles[bar]} />
-        <View style={{ ...styles.baseBar, width }} />
+      <View style={barStyle}>
+        <View style={RegisterStyle[bar]} />
+        <View style={{ ...baseBarStyle, width }} />
       </View>
     </View>
   );

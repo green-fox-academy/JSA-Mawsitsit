@@ -2,20 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  StyleSheet,
   View,
 } from 'react-native';
 import { Item, Input } from 'native-base';
 
 // Internal Dependencies
-import loginStyles from '../Login/Styles';
+import styles from '../Login/Styles';
 
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
-
+// Component Definition
 const InputText = (props) => {
   const { placeholder } = props;
-
   return (
     <View>
       <Item regular style={styles.textInputStyle}>

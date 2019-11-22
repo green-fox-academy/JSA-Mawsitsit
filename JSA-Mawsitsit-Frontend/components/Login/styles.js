@@ -1,3 +1,6 @@
+// External Dependencies
+import { StyleSheet } from 'react-native';
+
 const loginStyles = {
   rootStyle: {
     flex: 1,
@@ -49,18 +52,15 @@ const loginStyles = {
     fontWeight: 'bold',
   },
   footer: {
-    // backgroundColor: 'lightyellow',
     flex: 2,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   footerFrame: {
-    // backgroundColor: 'lightyellow',
     width: 230,
     top: 20,
   },
   footerFrameInside: {
-    // backgroundColor: 'lightpink',
     width: 230,
     height: 20,
     flexDirection: 'row',
@@ -91,4 +91,6 @@ const loginStyles = {
 
 };
 
-export default loginStyles;
+const styles = StyleSheet.create(loginStyles);
+
+export default styles;

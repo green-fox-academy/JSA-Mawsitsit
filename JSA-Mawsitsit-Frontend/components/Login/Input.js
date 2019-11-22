@@ -1,19 +1,15 @@
 // External Dependencies
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { Button } from 'native-base';
 
 // Internal Dependencies
-import loginStyles from './Styles';
+import styles from './Styles';
 import InputText from '../SharedUnits/InputText';
 import Select from '../SharedUnits/Select';
-
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
 
 // Component Definition
 const Input = () => (

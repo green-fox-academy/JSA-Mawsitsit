@@ -4,15 +4,12 @@ import PropTypes from 'prop-types';
 import {
   Text,
   Switch,
-  StyleSheet,
   View,
 } from 'react-native';
 
 // Internal Dependencies
-import loginStyles from '../Login/Styles';
+import styles from '../Login/Styles';
 
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
 
 const Select = (props) => {
   const { selectItem } = props;
@@ -21,6 +18,7 @@ const Select = (props) => {
       <Text style={styles.selectText}>{selectItem}</Text>
       <Switch
         // thumbColor={[status? '#c1d045':'#fff')]}
+        // thumb color will change by the switch status
         thumbColor="#c1d045"
         value
         trackColor={{ true: '#90caf9', false: '#fff' }}

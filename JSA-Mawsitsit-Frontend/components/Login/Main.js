@@ -1,20 +1,17 @@
 // External Dependencies
 import React from 'react';
 import {
-  StyleSheet,
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 // Internal Dependencies
-import loginStyles from './Styles';
+import styles from './Styles';
 import Header from './Header';
 import Input from './Input';
 import Footer from './Footer';
 
-// Local Variables
-const styles = StyleSheet.create(loginStyles);
-
+// Component Definition
 const Main = () => {
   const { rootStyle } = styles;
 

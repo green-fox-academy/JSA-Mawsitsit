@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -14,10 +13,9 @@ import {
   passwordCheck,
 } from '../../validation/validation';
 import PasswordStrength from './PasswordStrength';
-import registerStyles from './Styles';
+import RegisterStyle from './RegisterStyle';
 
 
-const styles = StyleSheet.create(registerStyles);
 const initInputText = {
   email: '',
   phoneNumber: '',
@@ -62,14 +60,18 @@ const Register = () => {
   };
 
   const {
-    textStyle,
     warningTextColor,
+    containerStyle,
+    textStyle,
     textInputStyle,
     warningBorderColor,
-  } = styles;
+    buttonTextStyle,
+    buttonContainerStyle,
+    buttonStyle,
+  } = RegisterStyle;
 
   return (
-    <View style={styles.container}>
+    <View style={containerStyle}>
       <Text style={inputError.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
         E-mail
       </Text>
@@ -181,13 +183,13 @@ const Register = () => {
         {Boolean(inputError.checkMessage)
           && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.checkMessage}</Text>}
       </View>
-      <View style={styles.buttoncontainer}>
+      <View style={buttonContainerStyle}>
         <TouchableOpacity
-          style={styles.button}
+          style={buttonStyle}
           onPress={handleSubmit}
           disabled={!validated}
         >
-          <Text style={styles.buttonText}>Register</Text>
+          <Text style={buttonTextStyle}>Register</Text>
         </TouchableOpacity>
       </View>
     </View>
