@@ -1,14 +1,10 @@
 const express = require('express');
-const {
-  validatePassword,
-  validateEmail,
-  validatePhoneNumber,
-} = require('../services/validation');
+const { validateRegister } = require('../services/validation');
 
 const registerRouter = express.Router();
 
 registerRouter.post('/', (req, res) => {
-  const { email, phone_number: phoneNumber, password } = req.body;
+  const { email } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
@@ -17,14 +13,7 @@ registerRouter.post('/', (req, res) => {
     return;
   }
 
-  let errorMessage = '';
-  if (!validateEmail(email)) {
-    errorMessage = 'Error in email.';
-  } else if (!validatePhoneNumber(phoneNumber)) {
-    errorMessage = 'Error in phone number.';
-  } else if (!validatePassword(password)) {
-    errorMessage = 'Error in password.';
-  }
+  const errorMessage = validateRegister(req.body);
 
   if (errorMessage) {
     res.status(400).json({
