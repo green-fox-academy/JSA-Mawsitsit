@@ -4,7 +4,7 @@ const checkLogin = require('../services/checkLogin');
 const loginRouter = express.Router();
 
 loginRouter.post('/', (req, res) => {
-  const { user_name: userName, password } = req.body;
+  const { user_identifier: userIdentifier, password } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
@@ -13,7 +13,7 @@ loginRouter.post('/', (req, res) => {
     return;
   }
 
-  const checkMessage = checkLogin(userName, password);
+  const checkMessage = checkLogin(userIdentifier, password);
 
   if (checkMessage === 'Login successful!') {
     res.status(200).json({
