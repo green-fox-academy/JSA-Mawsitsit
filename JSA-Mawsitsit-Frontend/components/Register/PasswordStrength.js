@@ -6,16 +6,17 @@ import {
 } from 'react-native';
 import RegisterStyle from './RegisterStyle';
 
+// Local Variables
+const {
+  warningTextColor,
+  barStyle,
+  baseBarStyle,
+  textStyle,
+  passwordStrengthStyle,
+} = RegisterStyle;
+
 // Component Definition
 const PasswordStrength = (props) => {
-  const {
-    warningTextColor,
-    barStyle,
-    baseBarStyle,
-    textStyle,
-    passwordStrengthStyle,
-  } = RegisterStyle;
-
   const strengths = {
     'Weak password': {
       bar: 'weakBarStyle',

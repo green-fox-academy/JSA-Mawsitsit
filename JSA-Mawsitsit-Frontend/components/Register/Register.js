@@ -1,3 +1,4 @@
+// External Dependencies
 import React, { useState } from 'react';
 import {
   Text,
@@ -5,6 +6,8 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+
+// Internal Dependencies
 import { URL } from 'react-native-dotenv';
 import {
   emailValidate,
@@ -15,6 +18,17 @@ import {
 import PasswordStrength from './PasswordStrength';
 import RegisterStyle from './RegisterStyle';
 
+// Local Variables
+const {
+  warningTextColor,
+  containerStyle,
+  textStyle,
+  textInputStyle,
+  warningBorderColor,
+  buttonTextStyle,
+  buttonContainerStyle,
+  buttonStyle,
+} = RegisterStyle;
 
 const initInputText = {
   email: '',
@@ -29,6 +43,7 @@ const initInputError = {
   checkMessage: '',
 };
 
+// Component Definitions
 const Register = () => {
   const [inputText, setInputText] = useState(initInputText);
   const [inputError, setInputError] = useState(initInputError);
@@ -40,6 +55,7 @@ const Register = () => {
       [name]: value,
     });
   };
+
   const postResult = (object) => {
     fetch(`${URL}/register`, {
       method: 'POST',
@@ -58,17 +74,6 @@ const Register = () => {
     setInputError(initInputError);
     postResult(register);
   };
-
-  const {
-    warningTextColor,
-    containerStyle,
-    textStyle,
-    textInputStyle,
-    warningBorderColor,
-    buttonTextStyle,
-    buttonContainerStyle,
-    buttonStyle,
-  } = RegisterStyle;
 
   return (
     <View style={containerStyle}>

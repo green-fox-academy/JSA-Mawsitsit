@@ -8,7 +8,7 @@ const RegisterStyle = StyleSheet.create(
       marginLeft: 20,
       width: '90%',
       backgroundColor: '#fff',
-
+      top: 50,
     },
     // password strength
     passwordStrengthStyle: {

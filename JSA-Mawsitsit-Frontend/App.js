@@ -4,8 +4,10 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-// import Register from './components/Register/Register';
-import Main from './components/Login/Main';
+
+// Internal Dependencies
+import Register from './components/Register/Register';
+// import Main from './components/Login/Main';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,8 +19,8 @@ const styles = StyleSheet.create({
 // Component Definition
 const App = () => (
   <View style={styles.container}>
-    {/* <Register /> */}
-    <Main />
+    <Register />
+    {/* <Main /> */}
   </View>
 );
 
