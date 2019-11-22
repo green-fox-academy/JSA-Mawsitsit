@@ -7,7 +7,7 @@ import {
 import { Button } from 'native-base';
 
 // Internal Dependencies
-import LoginStyle from './LoginStyle';
+import LoginStyle from '../../styles/LoginStyle';
 import InputText from '../SharedUnits/InputText';
 import Select from '../SharedUnits/Select';
 

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import LoginStyle from '../Login/LoginStyle';
+import LoginStyle from '../../styles/LoginStyle';
 
 // Local Variables
 const {

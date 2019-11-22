@@ -15,8 +15,8 @@ import {
   passwordValidate,
   passwordCheck,
 } from '../../validation/validation';
-import PasswordStrength from './PasswordStrength';
-import RegisterStyle from './RegisterStyle';
+import PasswordStrength from '../components/Register/PasswordStrength';
+import RegisterStyle from '../styles/RegisterStyle';
 
 // Local Variables
 const {
@@ -44,7 +44,7 @@ const initInputError = {
 };
 
 // Component Definitions
-const Register = () => {
+const RegisterScreen = () => {
   const [inputText, setInputText] = useState(initInputText);
   const [inputError, setInputError] = useState(initInputError);
   const validated = (!Object.values(inputText).includes(''))
@@ -201,4 +201,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterScreen;

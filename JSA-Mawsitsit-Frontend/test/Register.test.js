@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Register from '../components/Register/Register';
+import Register from '../src/screens/RegisterScreen';
 
 describe('<Register />', () => {
   it('has 1 child', () => {

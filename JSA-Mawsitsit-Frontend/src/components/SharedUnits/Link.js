@@ -9,7 +9,7 @@ import {
 import { Button } from 'native-base';
 
 // Internal Dependencies
-import LoginStyle from '../Login/LoginStyle';
+import LoginStyle from '../../styles/LoginStyle';
 
 // Local Variables
 const { linkTextStyle } = LoginStyle;

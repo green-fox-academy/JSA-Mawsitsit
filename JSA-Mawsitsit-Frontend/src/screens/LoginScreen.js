@@ -6,17 +6,17 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 
 // Internal Dependencies
-import LoginStyle from './LoginStyle';
-import Header from './Header';
-import Input from './Input';
-import Footer from './Footer';
+import LoginStyle from '../styles/LoginStyle';
+import Header from '../components/Login/Header';
+import Input from '../components/Login/Input';
+import Footer from '../components/Login/Footer';
 
 // Local Variables
 const { rootStyle } = LoginStyle;
 
 
 // Component Definition
-const Main = () => (
+const LoginScreen = () => (
   <View style={rootStyle}>
     <LinearGradient
       colors={['#97a8e8', '#869fe7', '#437ee6', '#1269e5']}
@@ -31,4 +31,4 @@ const Main = () => (
   </View>
 );
 
-export default Main;
+export default LoginScreen;

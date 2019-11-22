@@ -6,8 +6,8 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import Register from './components/Register/Register';
-// import Main from './components/Login/Main';
+// import RegisterScreen from './src/screens/Register/RegisterScreen';
+import LoginScreen from './src/screens/LoginScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
 // Component Definition
 const App = () => (
   <View style={styles.container}>
-    <Register />
-    {/* <Main /> */}
+    {/* <Register /> */}
+    <LoginScreen />
   </View>
 );
 

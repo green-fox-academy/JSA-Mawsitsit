@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import LoginStyle from './LoginStyle';
+import LoginStyle from '../../styles/LoginStyle';
 import Link from '../SharedUnits/Link';
 
 // Local Variables
