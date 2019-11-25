@@ -1,6 +1,8 @@
 # Dependencies
-
 node_modules
 
 #vscode
 .vscode
+
+# macOS
+.DS_Store

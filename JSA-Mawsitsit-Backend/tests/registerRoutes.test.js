@@ -1,4 +1,3 @@
-/* global it, describe, expect */
 const request = require('supertest');
 const server = require('../server');
 
@@ -8,7 +7,7 @@ describe('Post Endpoints', () => {
       .post('/register')
       .send({
         email: 'email@',
-        phone_number: 123456789,
+        phone_number: '123456789',
         password: 'password',
       });
     expect(res.statusCode).toEqual(200);
