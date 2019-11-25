@@ -6,7 +6,7 @@ const LoginStyle = StyleSheet.create({
     flex: 1,
   },
   headerStyle: {
-    flex: 1.5,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -15,10 +15,9 @@ const LoginStyle = StyleSheet.create({
     fontWeight: '700',
   },
   inputStyle: {
-    flex: 3,
+    flex: 3.5,
     alignItems: 'center',
     justifyContent: 'space-around',
-
   },
   textInputStyle: {
     backgroundColor: '#fff',
@@ -39,8 +38,11 @@ const LoginStyle = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
   },
+  switchStyle: {
+    transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }],
+  },
   selectStyle: {
-    width: 300,
+    width: 320,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -48,7 +50,7 @@ const LoginStyle = StyleSheet.create({
   },
   selectTextStyle: {
     color: '#fff',
-    fontSize: 17,
+    fontSize: 22,
     fontWeight: 'bold',
   },
   footerStyle: {

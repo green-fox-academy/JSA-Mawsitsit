@@ -1,5 +1,5 @@
 // External Dependencies
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -18,19 +18,65 @@ const {
   btnTextStyle,
 } = LoginStyle;
 
+const initInputText = {
+  userIdentifier: '',
+  password: '',
+};
+
+const initInputSelect = {
+  rmberUserIdentifier: false,
+  rmberPassword: false,
+  autoLogin: false,
+};
+
 
 // Component Definition
-const Input = () => (
-  <View style={inputStyle}>
-    <InputText placeholder="Email Address or Phone number" />
-    <InputText placeholder="Password" />
-    <Button bordered style={buttonStyle}>
-      <Text style={btnTextStyle}> Login </Text>
-    </Button>
-    <Select selectItem="Remember Email/Phone" />
-    <Select selectItem="Remember Password" />
-    <Select selectItem="Auto login" />
-  </View>
-);
+const Input = () => {
+  const [inputText, setInputText] = useState(initInputText);
+  const [inputSelect, setInputSelect] = useState(initInputSelect);
+
+  const validation = {
+    rmberUserIdentifier: (inputText.userIdentifier.length !== 0),
+    rmberPassword: (inputText.password.length !== 0),
+    autoLogin: inputSelect.rmberUserIdentifier && inputSelect.rmberPassword,
+  };
+
+  const handleChange = (name, value) => {
+    setInputText({
+      ...inputText,
+      [name]: value,
+    });
+  };
+
+  const handleSelect = (name, value) => {
+    // const validateString = `validation.${name}`;
+    // const validateWord = Boolean(validateString);
+    const validator = validation[name];
+
+    // console.log(validator);
+    console.log(inputText.password !== 0);
+    console.log(inputText);
+
+    if (validator) {
+      setInputSelect({
+        ...inputSelect,
+        [name]: value,
+      });
+    }
+  };
+
+  return (
+    <View style={inputStyle}>
+      <InputText placeholder="Email Address or Phone number" onChangeText={(value) => handleChange('userIdentifier', value)} />
+      <InputText placeholder="Password" onChangeText={(value) => handleChange('password', value)} />
+      <Button bordered style={buttonStyle}>
+        <Text style={btnTextStyle}> Login </Text>
+      </Button>
+      <Select selectItem="Remember Email/Phone" selectValue={inputSelect.rmberUserIdentifier} onChangeSelect={(value) => handleSelect('rmberUserIdentifier', value)} />
+      <Select selectItem="Remember Password" selectValue={inputSelect.rmberPassword} onChangeSelect={(value) => handleSelect('rmberPassword', value)} />
+      <Select selectItem="Auto login" selectValue={inputSelect.autoLogin} onChangeSelect={(value) => handleSelect('autoLogin', value)} />
+    </View>
+  );
+};
 
 export default Input;

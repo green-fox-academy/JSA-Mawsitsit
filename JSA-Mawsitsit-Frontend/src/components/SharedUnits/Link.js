@@ -33,7 +33,7 @@ const Link = (props) => {
 
 Link.propTypes = {
   linkText: PropTypes.string.isRequired,
-  variantStyle: ViewPropTypes.style,
+  variantStyle: Text.propTypes.style,
 };
 Link.defaultProps = {
   variantStyle: {},

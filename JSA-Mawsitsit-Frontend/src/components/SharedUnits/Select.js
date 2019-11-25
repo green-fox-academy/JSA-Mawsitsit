@@ -12,23 +12,24 @@ import LoginStyle from '../../styles/LoginStyle';
 
 // Local Variables
 const {
+  switchStyle,
   selectStyle,
   selectTextStyle,
 } = LoginStyle;
 
 
 const Select = (props) => {
-  const { selectItem } = props;
+  const { selectItem, onChangeSelect, selectValue } = props;
   return (
     <View style={selectStyle}>
       <Text style={selectTextStyle}>{selectItem}</Text>
       <Switch
-        // thumbColor={[status? '#c1d045':'#fff')]}
-        // thumb color will change by the switch status
-        thumbColor="#c1d045"
-        value
+        style={switchStyle}
+        thumbColor={[(selectValue ? '#c1d045' : '#fff')]}
         trackColor={{ true: '#90caf9', false: '#fff' }}
         ios_backgroundColor="#fff"
+        value={selectValue}
+        onValueChange={onChangeSelect}
       />
     </View>
   );
@@ -36,6 +37,8 @@ const Select = (props) => {
 
 Select.propTypes = {
   selectItem: PropTypes.string.isRequired,
+  onChangeSelect: PropTypes.func.isRequired,
+  selectValue: PropTypes.bool.isRequired,
 };
 
 export default Select;

@@ -1,9 +1,7 @@
 // External Dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import { Item, Input } from 'native-base';
 
 // Internal Dependencies
@@ -14,11 +12,11 @@ const { textInputStyle } = LoginStyle;
 
 // Component Definition
 const InputText = (props) => {
-  const { placeholder } = props;
+  const { placeholder, onChangeText } = props;
   return (
     <View>
       <Item regular style={textInputStyle}>
-        <Input placeholder={placeholder} />
+        <Input placeholder={placeholder} onChangeText={onChangeText} />
       </Item>
     </View>
   );
@@ -26,6 +24,7 @@ const InputText = (props) => {
 
 InputText.propTypes = {
   placeholder: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
 };
 
 export default InputText;
