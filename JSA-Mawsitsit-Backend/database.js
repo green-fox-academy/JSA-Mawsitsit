@@ -1,6 +1,8 @@
+// External Dependencies
 require('dotenv').config();
 const mysql = require('mysql');
 
+// MySQL Configuration
 const mysqlConnection = mysql.createPool({
   connectionLimit: 10,
   host: process.env.MYSQL_HOST,
@@ -9,13 +11,4 @@ const mysqlConnection = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
-const queryWithPromise = (sqlString) => new Promise((resolve, reject) => {
-  mysqlConnection.query(sqlString, (error, result) => {
-    if (error) {
-      reject(error);
-    }
-    resolve(result);
-  });
-});
-
-module.exports = { mysqlConnection, queryWithPromise };
+module.exports = mysqlConnection;
