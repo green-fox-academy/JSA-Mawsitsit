@@ -9,4 +9,13 @@ const mysqlConnection = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
-module.exports = mysqlConnection;
+const queryWithPromise = (sqlString) => new Promise((resolve, reject) => {
+  mysqlConnection.query(sqlString, (error, result) => {
+    if (error) {
+      reject(error);
+    }
+    resolve(result);
+  });
+});
+
+module.exports = { mysqlConnection, queryWithPromise };
