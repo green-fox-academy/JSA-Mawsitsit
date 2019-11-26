@@ -1,5 +1,6 @@
 // External Dependencies
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Text,
   View,
@@ -7,7 +8,7 @@ import {
 
 // Internal Dependencies
 import LoginStyle from '../../styles/LoginStyle';
-import Link from '../SharedUnits/Link';
+import LinkButton from '../SharedUnits/LinkButton';
 
 // Local Variables
 const {
@@ -22,27 +23,37 @@ const {
 
 
 // Component Definition
-const Footer = () => (
-  <View style={footerStyle}>
-    <View style={footerFrameStyle}>
-      <Text style={footerTextStyle}>Don&apos;t have an account?</Text>
-      <View style={footerFrameInsideStyle}>
-        <Link
-          linkText="Click here"
-          href="www.baidu.com"
-          variantStyle={variantClickStyle}
+const Footer = (props) => {
+  const { navigation } = props;
+
+  return (
+    <View style={footerStyle}>
+      <View style={footerFrameStyle}>
+        <Text style={footerTextStyle}>Don&apos;t have an account?</Text>
+        <View style={footerFrameInsideStyle}>
+          <LinkButton
+            linkText="Click here"
+            variantStyle={variantClickStyle}
+            onPress={() => navigation.navigate('SignUp')}
+          />
+          <Text style={footerTextStyle}>to create one!</Text>
+        </View>
+      </View>
+      <View style={footerBottomStyle}>
+        <LinkButton
+          linkText="Fogotten password"
+          variantStyle={variantPswStyle}
+          onPress={() => navigation.navigate('SignUp')}
         />
-        <Text style={footerTextStyle}>to create one!</Text>
       </View>
     </View>
-    <View style={footerBottomStyle}>
-      <Link
-        href="www.baidu.com"
-        linkText="Fogotten password"
-        variantStyle={variantPswStyle}
-      />
-    </View>
-  </View>
-);
+  );
+};
+
+Footer.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
 
 export default Footer;

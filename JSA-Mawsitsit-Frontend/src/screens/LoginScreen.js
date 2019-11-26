@@ -1,8 +1,7 @@
 // External Dependencies
 import React from 'react';
-import {
-  View,
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 // Internal Dependencies
@@ -16,19 +15,34 @@ const { rootStyle } = LoginStyle;
 
 
 // Component Definition
-const LoginScreen = () => (
-  <View style={rootStyle}>
-    <LinearGradient
-      colors={['#97a8e8', '#869fe7', '#437ee6', '#1269e5']}
-      style={rootStyle}
-      start={[0, 0]}
-      end={[1, 1]}
-    >
-      <Header />
-      <Input />
-      <Footer />
-    </LinearGradient>
-  </View>
-);
+const LoginScreen = (props) => {
+  const { navigation } = props;
+
+  return (
+    <View style={rootStyle}>
+      <LinearGradient
+        colors={['#97a8e8', '#869fe7', '#437ee6', '#1269e5']}
+        style={rootStyle}
+        start={[0, 0]}
+        end={[1, 1]}
+      >
+        <Header />
+        <Input />
+        <Footer navigation={navigation} />
+      </LinearGradient>
+    </View>
+  );
+};
+
+// Navigation Configuration
+LoginScreen.navigationOptions = {
+  headerShown: false,
+};
+
+LoginScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
 
 export default LoginScreen;

@@ -153,10 +153,12 @@ const RegisterScreen = () => {
           });
         }}
       />
+
       <View>
         {Boolean(inputError.passwordMessage)
           && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
       </View>
+
       <Text style={inputError.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
         Password confirmation
       </Text>
@@ -199,6 +201,11 @@ const RegisterScreen = () => {
       </View>
     </View>
   );
+};
+
+// Navigation Configuration
+RegisterScreen.navigationOptions = {
+  headerShown: true,
 };
 
 export default RegisterScreen;

@@ -49,15 +49,7 @@ const Input = () => {
   };
 
   const handleSelect = (name, value) => {
-    // const validateString = `validation.${name}`;
-    // const validateWord = Boolean(validateString);
-    const validator = validation[name];
-
-    // console.log(validator);
-    console.log(inputText.password !== 0);
-    console.log(inputText);
-
-    if (validator) {
+    if (validation[name]) {
       setInputSelect({
         ...inputSelect,
         [name]: value,

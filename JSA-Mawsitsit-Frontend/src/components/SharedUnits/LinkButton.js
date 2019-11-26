@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  ViewPropTypes,
 } from 'react-native';
 import { Button } from 'native-base';
 
@@ -16,26 +15,28 @@ const { linkTextStyle } = LoginStyle;
 
 
 // Component Definition
-const Link = (props) => {
+const LinkButton = (props) => {
   const {
     linkText,
     variantStyle,
+    onPress,
   } = props;
 
   return (
     <View>
-      <Button transparent>
+      <Button transparent onPress={onPress}>
         <Text style={{ ...linkTextStyle, ...variantStyle }}>{linkText}</Text>
       </Button>
     </View>
   );
 };
 
-Link.propTypes = {
+LinkButton.propTypes = {
   linkText: PropTypes.string.isRequired,
   variantStyle: Text.propTypes.style,
+  onPress: PropTypes.func.isRequired,
 };
-Link.defaultProps = {
+LinkButton.defaultProps = {
   variantStyle: {},
 };
-export default Link;
+export default LinkButton;

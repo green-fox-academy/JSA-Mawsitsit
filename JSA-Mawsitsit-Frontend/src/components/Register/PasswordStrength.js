@@ -35,8 +35,10 @@ const PasswordStrength = (props) => {
       width: 0,
     },
   };
+
   const { passwordMessage } = props;
   const { bar, width } = strengths[passwordMessage];
+
   return (
     <View style={passwordStrengthStyle}>
       <Text style={{ ...textStyle, ...warningTextColor }}>{passwordMessage}</Text>

@@ -6,16 +6,18 @@ const LoginStyle = StyleSheet.create({
     flex: 1,
   },
   headerStyle: {
-    flex: 1,
+    flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   headerTextStyle: {
+    top: 35,
     fontSize: 38,
     fontWeight: '700',
   },
   inputStyle: {
-    flex: 3.5,
+    flex: 4,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
