@@ -34,4 +34,18 @@ const loginUser = async (userIdentifier, password) => {
     : 'Password doesn\'t match. Please check your password.';
 };
 
-module.exports = { loginUser };
+const registerQuery = () => 5;
+
+const checkIdentifier = (object) => {
+  const { email, phone_number: phoneNumber } = object;
+  const result = mockUsers.find((user) => (
+    email === user.email && phoneNumber === user.phone_number
+  ));
+  return Boolean(result);
+};
+
+module.exports = {
+  checkIdentifier,
+  loginUser,
+  registerQuery,
+};
