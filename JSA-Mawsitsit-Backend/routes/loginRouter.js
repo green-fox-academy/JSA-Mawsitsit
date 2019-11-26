@@ -19,9 +19,14 @@ loginRouter.post('/', async (req, res) => {
   if (!userIdentifier) return res.status(400).send({ error: 'Please full in your username.' });
 
   const loginUserMessage = await loginUser(userIdentifier, password);
-  return loginUserMessage !== `Welcome ${userIdentifier}!`
-    ? res.status(400).send({ error: loginUserMessage })
-    : res.status(200).send({ token: loginUserMessage });
+  if (loginUserMessage !== `Welcome ${userIdentifier}!`) {
+    if (loginUserMessage !== 'User doesn\' exit. Please check your username.'
+      || loginUserMessage !== 'Password doesn\'t match. Please check your password.') {
+      return res.status(500).send({ error: loginUserMessage });
+    }
+    return res.status(400).send({ error: loginUserMessage });
+  }
+  return res.status(200).send({ token: loginUserMessage });
 });
 
 module.exports = loginRouter;
