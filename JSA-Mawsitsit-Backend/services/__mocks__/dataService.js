@@ -21,4 +21,14 @@ const Users = [
   },
 ];
 
-module.exports = Users;
+const registerQuery = () => 5;
+
+const checkIdentifier = (object) => {
+  const { email, phone_number: phoneNumber } = object;
+  const result = Users.find((user) => (
+    email === user.email && phoneNumber === user.phone_number
+  ));
+  return Boolean(result);
+};
+
+module.exports = { registerQuery, checkIdentifier };

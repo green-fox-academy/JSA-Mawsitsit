@@ -7,7 +7,7 @@ describe('Post Endpoints', () => {
       .post('/login')
       .send({
         user_identifier: '12345678',
-        password: '12345678',
+        password: 'password1',
       });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('user_id');
@@ -21,7 +21,7 @@ describe('Post Endpoints', () => {
       .post('/login')
       .send({
         user_identifier: 'email2@email.com',
-        password: '87654321',
+        password: 'password2',
       });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('user_id');
