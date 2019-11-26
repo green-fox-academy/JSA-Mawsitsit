@@ -5,7 +5,6 @@ const RegisterStyle = StyleSheet.create(
   {
     rootStyle: {
       flex: 1,
-      // backgroundColor: 'pink',
     },
     containerStyle: {
       flex: 1,
@@ -13,7 +12,6 @@ const RegisterStyle = StyleSheet.create(
       marginLeft: 20,
       width: '90%',
       justifyContent: 'center',
-      // backgroundColor: 'pink',
     },
     // password strength
     passwordStrengthStyle: {
@@ -65,7 +63,6 @@ const RegisterStyle = StyleSheet.create(
     },
     buttonContainerStyle: {
       flex: 1.5,
-      // backgroundColor: 'lightblue',
       alignItems: 'center',
     },
     buttonStyle: {
