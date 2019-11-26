@@ -21,7 +21,7 @@ const loginUser = async (userIdentifier, password) => {
     loginQueryInput,
   ).catch((error) => error);
 
-  if (!loggedInUserPassword) return 'User doesn\' exit. Please check your username.';
+  if (loggedInUserPassword.length === 0) return 'User doesn\' exit. Please check your username.';
   return password === loggedInUserPassword[0].password
     ? `Welcome ${userIdentifier}!`
     : 'Password doesn\'t match. Please check your password.';
