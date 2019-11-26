@@ -34,7 +34,7 @@ const Footer = (props) => {
           <LinkButton
             linkText="Click here"
             variantStyle={variantClickStyle}
-            onPress={() => navigation.navigate('SignUp')}
+            onPress={() => navigation.navigate('Register')}
           />
           <Text style={footerTextStyle}>to create one!</Text>
         </View>
@@ -43,7 +43,7 @@ const Footer = (props) => {
         <LinkButton
           linkText="Fogotten password"
           variantStyle={variantPswStyle}
-          onPress={() => navigation.navigate('SignUp')}
+          onPress={() => navigation.navigate('Register')}
         />
       </View>
     </View>

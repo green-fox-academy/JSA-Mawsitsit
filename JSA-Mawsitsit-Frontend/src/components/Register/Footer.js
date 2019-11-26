@@ -23,7 +23,7 @@ const Footer = (props) => {
       <LinkButton
         linkText="Sign in to an existing account"
         variantStyle={variantBackToSignInStyle}
-        onPress={() => navigation.navigate('SignIn')}
+        onPress={() => navigation.navigate('Login')}
       />
     </View>
   );

@@ -13,8 +13,8 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
 const AuthStack = createStackNavigator({
-  SignIn: LoginScreen,
-  SignUp: RegisterScreen,
+  Login: LoginScreen,
+  Register: RegisterScreen,
 });
 
 const PersonalDetailsStack = createStackNavigator(
