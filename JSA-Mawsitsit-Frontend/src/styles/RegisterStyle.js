@@ -3,12 +3,17 @@ import { StyleSheet } from 'react-native';
 
 const RegisterStyle = StyleSheet.create(
   {
+    rootStyle: {
+      flex: 1,
+      // backgroundColor: 'pink',
+    },
     containerStyle: {
+      flex: 1,
       marginTop: 60,
       marginLeft: 20,
       width: '90%',
-      backgroundColor: '#fff',
-      top: 50,
+      justifyContent: 'center',
+      // backgroundColor: 'pink',
     },
     // password strength
     passwordStrengthStyle: {
@@ -59,11 +64,11 @@ const RegisterStyle = StyleSheet.create(
       fontSize: 23,
     },
     buttonContainerStyle: {
-      justifyContent: 'center',
+      flex: 1.5,
+      // backgroundColor: 'lightblue',
       alignItems: 'center',
     },
     buttonStyle: {
-      marginTop: 200,
       height: 60,
       width: 120,
       backgroundColor: '#48BBEC',
@@ -77,6 +82,11 @@ const RegisterStyle = StyleSheet.create(
       marginBottom: 10,
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    variantBackToSignInStyle: {
+      top: 20,
+      fontSize: 15,
+      color: '#000',
     },
   },
 );

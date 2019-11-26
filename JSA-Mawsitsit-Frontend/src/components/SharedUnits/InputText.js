@@ -12,11 +12,18 @@ const { textInputStyle } = LoginStyle;
 
 // Component Definition
 const InputText = (props) => {
-  const { placeholder, onChangeText } = props;
+  const {
+    placeholder,
+    onChangeText,
+  } = props;
   return (
     <View>
       <Item regular style={textInputStyle}>
-        <Input placeholder={placeholder} onChangeText={onChangeText} />
+        <Input
+          secureTextEntry={placeholder === 'Password'}
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+        />
       </Item>
     </View>
   );

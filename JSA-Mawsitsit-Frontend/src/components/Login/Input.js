@@ -1,5 +1,5 @@
 // External Dependencies
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Text,
   View,
@@ -34,7 +34,6 @@ const initInputSelect = {
 const Input = () => {
   const [inputText, setInputText] = useState(initInputText);
   const [inputSelect, setInputSelect] = useState(initInputSelect);
-
   const validation = {
     rmberUserIdentifier: (inputText.userIdentifier.length !== 0),
     rmberPassword: (inputText.password.length !== 0),
@@ -46,10 +45,29 @@ const Input = () => {
       ...inputText,
       [name]: value,
     });
+
+    // if (validation.rmberUserIdentifier) {
+    //   setInputSelect({
+    //     ...inputSelect,
+    //     rmberUserIdentifier: false,
+    //   });
+    // }
+    // if (validation.rmberPassword) {
+    //   setInputSelect({
+    //     ...inputSelect,
+    //     rmberPassword: false,
+    //   });
+    // }
+    // if (!validation.autoLogin) {
+    //   setInputSelect({
+    //     ...inputSelect,
+    //     autoLogin: false,
+    //   });
+    // }
   };
 
   const handleSelect = (name, value) => {
-    if (validation[name]) {
+    if ((!initInputSelect[name] && validation[name]) || inputSelect[name]) {
       setInputSelect({
         ...inputSelect,
         [name]: value,
@@ -59,8 +77,14 @@ const Input = () => {
 
   return (
     <View style={inputStyle}>
-      <InputText placeholder="Email Address or Phone number" onChangeText={(value) => handleChange('userIdentifier', value)} />
-      <InputText placeholder="Password" onChangeText={(value) => handleChange('password', value)} />
+      <InputText
+        placeholder="Email Address or Phone number"
+        onChangeText={(value) => handleChange('userIdentifier', value)}
+      />
+      <InputText
+        placeholder="Password"
+        onChangeText={(value) => handleChange('password', value)}
+      />
       <Button bordered style={buttonStyle}>
         <Text style={btnTextStyle}> Login </Text>
       </Button>
