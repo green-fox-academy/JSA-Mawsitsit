@@ -63,6 +63,7 @@ const RegisterStyle = StyleSheet.create(
     },
     buttonContainerStyle: {
       flex: 1.5,
+      top: 150,
       alignItems: 'center',
     },
     buttonStyle: {
