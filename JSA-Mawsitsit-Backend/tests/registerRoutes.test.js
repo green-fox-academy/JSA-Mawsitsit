@@ -1,7 +1,6 @@
 const request = require('supertest');
 const server = require('../server');
 
-// eslint-disable-next-line no-undef
 jest.mock('../services/dataService');
 
 describe('Post Endpoints', () => {
@@ -27,7 +26,7 @@ describe('Post Endpoints', () => {
         password: 'password1',
       });
     expect(res.statusCode).toEqual(409);
-    expect(res.body).toHaveProperty('message');
+    expect(res.body).toHaveProperty('error');
   });
 
   it('return request body error', async () => {
@@ -38,7 +37,7 @@ describe('Post Endpoints', () => {
         phone_number: '123456789',
       });
     expect(res.statusCode).toEqual(400);
-    expect(res.body).toHaveProperty('errorMessage');
+    expect(res.body).toHaveProperty('error');
   });
 
   it('return content type error" ', async () => {
@@ -46,6 +45,6 @@ describe('Post Endpoints', () => {
       .post('/register')
       .set('content-type', 'img');
     expect(res.statusCode).toEqual(415);
-    expect(res.body).toHaveProperty('message');
+    expect(res.body).toHaveProperty('error');
   });
 });

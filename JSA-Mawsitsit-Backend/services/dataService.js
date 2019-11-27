@@ -32,8 +32,13 @@ const registerQuery = async (user) => {
   const { email, phone_number: phoneNumber, password } = user;
   const registerDetail = [email, phoneNumber, password];
   const sqlInsert = 'INSERT INTO users (email, phone_number, password) VALUES (?, ?, ?);';
-  const response = await mysqlPromisedQuery(mysqlConnection, sqlInsert, registerDetail)
-    .catch((error) => { throw error; });
+
+  const response = await mysqlPromisedQuery(
+    mysqlConnection,
+    sqlInsert,
+    registerDetail,
+  ).catch((error) => { throw error; });
+
   return response.insertId;
 };
 
@@ -41,8 +46,13 @@ const checkIdentifier = async (user) => {
   const { email, phone_number: phoneNumber } = user;
   const userIdentifier = [email, phoneNumber];
   const sqlSelectByInput = 'SELECT * FROM users  WHERE email = ? AND phone_number = ?;';
-  const response = await mysqlPromisedQuery(mysqlConnection, sqlSelectByInput, userIdentifier)
-    .catch((error) => { throw error; });
+
+  const response = await mysqlPromisedQuery(
+    mysqlConnection,
+    sqlSelectByInput,
+    userIdentifier,
+  ).catch((error) => { throw error; });
+
   return response.length !== 0;
 };
 

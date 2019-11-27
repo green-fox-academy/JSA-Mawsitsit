@@ -1,5 +1,7 @@
 // External Dependencies
+require('dotenv').config();
 const loginRouter = require('express').Router();
+const jwt = require('jsonwebtoken');
 
 // Internal Dependencies
 const { loginUser } = require('../services/dataService');
@@ -12,18 +14,23 @@ loginRouter.post('/', async (req, res) => {
   } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
-    return res.status(415).send({ error: 'Content-type must be application/json.' });
+    return res.status(415).json({ error: 'Content-type must be application/json.' });
   }
 
-  if (!password) return res.status(400).send({ error: 'Please fill in your password.' });
-  if (!userIdentifier) return res.status(400).send({ error: 'Please fill in your username.' });
+  if (!password) return res.status(400).json({ error: 'Please fill in your password.' });
+  if (!userIdentifier) return res.status(400).json({ error: 'Please fill in your username.' });
 
   const loginUserResult = await loginUser(userIdentifier, password);
-  if (loginUserResult === false) res.status(500).send({ error: 'Internal server error.' });
+  if (loginUserResult === false) res.status(500).json({ error: 'Internal server error.' });
   if (loginUserResult.errorMessage) {
-    return res.status(400).send({ error: loginUserResult.errorMessage });
+    return res.status(400).json({ error: loginUserResult.errorMessage });
   }
-  return res.status(200).send({ token: loginUserResult.successMessage });
+  const { userId } = loginUserResult;
+  jwt.sign({ userId }, process.env.PRIVATE_KEY, (error, token) => {
+    if (error) return res.status(500).json({ error });
+    return res.status(200).json({ auth: true, token });
+  });
+  return true;
 });
 
 module.exports = loginRouter;

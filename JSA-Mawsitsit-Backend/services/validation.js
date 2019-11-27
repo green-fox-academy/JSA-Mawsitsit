@@ -4,14 +4,14 @@ const validatePhoneNumber = (phoneNumber) => !phoneNumber || phoneNumber.length 
 const validatePassword = (password) => !password || weakRegex.test(password);
 
 const validateLogin = (inputPassword, userToLogin) => {
-  const validationResult = { successMessage: '', errorMessage: '' };
+  const validationResult = { userId: '', errorMessage: '' };
 
   if (!userToLogin) {
     validationResult.errorMessage = 'User doesn\' exit. Please check your username.';
   } else if (inputPassword !== userToLogin.password) {
     validationResult.errorMessage = 'Password doesn\'t match. Please check your password.';
   } else {
-    validationResult.successMessage = 'Welcome!!!';
+    validationResult.userId = userToLogin.id;
   }
 
   return validationResult;
