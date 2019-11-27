@@ -3,7 +3,8 @@
   "root": true,
   "globals": {
     "describe": true,
+    "expect": true,
     "it": true,
-    "expect": true
+    "jest": true
   }
 }

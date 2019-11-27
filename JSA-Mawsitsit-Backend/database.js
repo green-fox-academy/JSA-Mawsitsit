@@ -1,6 +1,8 @@
+// External Dependencies
 require('dotenv').config();
 const mysql = require('mysql');
 
+// MySQL Configuration
 const mysqlConnection = mysql.createPool({
   connectionLimit: 10,
   host: process.env.MYSQL_HOST,
