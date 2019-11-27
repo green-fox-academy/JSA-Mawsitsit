@@ -8,7 +8,7 @@ import {
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Internal Dependencies
-import PersonalDetails from '../components/PersonalDetails/PersonalDetails';
+import AccountManagementScreen from '../screens/AccountManagementScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
@@ -19,7 +19,7 @@ const AuthStack = createStackNavigator({
 
 const PersonalDetailsStack = createStackNavigator(
   {
-    PersonalDetails,
+    AccountManagementScreen,
   },
   {
     defaultNavigationOptions: {
