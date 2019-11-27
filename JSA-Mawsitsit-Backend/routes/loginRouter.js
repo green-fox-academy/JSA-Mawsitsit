@@ -27,7 +27,7 @@ loginRouter.post('/', async (req, res) => {
   }
   const { userId } = loginUserResult;
   jwt.sign({ userId }, process.env.PRIVATE_KEY, (error, token) => {
-    if (error) return res.status(500).json({ error });
+    if (error) return res.status(500).json({ error: error.toString().split(': ')[1] });
     return res.status(200).json({ auth: true, token });
   });
   return true;
