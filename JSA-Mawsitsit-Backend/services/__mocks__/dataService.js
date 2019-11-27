@@ -26,12 +26,14 @@ const mockUsers = [
 ];
 
 // Mock Functions
-const loginUser = async (userIdentifier, inputPassword) => {
-  const userToLogin = mockUsers.find((user) => userIdentifier === user[
+const loginUser = (userIdentifier, inputPassword) => {
+  const userToLogin = [];
+  const user = mockUsers.find((mockUser) => userIdentifier === mockUser[
     userIdentifier.includes('@') ? 'email' : 'phone_number'
   ]);
+  if (user !== undefined) userToLogin.push(user);
 
-  return validateLogin(inputPassword, userToLogin);
+  return userToLogin && validateLogin(inputPassword, userToLogin[0]);
 };
 
 const registerQuery = () => 5;

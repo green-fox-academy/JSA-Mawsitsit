@@ -25,7 +25,7 @@ const loginUser = async (userIdentifier, inputPassword) => {
     return false;
   });
 
-  return validateLogin(inputPassword, userToLogin[0]);
+  return userToLogin && validateLogin(inputPassword, userToLogin[0]);
 };
 
 const registerQuery = async (user) => {
