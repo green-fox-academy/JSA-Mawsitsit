@@ -3,21 +3,30 @@ const validateEmail = (email) => !email || email.includes('@');
 const validatePhoneNumber = (phoneNumber) => !phoneNumber || phoneNumber.length >= 8;
 const validatePassword = (password) => !password || weakRegex.test(password);
 
+const validateLogin = (inputPassword, userToLogin) => {
+  const validationResult = { successMessage: '', errorMessage: '' };
+
+  if (!userToLogin) {
+    validationResult.errorMessage = 'User doesn\' exit. Please check your username.';
+  } else if (inputPassword !== userToLogin.password) {
+    validationResult.errorMessage = 'Password doesn\'t match. Please check your password.';
+  } else {
+    validationResult.successMessage = 'Welcome!!!';
+  }
+
+  return validationResult;
+};
+
 const validateRegister = (body) => {
-  if (!validateEmail(body.email)) {
-    return 'Error in email.';
-  }
-  if (!validatePhoneNumber(body.phone_number)) {
-    return 'Error in phone number.';
-  }
-  if (!validatePassword(body.password)) {
-    return 'Error in password.';
-  }
+  if (!validateEmail(body.email)) return 'Error in email.';
+  if (!validatePhoneNumber(body.phone_number)) return 'Error in phone number.';
+  if (!validatePassword(body.password)) return 'Error in password.';
   return '';
 };
 
 module.exports = {
   validateEmail,
+  validateLogin,
   validatePassword,
   validatePhoneNumber,
   validateRegister,

@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js .",
     "test": "jest",
     "restart": "pm2 startOrRestart ecosystem.config.js",
-    "deploy": "pm2 deploy ecosystem.config.js"
+    "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "keywords": [],
   "author": "",

@@ -17,17 +17,19 @@ describe('Post Endpoints', () => {
     expect(res.body).toHaveProperty('email');
     expect(res.body).toHaveProperty('user_id');
   });
+
   it('return email or phone number already exist', async () => {
     const res = await request(server)
       .post('/register')
       .send({
-        email: 'email1@email.com',
-        phone_number: '12345678',
+        email: 'email1@gmail.com',
+        phone_number: '12345676',
         password: 'password1',
       });
     expect(res.statusCode).toEqual(409);
     expect(res.body).toHaveProperty('message');
   });
+
   it('return request body error', async () => {
     const res = await request(server)
       .post('/register')
@@ -38,6 +40,7 @@ describe('Post Endpoints', () => {
     expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty('errorMessage');
   });
+
   it('return content type error" ', async () => {
     const res = await request(server)
       .post('/register')

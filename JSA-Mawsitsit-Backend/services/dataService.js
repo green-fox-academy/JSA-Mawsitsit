@@ -1,4 +1,6 @@
+// Internal Dependencies
 const mysqlConnection = require('../database');
+const { validateLogin } = require('./validation');
 
 const mysqlPromisedQuery = (dataConnection, queryStatement, queryInput = []) => new Promise(
   (resolve, reject) => {
@@ -7,6 +9,24 @@ const mysqlPromisedQuery = (dataConnection, queryStatement, queryInput = []) => 
     ));
   },
 );
+
+const loginUser = async (userIdentifier, inputPassword) => {
+  const loginQueryStatement = `
+    SELECT * FROM users WHERE ${userIdentifier.includes('@') ? 'email' : 'phone_number'} = ?
+  `;
+  const loginQueryInput = [userIdentifier];
+
+  const userToLogin = await mysqlPromisedQuery(
+    mysqlConnection,
+    loginQueryStatement,
+    loginQueryInput,
+  ).catch((error) => {
+    console.log(error);
+    return false;
+  });
+
+  return userToLogin && validateLogin(inputPassword, userToLogin[0]);
+};
 
 const registerQuery = async (user) => {
   const { email, phone_number: phoneNumber, password } = user;
@@ -26,4 +46,8 @@ const checkIdentifier = async (user) => {
   return response.length !== 0;
 };
 
-module.exports = { registerQuery, checkIdentifier };
+module.exports = {
+  checkIdentifier,
+  loginUser,
+  registerQuery,
+};

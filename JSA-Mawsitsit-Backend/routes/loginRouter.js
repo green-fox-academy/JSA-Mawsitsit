@@ -1,30 +1,29 @@
-const express = require('express');
-const checkLogin = require('../services/checkLogin');
+// External Dependencies
+const loginRouter = require('express').Router();
 
-const loginRouter = express.Router();
+// Internal Dependencies
+const { loginUser } = require('../services/dataService');
 
-loginRouter.post('/', (req, res) => {
-  const { user_identifier: userIdentifier, password } = req.body;
+// POST endpoint to login a user
+loginRouter.post('/', async (req, res) => {
+  const {
+    password,
+    user_identifier: userIdentifier,
+  } = req.body;
 
   if (req.headers['content-type'] !== 'application/json') {
-    res.status(415).json({
-      message: 'Content-type must be application/json.',
-    });
-    return;
+    return res.status(415).send({ error: 'Content-type must be application/json.' });
   }
 
-  const checkMessage = checkLogin(userIdentifier, password);
+  if (!password) return res.status(400).send({ error: 'Please fill in your password.' });
+  if (!userIdentifier) return res.status(400).send({ error: 'Please fill in your username.' });
 
-  if (checkMessage === 'Login successful!') {
-    res.status(200).json({
-      user_id: 'id',
-      checkMessage,
-    });
-  } else {
-    res.status(400).json({
-      checkMessage,
-    });
+  const loginUserResult = await loginUser(userIdentifier, password);
+  if (loginUserResult === false) res.status(500).send({ error: 'Internal server error.' });
+  if (loginUserResult.errorMessage) {
+    return res.status(400).send({ error: loginUserResult.errorMessage });
   }
+  return res.status(200).send({ token: loginUserResult.successMessage });
 });
 
 module.exports = loginRouter;
