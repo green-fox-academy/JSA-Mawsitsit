@@ -20,7 +20,10 @@ const loginUser = async (userIdentifier, inputPassword) => {
     mysqlConnection,
     loginQueryStatement,
     loginQueryInput,
-  ).catch((error) => error);
+  ).catch((error) => {
+    console.log(error);
+    return false;
+  });
 
   return validateLogin(inputPassword, userToLogin[0]);
 };

@@ -4,10 +4,17 @@ const validatePhoneNumber = (phoneNumber) => !phoneNumber || phoneNumber.length 
 const validatePassword = (password) => !password || weakRegex.test(password);
 
 const validateLogin = (inputPassword, userToLogin) => {
-  if (!userToLogin) return 'User doesn\' exit. Please check your username.';
-  return inputPassword === userToLogin.password
-    ? 'Welcome!!!'
-    : 'Password doesn\'t match. Please check your password.';
+  const validationResult = { successMessage: '', errorMessage: '' };
+
+  if (!userToLogin) {
+    validationResult.errorMessage = 'User doesn\' exit. Please check your username.';
+  } else if (inputPassword !== userToLogin.password) {
+    validationResult.errorMessage = 'Password doesn\'t match. Please check your password.';
+  } else {
+    validationResult.successMessage = 'Welcome!!!';
+  }
+
+  return validationResult;
 };
 
 const validateRegister = (body) => {

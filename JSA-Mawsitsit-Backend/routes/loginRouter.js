@@ -18,15 +18,12 @@ loginRouter.post('/', async (req, res) => {
   if (!password) return res.status(400).send({ error: 'Please fill in your password.' });
   if (!userIdentifier) return res.status(400).send({ error: 'Please fill in your username.' });
 
-  const loginUserMessage = await loginUser(userIdentifier, password);
-  if (loginUserMessage !== 'Welcome!!!') {
-    if (loginUserMessage !== 'User doesn\' exit. Please check your username.'
-      || loginUserMessage !== 'Password doesn\'t match. Please check your password.') {
-      return res.status(400).send({ error: loginUserMessage });
-    }
-    return res.status(500).send({ error: loginUserMessage });
+  const loginUserResult = await loginUser(userIdentifier, password);
+  if (loginUserResult === false) res.status(500).send({ error: 'Internal server error.' });
+  if (loginUserResult.errorMessage) {
+    return res.status(400).send({ error: loginUserResult.errorMessage });
   }
-  return res.status(200).send({ token: loginUserMessage });
+  return res.status(200).send({ token: loginUserResult.successMessage });
 });
 
 module.exports = loginRouter;
