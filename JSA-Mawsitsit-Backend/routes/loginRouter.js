@@ -15,8 +15,8 @@ loginRouter.post('/', async (req, res) => {
     return res.status(415).send({ error: 'Content-type must be application/json.' });
   }
 
-  if (!password) return res.status(400).send({ error: 'Please full in your password.' });
-  if (!userIdentifier) return res.status(400).send({ error: 'Please full in your username.' });
+  if (!password) return res.status(400).send({ error: 'Please fill in your password.' });
+  if (!userIdentifier) return res.status(400).send({ error: 'Please fill in your username.' });
 
   const loginUserMessage = await loginUser(userIdentifier, password);
   if (loginUserMessage !== 'Welcome!!!') {

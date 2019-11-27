@@ -63,7 +63,7 @@ describe('login user endpoint', () => {
       });
     expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty('error');
-    expect(res.body.error).toBe('Please full in your username.');
+    expect(res.body.error).toBe('Please fill in your username.');
   });
 
   it('login user without password', async () => {
@@ -74,7 +74,7 @@ describe('login user endpoint', () => {
       });
     expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty('error');
-    expect(res.body.error).toBe('Please full in your password.');
+    expect(res.body.error).toBe('Please fill in your password.');
   });
 
   it('content type should be "application/json" ', async () => {
