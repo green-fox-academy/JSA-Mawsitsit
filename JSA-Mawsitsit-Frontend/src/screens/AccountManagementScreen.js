@@ -11,7 +11,7 @@ const PersonalDetails = () => (
 
 // Navigation Configuration
 PersonalDetails.navigationOptions = {
-  headerTitle: 'Personal Details',
+  headerTitle: 'Account management',
 };
 
 export default PersonalDetails;
