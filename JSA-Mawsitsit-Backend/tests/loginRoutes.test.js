@@ -15,8 +15,9 @@ describe('login user endpoint', () => {
         password: 'password1',
       });
     expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveProperty('auth');
+    expect(res.body.auth).toBe(true);
     expect(res.body).toHaveProperty('token');
-    expect(res.body.token).toBe('Welcome!!!');
   });
 
   it('login user with phone number', async () => {
@@ -27,8 +28,9 @@ describe('login user endpoint', () => {
         password: 'password2',
       });
     expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveProperty('auth');
+    expect(res.body.auth).toBe(true);
     expect(res.body).toHaveProperty('token');
-    expect(res.body.token).toBe('Welcome!!!');
   });
 
   it('login user with wrong email', async () => {
