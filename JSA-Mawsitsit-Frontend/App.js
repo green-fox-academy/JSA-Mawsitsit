@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Internal Dependencies
-import AppNavigation from './components/App/AppNavigation';
+import AppNavigation from './src/navigation/AppNavigation';
 
 // Component Definition
 const App = () => (
