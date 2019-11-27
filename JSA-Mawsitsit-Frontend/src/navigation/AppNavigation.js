@@ -8,7 +8,7 @@ import {
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Internal Dependencies
-import PersonalDetails from '../components/PersonalDetails/PersonalDetails';
+import PersonalDetails from '../screens/PersonalDetailsScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 

@@ -212,8 +212,6 @@ const RegisterScreen = (props) => {
         <Footer navigation={navigation} />
       </View>
     </View>
-
-
   );
 };
 

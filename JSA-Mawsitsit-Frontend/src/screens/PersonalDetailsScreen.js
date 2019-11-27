@@ -1,15 +1,12 @@
 // External Dependencies
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
+
+// Internal Dependencies
+import SliderBar from '../components/PersonalDetails/SliderBar';
 
 // Component Definition
 const PersonalDetails = () => (
-  <View>
-    <Text>Welcome to Personal Details page~</Text>
-  </View>
+  <SliderBar />
 );
 
 // Navigation Configuration
