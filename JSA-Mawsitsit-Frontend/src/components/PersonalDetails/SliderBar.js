@@ -13,7 +13,7 @@ import PersonalDetailsStyle from '../../styles/PersonalDetailsStyle';
 
 const { tabUnderlineStyle, tabTextStyle } = PersonalDetailsStyle;
 
-const TabsExample = () => (
+const SliderBar = () => (
   <Container>
     <Tabs tabBarUnderlineStyle={tabUnderlineStyle}>
       <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="PERSONAL">
@@ -25,4 +25,4 @@ const TabsExample = () => (
   </Container>
 );
 
-export default TabsExample;
+export default SliderBar;

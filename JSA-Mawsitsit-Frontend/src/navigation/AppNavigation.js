@@ -41,7 +41,7 @@ const PersonalDetailsStack = createStackNavigator(
 );
 
 const AppNavigation = createSwitchNavigator({
-  Auth: AuthStack,
+  // Auth: AuthStack,
   PersonalDetailsStack,
 });
 
