@@ -1,23 +1,34 @@
 const request = require('supertest');
 const server = require('../server');
 
+// eslint-disable-next-line no-undef
+jest.mock('../services/dataService');
+
 describe('Post Endpoints', () => {
   it('should create a new post', async () => {
     const res = await request(server)
       .post('/register')
       .send({
-        email: 'email@',
-        phone_number: '123456789',
-        password: 'password',
+        email: 'email5@gmail.com',
+        phone_number: '12345678',
+        password: 'password5',
       });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('email');
     expect(res.body).toHaveProperty('user_id');
   });
-});
-
-describe('Error from request body', () => {
-  it('should correct request body', async () => {
+  it('return email or phone number already exist', async () => {
+    const res = await request(server)
+      .post('/register')
+      .send({
+        email: 'email1@email.com',
+        phone_number: '12345678',
+        password: 'password1',
+      });
+    expect(res.statusCode).toEqual(409);
+    expect(res.body).toHaveProperty('message');
+  });
+  it('return request body error', async () => {
     const res = await request(server)
       .post('/register')
       .send({
@@ -27,10 +38,7 @@ describe('Error from request body', () => {
     expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty('errorMessage');
   });
-});
-
-describe('Missing content-type', () => {
-  it('content type should be "application/json" ', async () => {
+  it('return content type error" ', async () => {
     const res = await request(server)
       .post('/register')
       .set('content-type', 'img');
