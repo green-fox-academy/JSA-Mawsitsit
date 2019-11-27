@@ -1,3 +1,6 @@
+// Internal Dependencies
+const { validateLogin } = require('../validation');
+
 // Mock Data
 const mockUsers = [
   {
@@ -23,15 +26,12 @@ const mockUsers = [
 ];
 
 // Mock Functions
-const loginUser = async (userIdentifier, password) => {
-  const loggedInUser = mockUsers.find((user) => userIdentifier === user[
+const loginUser = async (userIdentifier, inputPassword) => {
+  const userToLogin = mockUsers.find((user) => userIdentifier === user[
     userIdentifier.includes('@') ? 'email' : 'phone_number'
   ]);
 
-  if (!loggedInUser) return 'User doesn\' exit. Please check your username.';
-  return password === loggedInUser.password
-    ? `Welcome ${userIdentifier}!`
-    : 'Password doesn\'t match. Please check your password.';
+  return validateLogin(inputPassword, userToLogin);
 };
 
 const registerQuery = () => 5;

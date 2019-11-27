@@ -16,7 +16,7 @@ describe('login user endpoint', () => {
       });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('token');
-    expect(res.body.token).toBe('Welcome email1@gmail.com!');
+    expect(res.body.token).toBe('Welcome!!!');
   });
 
   it('login user with phone number', async () => {
@@ -28,7 +28,7 @@ describe('login user endpoint', () => {
       });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('token');
-    expect(res.body.token).toBe('Welcome 12345677!');
+    expect(res.body.token).toBe('Welcome!!!');
   });
 
   it('login user with wrong email', async () => {
