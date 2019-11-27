@@ -22,9 +22,9 @@ loginRouter.post('/', async (req, res) => {
   if (loginUserMessage !== `Welcome ${userIdentifier}!`) {
     if (loginUserMessage !== 'User doesn\' exit. Please check your username.'
       || loginUserMessage !== 'Password doesn\'t match. Please check your password.') {
-      return res.status(500).send({ error: loginUserMessage });
+      return res.status(400).send({ error: loginUserMessage });
     }
-    return res.status(400).send({ error: loginUserMessage });
+    return res.status(500).send({ error: loginUserMessage });
   }
   return res.status(200).send({ token: loginUserMessage });
 });

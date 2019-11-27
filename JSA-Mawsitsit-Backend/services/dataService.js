@@ -50,5 +50,3 @@ module.exports = {
   loginUser,
   registerQuery,
 };
-
-module.exports = { loginUser };
