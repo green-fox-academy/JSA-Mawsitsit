@@ -13,9 +13,6 @@ module.exports = (req, res, next) => {
     req.body.userId = decodedToken.userId;
     next();
   } catch (error) {
-    if (error instanceof jwt.JsonWebTokenError) {
-      return res.status(500).json({ error: error.toString().split(': ')[1] });
-    }
     res.status(401).json({ error: 'Unauthorized request. Please try again.' });
   }
   return true;
