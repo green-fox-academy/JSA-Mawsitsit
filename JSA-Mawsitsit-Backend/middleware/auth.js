@@ -8,8 +8,9 @@ module.exports = (req, res, next) => {
     }
 
     const token = req.headers.authorization.split(' ')[1];
-    jwt.verify(token, process.env.JWT_PRIVATE_KEY);
+    const decodedToken = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
 
+    req.body.userId = decodedToken.userId;
     next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
