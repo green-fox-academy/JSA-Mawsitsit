@@ -1,11 +1,12 @@
 // External Dependencies
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
 // Internal Dependencies
 const authMiddleware = require('../middleware/auth');
 
 // Mock Functions
-const mockToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTU3NDg0NjE5OH0.NU_5QXFOEUHDS11gW6c5YkUIEmquChEtfC0Ij7pVWBo';
+const mockToken = jwt.sign({ userId: 1 }, process.env.JWT_PRIVATE_KEY, { expiresIn: 60 });
 const mockRequest = {
   body: {},
   headers: {},
