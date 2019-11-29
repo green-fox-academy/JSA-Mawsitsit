@@ -44,20 +44,33 @@ const checkIdentifier = async (body) => {
 
 const registerUser = async (userToRegister) => {
   const { email, phoneNumber, password } = userToRegister;
-  const registerQuesryInput = [email, phoneNumber, password];
-  const registerQuesryStatement = 'INSERT INTO user (email, phone_number, password) VALUES (?, ?, ?);';
+  const registerQueryInput = [email, phoneNumber, password];
+  const registerQueryStatement = 'INSERT INTO user (email, phone_number, password) VALUES (?, ?, ?);';
 
   const response = await mysqlPromisedQuery(
     mysqlConnection,
-    registerQuesryStatement,
-    registerQuesryInput,
+    registerQueryStatement,
+    registerQueryInput,
   ).catch((error) => { throw error; });
 
   return response.insertId;
+};
+
+const saveUserDetailData = async (userToRegister) => {
+  const { userId, email, phoneNumber } = userToRegister;
+  const saveUserDetailQueryInput = [userId, email, phoneNumber];
+  const saveUserDetailQueryStatement = 'INSERT INTO user_detail (user_id, email, phone_number) VALUES (?, ?, ?);';
+
+  await mysqlPromisedQuery(
+    mysqlConnection,
+    saveUserDetailQueryStatement,
+    saveUserDetailQueryInput,
+  ).catch((error) => { throw error; });
 };
 
 module.exports = {
   checkIdentifier,
   loginUser,
   registerUser,
+  saveUserDetailData,
 };
