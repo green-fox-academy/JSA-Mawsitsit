@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 const weakRegex = new RegExp('^((?=.[a-z])|(?=.[0-9])|(?=.*[A-Z]))(?=.{8,})');
 const validateEmail = (email) => !email || email.includes('@');
 const validatePhoneNumber = (phoneNumber) => !phoneNumber || phoneNumber.length >= 8;
@@ -8,10 +10,10 @@ const validateLogin = (inputPassword, userToLogin) => {
 
   if (!userToLogin) {
     validationResult.errorMessage = 'User doesn\' exit. Please check your username.';
-  } else if (inputPassword !== userToLogin.password) {
+  } else if (!bcrypt.compareSync(inputPassword, userToLogin.password)) {
     validationResult.errorMessage = 'Password doesn\'t match. Please check your password.';
   } else {
-    validationResult.userId = userToLogin.id;
+    validationResult.userId = userToLogin.user_id;
   }
 
   return validationResult;

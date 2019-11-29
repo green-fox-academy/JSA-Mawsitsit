@@ -12,7 +12,7 @@ const mysqlPromisedQuery = (dataConnection, queryStatement, queryInput = []) => 
 
 const loginUser = async (userIdentifier, inputPassword) => {
   const loginQueryStatement = `
-    SELECT * FROM users WHERE ${userIdentifier.includes('@') ? 'email' : 'phone_number'} = ?
+    SELECT * FROM user WHERE ${userIdentifier.includes('@') ? 'email' : 'phone_number'} = ?
   `;
   const loginQueryInput = [userIdentifier];
 
@@ -28,24 +28,24 @@ const loginUser = async (userIdentifier, inputPassword) => {
   return userToLogin && validateLogin(inputPassword, userToLogin[0]);
 };
 
-const registerQuery = async (user) => {
-  const { email, phone_number: phoneNumber, password } = user;
-  const registerDetail = [email, phoneNumber, password];
-  const sqlInsert = 'INSERT INTO users (email, phone_number, password) VALUES (?, ?, ?);';
+const registerQuery = async (registerDetail) => {
+  const { email, phoneNumber, password } = registerDetail;
+  const registerDetailArray = [email, phoneNumber, password];
+  const sqlInsert = 'INSERT INTO user (email, phone_number, password) VALUES (?, ?, ?);';
 
   const response = await mysqlPromisedQuery(
     mysqlConnection,
     sqlInsert,
-    registerDetail,
+    registerDetailArray,
   ).catch((error) => { throw error; });
 
   return response.insertId;
 };
 
-const checkIdentifier = async (user) => {
-  const { email, phone_number: phoneNumber } = user;
+const checkIdentifier = async (body) => {
+  const { email, phone_number: phoneNumber } = body;
   const userIdentifier = [email, phoneNumber];
-  const sqlSelectByInput = 'SELECT * FROM users  WHERE email = ? AND phone_number = ?;';
+  const sqlSelectByInput = 'SELECT * FROM user  WHERE email = ? AND phone_number = ?;';
 
   const response = await mysqlPromisedQuery(
     mysqlConnection,

@@ -6,22 +6,22 @@ const mockUsers = [
   {
     email: 'email1@gmail.com',
     phone_number: '12345676',
-    password: 'password1',
+    password: '$2a$10$XQnzHFZcA7D9w87KOxkVNeH7j9UMSjsBlC3qoUGKN0lJ7oAjW6Xl2',
   },
   {
     email: 'email2@gmail.com',
     phone_number: '12345677',
-    password: 'password2',
+    password: '$2a$10$XQnzHFZcA7D9w87KOxkVNeTZy9k72cnOFarzDXREh.eQfBBNJgDdW',
   },
   {
     email: 'email3@gmail.com',
     phone_number: '12345678',
-    password: 'password3',
+    password: '$2a$10$XQnzHFZcA7D9w87KOxkVNeUrQP64dSRU4f.H.NUHBxqJaB9bsVYna',
   },
   {
     email: 'email4@gmail.com',
     phone_number: '12345679',
-    password: 'password4',
+    password: '$2a$10$XQnzHFZcA7D9w87KOxkVNe1Ui0Z1b.o/.viG4MywNJ3XG9YNIDBc.',
   },
 ];
 
