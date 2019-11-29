@@ -1,10 +1,10 @@
 module.exports = {
   up: `
     INSERT INTO user (email, phone_number, password) values
-    ('email1@gmail.com', '12345676', 'password1'),
-    ('email2@gmail.com', '12345677', 'password2'),
-    ('email3@gmail.com', '12345678', 'password3'),
-    ('email4@gmail.com', '12345679', 'password4');
+    ('email1@gmail.com', '12345676', '$2a$10$XQnzHFZcA7D9w87KOxkVNeH7j9UMSjsBlC3qoUGKN0lJ7oAjW6Xl2'),
+    ('email2@gmail.com', '12345677', '$2a$10$XQnzHFZcA7D9w87KOxkVNeTZy9k72cnOFarzDXREh.eQfBBNJgDdW'),
+    ('email3@gmail.com', '12345678', '$2a$10$XQnzHFZcA7D9w87KOxkVNeUrQP64dSRU4f.H.NUHBxqJaB9bsVYna'),
+    ('email4@gmail.com', '12345679', '$2a$10$XQnzHFZcA7D9w87KOxkVNe1Ui0Z1b.o/.viG4MywNJ3XG9YNIDBc.');
   `,
   down: 'TRUNCATE user;',
 };

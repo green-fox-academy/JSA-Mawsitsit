@@ -13,8 +13,7 @@ describe('Post Endpoints', () => {
         password: 'password5',
       });
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('email');
-    expect(res.body).toHaveProperty('user_id');
+    expect(res.body).toHaveProperty('token');
   });
 
   it('return email or phone number already exist', async () => {
