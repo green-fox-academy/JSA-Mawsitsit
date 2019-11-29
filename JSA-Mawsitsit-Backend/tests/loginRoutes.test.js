@@ -14,7 +14,7 @@ describe('login user endpoint', () => {
         user_identifier: 'email1@gmail.com',
         password: 'password1',
       });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('auth');
     expect(res.body.auth).toBe(true);
     expect(res.body).toHaveProperty('token');
@@ -27,7 +27,7 @@ describe('login user endpoint', () => {
         user_identifier: '12345677',
         password: 'password2',
       });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('auth');
     expect(res.body.auth).toBe(true);
     expect(res.body).toHaveProperty('token');
@@ -40,7 +40,7 @@ describe('login user endpoint', () => {
         user_identifier: 'email1@email.com',
         password: 'password1',
       });
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
     expect(res.body.error).toBe('User doesn\' exit. Please check your username.');
   });
@@ -52,7 +52,7 @@ describe('login user endpoint', () => {
         user_identifier: '123456710',
         password: 'password1',
       });
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
     expect(res.body.error).toBe('User doesn\' exit. Please check your username.');
   });
@@ -63,7 +63,7 @@ describe('login user endpoint', () => {
       .send({
         password: 'password1',
       });
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
     expect(res.body.error).toBe('Please fill in your username.');
   });
@@ -74,7 +74,7 @@ describe('login user endpoint', () => {
       .send({
         user_name: 'email1@gmail.com',
       });
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
     expect(res.body.error).toBe('Please fill in your password.');
   });
@@ -83,7 +83,7 @@ describe('login user endpoint', () => {
     const res = await request(server)
       .post('/login')
       .set('content-type', 'octet-stream');
-    expect(res.statusCode).toEqual(415);
+    expect(res.statusCode).toBe(415);
     expect(res.body).toHaveProperty('error');
     expect(res.body.error).toBe('Content-type must be application/json.');
   });
