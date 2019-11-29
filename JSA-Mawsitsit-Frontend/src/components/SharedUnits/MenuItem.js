@@ -9,14 +9,14 @@ import {
 } from 'native-base';
 
 // Internal Dependencies
-import PersonalDetailsStyle from '../../styles/PersonalDetailsStyle';
+import MenuStyle from '../../styles/MenuStyle';
 
 // Local Variables
 const {
   menuItemInsideStyle,
   menuBodyStyle,
   menuBodyTextStyle,
-} = PersonalDetailsStyle;
+} = MenuStyle;
 
 const initState = { buttonColor: '#000' };
 

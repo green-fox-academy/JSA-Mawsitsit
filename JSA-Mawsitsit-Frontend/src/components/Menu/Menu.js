@@ -9,8 +9,8 @@ import {
 } from 'native-base';
 
 // Internal Dependencies
-import { DrawerItems } from 'react-navigation-drawer';
-import PersonalDetailsStyle from '../../styles/PersonalDetailsStyle';
+// import { DrawerItems } from 'react-navigation-drawer';
+import MenuStyle from '../../styles/MenuStyle';
 import MenuItem from '../SharedUnits/MenuItem';
 
 // Local Variables
@@ -20,7 +20,7 @@ const {
   menuHeadInsideStyle,
   menuHeadTextStyle,
   menuBackButtonStyle,
-} = PersonalDetailsStyle;
+} = MenuStyle;
 
 const menuHeaderImage = 'https://static.boredpanda.com/blog/wp-content/uploads/2018/03/cute-huskies-56-5aabc10b3847f__700.jpg';
 

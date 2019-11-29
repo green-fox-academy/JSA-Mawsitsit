@@ -2,19 +2,18 @@
 import React from 'react';
 import {
   createAppContainer,
-  createSwitchNavigator,
-  DrawerItems,
+  // createSwitchNavigator,
+  // DrawerItems,
 } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
-
 
 // Internal Dependencies
 import AccountManagementScreen from '../screens/AccountManagementScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
-import HamburgerButton from '../components/PersonalDetails/HamburgerButton';
-import Menu from '../components/PersonalDetails/Menu';
+import HamburgerButton from '../components/Menu/HamburgerButton';
+import Menu from '../components/Menu/Menu';
 
 
 const AuthStack = createStackNavigator({
@@ -47,7 +46,7 @@ const AppNavigation = createDrawerNavigator({
   PersonalDetailsStack,
 }, {
   initialRouteName: 'Auth',
-  contentComponent: (props) => <Menu />,
+  contentComponent: () => <Menu />,
   drawerWidth: 320,
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
