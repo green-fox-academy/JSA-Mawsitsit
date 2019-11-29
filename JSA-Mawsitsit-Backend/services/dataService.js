@@ -28,20 +28,6 @@ const loginUser = async (userIdentifier, inputPassword) => {
   return userToLogin && validateLogin(inputPassword, userToLogin[0]);
 };
 
-const registerQuery = async (registerDetail) => {
-  const { email, phoneNumber, password } = registerDetail;
-  const registerDetailArray = [email, phoneNumber, password];
-  const sqlInsert = 'INSERT INTO user (email, phone_number, password) VALUES (?, ?, ?);';
-
-  const response = await mysqlPromisedQuery(
-    mysqlConnection,
-    sqlInsert,
-    registerDetailArray,
-  ).catch((error) => { throw error; });
-
-  return response.insertId;
-};
-
 const checkIdentifier = async (body) => {
   const { email, phone_number: phoneNumber } = body;
   const userIdentifier = [email, phoneNumber];
@@ -56,8 +42,35 @@ const checkIdentifier = async (body) => {
   return response.length !== 0;
 };
 
+const registerUser = async (userToRegister) => {
+  const { email, phoneNumber, password } = userToRegister;
+  const registerQueryInput = [email, phoneNumber, password];
+  const registerQueryStatement = 'INSERT INTO user (email, phone_number, password) VALUES (?, ?, ?);';
+
+  const response = await mysqlPromisedQuery(
+    mysqlConnection,
+    registerQueryStatement,
+    registerQueryInput,
+  ).catch((error) => { throw error; });
+
+  return response.insertId;
+};
+
+const saveUserDetailData = async (userToRegister) => {
+  const { userId, email, phoneNumber } = userToRegister;
+  const saveUserDetailQueryInput = [userId, email, phoneNumber];
+  const saveUserDetailQueryStatement = 'INSERT INTO user_detail (user_id, email, phone_number) VALUES (?, ?, ?);';
+
+  await mysqlPromisedQuery(
+    mysqlConnection,
+    saveUserDetailQueryStatement,
+    saveUserDetailQueryInput,
+  ).catch((error) => { throw error; });
+};
+
 module.exports = {
   checkIdentifier,
   loginUser,
-  registerQuery,
+  registerUser,
+  saveUserDetailData,
 };

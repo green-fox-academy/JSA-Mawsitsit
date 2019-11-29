@@ -36,8 +36,6 @@ const loginUser = (userIdentifier, inputPassword) => {
   return userToLogin && validateLogin(inputPassword, userToLogin[0]);
 };
 
-const registerQuery = () => 5;
-
 const checkIdentifier = (object) => {
   const { email, phone_number: phoneNumber } = object;
   const result = mockUsers.find((user) => (
@@ -46,8 +44,12 @@ const checkIdentifier = (object) => {
   return Boolean(result);
 };
 
+const registerUser = () => 5;
+const saveUserDetailData = () => {};
+
 module.exports = {
   checkIdentifier,
   loginUser,
-  registerQuery,
+  registerUser,
+  saveUserDetailData,
 };

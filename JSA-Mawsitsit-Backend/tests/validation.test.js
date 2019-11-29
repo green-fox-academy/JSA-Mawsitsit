@@ -9,6 +9,7 @@ describe('Validate register', () => {
     };
     expect(validation.validateRegister(register)).toBe('');
   });
+
   it('get error in email', () => {
     const register = {
       email: 'email5',
@@ -17,6 +18,7 @@ describe('Validate register', () => {
     };
     expect(validation.validateRegister(register)).toBe('Error in email.');
   });
+
   it('get error in phone number', () => {
     const register = {
       email: 'email5@gmail.com',
@@ -25,6 +27,7 @@ describe('Validate register', () => {
     };
     expect(validation.validateRegister(register)).toBe('Error in phone number.');
   });
+
   it('get error in password', () => {
     const register = {
       email: 'email5@gmail.com',
@@ -46,11 +49,13 @@ describe('Validate login', () => {
     expect(validation.validateLogin('password1', userToLogin)).toHaveProperty('errorMessage');
     expect(validation.validateLogin('password1', userToLogin).errorMessage).toBe('');
   });
+
   it('don\'t have user to login', () => {
     const userToLogin = false;
     expect(validation.validateLogin('password1', userToLogin)).toHaveProperty('errorMessage');
     expect(validation.validateLogin('password1', userToLogin).errorMessage).toBe('User doesn\' exit. Please check your username.');
   });
+
   it('password don\'t match', () => {
     const userToLogin = {
       email: 'email1@gmail.com',
