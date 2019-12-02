@@ -3,7 +3,6 @@ import React from 'react';
 import {
   createAppContainer,
   createSwitchNavigator,
-  // DrawerItems,
 } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
