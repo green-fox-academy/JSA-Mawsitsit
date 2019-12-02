@@ -1,16 +1,19 @@
 // External Dependencies
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import React from 'react';
 import {
   createAppContainer,
   createSwitchNavigator,
 } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Internal Dependencies
 import AccountManagementScreen from '../screens/AccountManagementScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import HamburgerButton from '../components/Menu/HamburgerButton';
+import Menu from '../components/Menu/Menu';
+
 
 const AuthStack = createStackNavigator({
   Login: LoginScreen,
@@ -23,13 +26,8 @@ const PersonalDetailsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      headerLeft: (
-        <MaterialCommunityIcons
-          color="white"
-          name="menu"
-          size={24}
-        />
-      ),
+      headerLeft: () => <HamburgerButton />,
+      headerTitle: 'Account management',
       headerStyle: {
         backgroundColor: '#3696F3',
       },
@@ -40,9 +38,24 @@ const PersonalDetailsStack = createStackNavigator(
   },
 );
 
-const AppNavigation = createSwitchNavigator({
-  Auth: AuthStack,
+
+const DrawerNavigation = createDrawerNavigator({
   PersonalDetailsStack,
+}, {
+  contentComponent: () => <Menu />,
+  contentOptions: {
+    activeTintColor: 'pink',
+  },
+  drawerWidth: 320,
+  drawerOpenRoute: 'DrawerOpen',
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle',
+});
+
+
+const AppNavigation = createSwitchNavigator({
+  AuthStack,
+  DrawerNavigation,
 });
 
 export default createAppContainer(AppNavigation);
