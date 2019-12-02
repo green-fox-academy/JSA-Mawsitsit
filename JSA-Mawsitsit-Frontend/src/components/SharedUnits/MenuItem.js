@@ -19,10 +19,10 @@ const {
   menuBodyTextStyle,
 } = MenuStyle;
 
-const initState = { buttonColor: '#000' };
+const initButtonColor = '#000';
 
 const MenuItem = (props) => {
-  const [state, setState] = useState(initState);
+  const [buttonColor, setButtonColor] = useState(initButtonColor);
   const {
     iconType,
     iconName,
@@ -33,11 +33,7 @@ const MenuItem = (props) => {
   const navigation = useContext(NavigationContext);
 
   const onPressList = () => {
-    setState({
-      ...state,
-      buttonColor: 'rgb(69, 124, 245)',
-    });
-
+    setButtonColor('rgb(69, 124, 245)');
     navigation.navigate(stackName);
     navigation.closeDrawer();
   };
@@ -46,8 +42,8 @@ const MenuItem = (props) => {
     <View style={menuBodyStyle}>
       <View style={menuItemInsideStyle}>
         <Button transparent onPress={onPressList}>
-          <Icon type={iconType} name={iconName} style={{ color: state.buttonColor }} />
-          <Text style={{ ...menuBodyTextStyle, color: state.buttonColor }}>
+          <Icon type={iconType} name={iconName} style={{ color: buttonColor }} />
+          <Text style={{ ...menuBodyTextStyle, color: buttonColor }}>
             {buttonText}
           </Text>
         </Button>

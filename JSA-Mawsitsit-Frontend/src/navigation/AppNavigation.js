@@ -41,9 +41,13 @@ const PersonalDetailsStack = createStackNavigator(
 
 
 const DrawerNavigation = createDrawerNavigator({
+  AuthStack,
   PersonalDetailsStack,
 }, {
-  contentComponent: (props) => <Menu menuProps={props} />,
+  contentComponent: () => <Menu />,
+  contentOptions: {
+    activeTintColor: 'pink',
+  },
   drawerWidth: 320,
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
@@ -52,7 +56,7 @@ const DrawerNavigation = createDrawerNavigator({
 
 
 const AppNavigation = createSwitchNavigator({
-  AuthStack,
+  // AuthStack,
   DrawerNavigation,
 });
 
