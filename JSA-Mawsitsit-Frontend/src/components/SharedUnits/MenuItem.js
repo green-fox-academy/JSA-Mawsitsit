@@ -1,5 +1,6 @@
 // External Dependencies
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { NavigationContext } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import {
@@ -26,21 +27,25 @@ const MenuItem = (props) => {
     iconType,
     iconName,
     buttonText,
+    stackName,
   } = props;
 
+  const navigation = useContext(NavigationContext);
 
-  const handleClick = () => {
+  const onPressList = () => {
     setState({
       ...state,
       buttonColor: 'rgb(69, 124, 245)',
     });
-  };
 
+    navigation.navigate(stackName);
+    navigation.closeDrawer();
+  };
 
   return (
     <View style={menuBodyStyle}>
       <View style={menuItemInsideStyle}>
-        <Button transparent onPress={handleClick}>
+        <Button transparent onPress={onPressList}>
           <Icon type={iconType} name={iconName} style={{ color: state.buttonColor }} />
           <Text style={{ ...menuBodyTextStyle, color: state.buttonColor }}>
             {buttonText}
@@ -55,9 +60,11 @@ MenuItem.propTypes = {
   iconType: PropTypes.string,
   iconName: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
+  stackName: PropTypes.string,
 };
 MenuItem.defaultProps = {
   iconType: 'AntDesign',
+  stackName: '',
 };
 
 export default MenuItem;

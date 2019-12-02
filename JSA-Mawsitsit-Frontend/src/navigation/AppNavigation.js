@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   createAppContainer,
-  // createSwitchNavigator,
+  createSwitchNavigator,
   // DrawerItems,
 } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -27,9 +27,7 @@ const PersonalDetailsStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      headerLeft: (
-        <HamburgerButton />
-      ),
+      headerLeft: () => <HamburgerButton />,
       headerTitle: 'Account management',
       headerStyle: {
         backgroundColor: '#3696F3',
@@ -41,18 +39,21 @@ const PersonalDetailsStack = createStackNavigator(
   },
 );
 
-const AppNavigation = createDrawerNavigator({
-  Auth: AuthStack,
+
+const DrawerNavigation = createDrawerNavigator({
   PersonalDetailsStack,
 }, {
-  initialRouteName: 'Auth',
-  contentComponent: () => <Menu />,
+  contentComponent: (props) => <Menu menuProps={props} />,
   drawerWidth: 320,
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
   drawerToggleRoute: 'DrawerToggle',
-
 });
 
+
+const AppNavigation = createSwitchNavigator({
+  AuthStack,
+  DrawerNavigation,
+});
 
 export default createAppContainer(AppNavigation);
