@@ -41,7 +41,6 @@ const PersonalDetailsStack = createStackNavigator(
 
 
 const DrawerNavigation = createDrawerNavigator({
-  AuthStack,
   PersonalDetailsStack,
 }, {
   contentComponent: () => <Menu />,
@@ -56,7 +55,7 @@ const DrawerNavigation = createDrawerNavigator({
 
 
 const AppNavigation = createSwitchNavigator({
-  // AuthStack,
+  AuthStack,
   DrawerNavigation,
 });
 
