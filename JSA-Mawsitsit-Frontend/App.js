@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 
 // Internal Dependencies
 import AppNavigation from './src/navigation/AppNavigation';
-import store from './src/store/createStore';
+import appStore from './src/store/appStore';
 
 // Component Definition
 const App = () => (
-  <Provider store={store}>
+  <Provider store={appStore}>
     <AppNavigation />
   </Provider>
 );
