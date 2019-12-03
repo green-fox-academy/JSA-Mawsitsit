@@ -79,7 +79,7 @@ const sendUserDetailData = async (userId) => {
     sendUserDetailQueryInput,
   ).catch((error) => { throw error; });
 
-  return response;
+  return response[0];
 };
 
 module.exports = {

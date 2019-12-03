@@ -4,12 +4,12 @@ const personalDetailsRouter = require('express').Router();
 
 // Internal Dependencies
 const { sendUserDetailData } = require('../services/dataService');
-const authMiddleware = require('../middleware/auth');
 
 // POST endpoint to send personal details data
-personalDetailsRouter.post('/', authMiddleware, async (req, res) => {
+personalDetailsRouter.get('/', async (req, res) => {
   const { userId } = req.body;
-  const [personalDetailsResult] = await sendUserDetailData(userId);
+  const personalDetailsResult = await sendUserDetailData(userId);
+  console.log();
 
   res.status(200).send(personalDetailsResult);
 });

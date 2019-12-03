@@ -25,6 +25,50 @@ const mockUsers = [
   },
 ];
 
+const mockUserDetail = [
+  {
+    user_id: 1,
+    email: 'email1@gmail.com',
+    phone_number: '12345676',
+    last_name: '',
+    first_name: '',
+    address: '',
+    isEmailVerified: 0,
+    isDetailsVerified: 0,
+  },
+  {
+    user_id: 2,
+    email: 'email1@gmail.com',
+    phone_number: '12345677',
+    last_name: '',
+    first_name: '',
+    address: '',
+    isEmailVerified: 0,
+    isDetailsVerified: 0,
+  },
+  {
+    user_id: 3,
+    email: 'email1@gmail.com',
+    phone_number: '12345678',
+    last_name: '',
+    first_name: '',
+    address: '',
+    isEmailVerified: 0,
+    isDetailsVerified: 0,
+  },
+  {
+    user_id: 4,
+    email: 'email1@gmail.com',
+    phone_number: '12345679',
+    last_name: '',
+    first_name: '',
+    address: '',
+    isEmailVerified: 0,
+    isDetailsVerified: 0,
+  },
+];
+
+
 // Mock Functions
 const loginUser = (userIdentifier, inputPassword) => {
   const userToLogin = [];
@@ -47,9 +91,16 @@ const checkIdentifier = (object) => {
 const registerUser = () => 5;
 const saveUserDetailData = () => {};
 
+const sendUserDetailData = (userId) => {
+  const sendUserDetail = mockUserDetail.find((user) => userId === user.user_id);
+  return sendUserDetail;
+};
+
+
 module.exports = {
   checkIdentifier,
   loginUser,
   registerUser,
   saveUserDetailData,
+  sendUserDetailData,
 };

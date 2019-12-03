@@ -1,16 +1,21 @@
 // External Dependencies
 const request = require('supertest');
-const authMiddleware = require('../middleware/auth');
+const jwt = require('jsonwebtoken');
 
 // Internal Dependencies
 const server = require('../server');
 
 jest.mock('../services/dataService');
 
+// Mock Functions
+const mockToken = jwt.sign({ user_id: 1 }, process.env.JWT_PRIVATE_KEY, { expiresIn: 60 });
+
+
 describe('personal details endpoint', () => {
-  it('send personal details data', authMiddleware, async () => {
+  it('send personal details data', async () => {
     const res = await request(server)
-      .post('/personalDetails');
+      .get('/personalDetails')
+      .set({ Authorization: `Bearer ${mockToken}` });
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('user_id');
     expect(res.body).toHaveProperty('email');

@@ -6,7 +6,6 @@ module.exports = (req, res, next) => {
     if (!req.headers.authorization || req.headers.authorization.split(' ')[0] !== 'Bearer') {
       return res.status(400).json({ error: 'It\'s a bad request. Please try again.' });
     }
-
     const token = req.headers.authorization.split(' ')[1];
     const { user_id: userId } = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
 
