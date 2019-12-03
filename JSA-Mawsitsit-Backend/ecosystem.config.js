@@ -11,7 +11,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:green-fox-academy/JSA-Mawsitsit.git',
       path: '/home/ubuntu/jsa-mawsitsit-backend',
-      'post-deploy': 'cd JSA-Mawsitsit-Backend && npm install && pm2 startOrRestart ecosystem.config.js',
+      'post-deploy': 'cd JSA-Mawsitsit-Backend && npm install && node migration.js refresh && pm2 startOrRestart ecosystem.config.js',
     },
   },
 };
