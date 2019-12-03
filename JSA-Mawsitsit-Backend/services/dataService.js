@@ -68,9 +68,24 @@ const saveUserDetailData = async (userToRegister) => {
   ).catch((error) => { throw error; });
 };
 
+
+const sendUserDetailData = async (userId) => {
+  const sendUserDetailQueryStatement = 'SELECT * FROM user_detail WHERE user_id = ?;';
+  const sendUserDetailQueryInput = [userId];
+
+  const response = await mysqlPromisedQuery(
+    mysqlConnection,
+    sendUserDetailQueryStatement,
+    sendUserDetailQueryInput,
+  ).catch((error) => { throw error; });
+
+  return response;
+};
+
 module.exports = {
   checkIdentifier,
   loginUser,
   registerUser,
   saveUserDetailData,
+  sendUserDetailData,
 };
