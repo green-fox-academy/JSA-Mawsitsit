@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-52-199-17-156.ap-northeast-1.compute.amazonaws.com',
+      host: 'ec2-52-197-107-239.ap-northeast-1.compute.amazonaws.com',
       key: '~/.ssh/jsa-mawsitsit-kp.pem',
       ref: 'origin/master',
       repo: 'git@github.com:green-fox-academy/JSA-Mawsitsit.git',
