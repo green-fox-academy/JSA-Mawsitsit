@@ -7,11 +7,10 @@ const RegisterStyle = StyleSheet.create(
       flex: 1,
     },
     containerStyle: {
-      flex: 1,
-      marginTop: 60,
+      marginTop: 100,
       marginLeft: 20,
+      height: 350,
       width: '90%',
-      justifyContent: 'center',
     },
     // password strength
     passwordStrengthStyle: {
@@ -62,7 +61,6 @@ const RegisterStyle = StyleSheet.create(
       fontSize: 23,
     },
     buttonContainerStyle: {
-      flex: 1.5,
       top: 150,
       alignItems: 'center',
     },

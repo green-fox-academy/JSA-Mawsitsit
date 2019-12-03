@@ -83,7 +83,7 @@ const RegisterScreen = (props) => {
     <View style={rootStyle}>
       <View style={containerStyle}>
         <Text style={inputError.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
-        E-mail
+          E-mail
         </Text>
         <TextInput
           style={inputError.emailError
@@ -103,12 +103,12 @@ const RegisterScreen = (props) => {
         />
         <View>
           {Boolean(inputError.emailError)
-          && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.emailError}</Text>}
+            && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.emailError}</Text>}
         </View>
         <Text
           style={inputError.phoneNumberError ? { ...textStyle, ...warningTextColor } : textStyle}
         >
-        Phone number
+          Phone number
         </Text>
         <TextInput
           style={inputError.phoneNumberError
@@ -128,15 +128,15 @@ const RegisterScreen = (props) => {
         />
         <View>
           {Boolean(inputError.phoneNumberError) && (
-          <Text style={{ ...textStyle, ...warningTextColor }}>
-            {inputError.phoneNumberError}
-          </Text>
+            <Text style={{ ...textStyle, ...warningTextColor }}>
+              {inputError.phoneNumberError}
+            </Text>
           )}
         </View>
         <Text
           style={inputError.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}
         >
-        Password
+          Password
         </Text>
         <TextInput
           style={inputError.passwordMessage
@@ -165,11 +165,11 @@ const RegisterScreen = (props) => {
 
         <View>
           {Boolean(inputError.passwordMessage)
-          && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
+            && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
         </View>
 
         <Text style={inputError.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
-        Password confirmation
+          Password confirmation
         </Text>
         <TextInput
           style={inputError.checkMessage
@@ -197,7 +197,7 @@ const RegisterScreen = (props) => {
         />
         <View>
           {Boolean(inputError.checkMessage)
-          && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.checkMessage}</Text>}
+            && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.checkMessage}</Text>}
         </View>
       </View>
 
