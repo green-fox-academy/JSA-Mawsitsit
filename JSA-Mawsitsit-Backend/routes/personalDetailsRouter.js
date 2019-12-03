@@ -9,7 +9,6 @@ const { sendUserDetailData } = require('../services/dataService');
 personalDetailsRouter.get('/', async (req, res) => {
   const { userId } = req.body;
   const personalDetailsResult = await sendUserDetailData(userId);
-  console.log();
 
   res.status(200).send(personalDetailsResult);
 });
