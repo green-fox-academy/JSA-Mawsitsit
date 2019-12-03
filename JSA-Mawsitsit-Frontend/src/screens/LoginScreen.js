@@ -40,9 +40,11 @@ LoginScreen.navigationOptions = {
 };
 
 LoginScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }).isRequired,
+  navigation: PropTypes.shape({}),
+};
+
+LoginScreen.defaultProps = {
+  navigation: {},
 };
 
 export default LoginScreen;

@@ -221,9 +221,11 @@ RegisterScreen.navigationOptions = {
 };
 
 RegisterScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }).isRequired,
+  navigation: PropTypes.shape({}),
+};
+
+RegisterScreen.defaultProps = {
+  navigation: {},
 };
 
 export default RegisterScreen;
