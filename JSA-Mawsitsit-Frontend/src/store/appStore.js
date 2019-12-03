@@ -7,9 +7,9 @@ import {
 } from 'redux';
 
 // Internal Dependencies
-import RootReducer from '../reducers/RootReducer';
+import AppReducer from '../components/App/AppReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const appStore = createStore(RootReducer, composeEnhancers(applyMiddleware(ReduxThunk)));
+const appStore = createStore(AppReducer, composeEnhancers(applyMiddleware(ReduxThunk)));
 
 export default appStore;

@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Internal Dependencies
-import SliderBar from '../components/PersonalDetails/SliderBar';
+import SliderBar from '../components/AccountManagement/SliderBar';
 
 // Component Definition
 const PersonalDetails = () => (
