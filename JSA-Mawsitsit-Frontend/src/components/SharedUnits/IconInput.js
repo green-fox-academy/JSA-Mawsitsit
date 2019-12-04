@@ -21,6 +21,7 @@ const {
 const IconInput = (props) => {
   const {
     icon,
+    onChange,
     placeholder,
     value,
   } = props;
@@ -34,6 +35,7 @@ const IconInput = (props) => {
           size={24}
         />
         <Input
+          onChangeText={onChange}
           placeholder={placeholder}
           value={value}
         />
@@ -45,6 +47,7 @@ const IconInput = (props) => {
 // Prop Validation
 IconInput.propTypes = {
   icon: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
 };

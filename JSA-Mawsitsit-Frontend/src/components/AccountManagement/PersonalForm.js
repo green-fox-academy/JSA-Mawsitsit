@@ -8,42 +8,46 @@ import {
 
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
-import { fetchUserDetailData } from './actions/PersonalAction';
+import {
+  fetchUserDetailData,
+  updateUserDetailInfo,
+} from './actions/PersonalAction';
 
 // Component Definition
 const Personal = (props) => {
   const {
-    fetchedUserDetailData,
     onFetchUserDetailData,
+    onUpdateUserDetailInfo,
+    userDetailForm,
   } = props;
-  console.log(fetchedUserDetailData);
 
   useEffect(() => {
     onFetchUserDetailData();
   }, [onFetchUserDetailData]);
 
   const personalInputData = [
-    { icon: 'alpha-f-box-outline', placeholder: 'First Name', value: fetchedUserDetailData.firstName },
-    { icon: 'alpha-l-box-outline', placeholder: 'Last Name', value: fetchedUserDetailData.lastName },
-    { icon: 'cake', placeholder: 'Birthday', value: fetchedUserDetailData.birthday },
-    { icon: 'cellphone', placeholder: 'Phone Number', value: fetchedUserDetailData.phoneNumber },
-    { icon: 'email-outline', placeholder: 'Email', value: fetchedUserDetailData.email },
-    { icon: 'home-outline', placeholder: 'Address', value: fetchedUserDetailData.address },
+    { icon: 'alpha-f-box-outline', key: 'firstName', placeholder: 'First Name' },
+    { icon: 'alpha-l-box-outline', key: 'lastName', placeholder: 'Last Name' },
+    { icon: 'cake', placeholder: 'Birthday', key: 'birthday' },
+    { icon: 'cellphone', key: 'phoneNumber', placeholder: 'Phone Number' },
+    { icon: 'email-outline', key: 'email', placeholder: 'Email' },
+    { icon: 'home-outline', key: 'address', placeholder: 'Address' },
   ];
 
   const personalInputs = personalInputData.map((personalInput) => {
     const {
       icon,
+      key,
       placeholder,
-      value,
     } = personalInput;
 
     return (
       <IconInput
         icon={icon}
         key={`${placeholder}-${icon}`}
+        onChange={(value) => onUpdateUserDetailInfo(key, value)}
         placeholder={placeholder}
-        value={value}
+        value={userDetailForm[key]}
       />
     );
   });
@@ -56,12 +60,12 @@ const Personal = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { fetchedUserDetailData } = state.AccountManagement.Personal;
-  return { fetchedUserDetailData };
+  const { userDetailForm } = state.AccountManagement.Personal;
+  return { userDetailForm };
 };
 
 Personal.propTypes = {
-  fetchedUserDetailData: PropTypes.shape({
+  userDetailForm: PropTypes.shape({
     userId: PropTypes.number,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -73,12 +77,14 @@ Personal.propTypes = {
     isDetailsVerified: PropTypes.bool,
   }),
   onFetchUserDetailData: PropTypes.func.isRequired,
+  onUpdateUserDetailInfo: PropTypes.func.isRequired,
 };
 
 Personal.defaultProps = {
-  fetchedUserDetailData: {},
+  userDetailForm: {},
 };
 
 export default connect(mapStateToProps, {
   onFetchUserDetailData: fetchUserDetailData,
+  onUpdateUserDetailInfo: updateUserDetailInfo,
 })(Personal);

@@ -2,10 +2,14 @@
 import _ from 'lodash';
 
 // Internal Dependencies
-import { fetchRequest } from '../../App/RootUtilities';
+import {
+  createActionCreator,
+  fetchRequest,
+} from '../../App/RootUtilities';
 import {
   FETCH_USER_DETAIL_DATA,
   UPDATE_USER_DETAIL_DATA,
+  UPDATE_USER_DETAIL_INFO,
 } from '../../App/ActionTypes';
 
 export const fetchUserDetailData = () => async (dispatch) => {
@@ -38,3 +42,9 @@ export const updateUserDetailData = () => async (dispatch) => {
     updatedUserDetailData,
   });
 };
+
+export const updateUserDetailInfo = createActionCreator(
+  UPDATE_USER_DETAIL_INFO,
+  'prop',
+  'value',
+);
