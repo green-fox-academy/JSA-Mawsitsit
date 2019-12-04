@@ -1,6 +1,7 @@
 // External Dependencies
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import {
   Text,
@@ -18,7 +19,8 @@ const {
   buttonContainerStyle,
   progressContainerStyle,
   progressTitleStyle,
-  rootStyle,
+  saveButtonStyle,
+  saveButtonTextStyle,
   variantLinkButtonStyle,
   verifyTextStyle,
 } = PersonalStyles;
@@ -34,7 +36,7 @@ const Personal = (props) => {
   });
 
   return (
-    <View style={rootStyle}>
+    <View>
       <View style={progressContainerStyle}>
         <Text style={progressTitleStyle}>Please complete your personal details:</Text>
         <ProgressBar completeNess={userDetailDataCompleteness * 12.5} />
@@ -53,6 +55,11 @@ const Personal = (props) => {
           onPress={() => {}}
           variantStyle={variantLinkButtonStyle}
         />
+        <Button
+          style={saveButtonStyle}
+        >
+          <Text style={saveButtonTextStyle}>Save!</Text>
+        </Button>
       </View>
     </View>
   );
