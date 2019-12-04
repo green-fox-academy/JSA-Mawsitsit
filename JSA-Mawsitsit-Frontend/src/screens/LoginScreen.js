@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 // Internal Dependencies
 import LoginStyle from '../styles/LoginStyle';
 import Header from '../components/Login/Header';
-import Input from '../components/Login/Input';
+import LoginForm from '../containers/loginFormContainer';
 import Footer from '../components/Login/Footer';
 
 // Local Variables
@@ -27,7 +27,7 @@ const LoginScreen = (props) => {
         end={[1, 1]}
       >
         <Header />
-        <Input />
+        <LoginForm />
         <Footer navigation={navigation} />
       </LinearGradient>
     </View>
