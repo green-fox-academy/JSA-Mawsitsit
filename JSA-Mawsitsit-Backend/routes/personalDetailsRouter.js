@@ -8,9 +8,13 @@ const { sendUserDetailData } = require('../services/dataService');
 // POST endpoint to send personal details data
 personalDetailsRouter.get('/', async (req, res) => {
   const { userId } = req.body;
-  const personalDetailsResult = await sendUserDetailData(userId);
 
-  res.status(200).send(personalDetailsResult);
+  try {
+    const personalDetailsResult = await sendUserDetailData(userId);
+    res.status(200).send(personalDetailsResult);
+  } catch (error) {
+    res.status(500).json({ error: 'Something went wrong, please try again later.' });
+  }
 });
 
 module.exports = personalDetailsRouter;
