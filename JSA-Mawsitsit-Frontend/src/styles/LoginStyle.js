@@ -75,16 +75,12 @@ const LoginStyle = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  linkTextStyle: {
-    color: '#fff',
-    fontSize: 20,
-    textDecorationLine: 'underline',
-    fontWeight: 'bold',
-  },
-  variantClickStyle: {
+  registerButtonStyle: {
+    color: 'white',
     fontStyle: 'italic',
   },
-  variantPswStyle: {
+  forgetPasswordButtonStyle: {
+    color: 'white',
     fontSize: 15,
   },
   footerBottomStyle: {

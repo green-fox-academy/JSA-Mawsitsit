@@ -8,14 +8,19 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
+import LinkButton from '../SharedUnits/LinkButton';
 import PersonalForm from './PersonalForm';
 import PersonalStyles from '../../styles/PersonalStyle';
 import ProgressBar from '../SharedUnits/ProgressBar';
 
 // Local Variables
 const {
+  buttonContainerStyle,
   progressContainerStyle,
   progressTitleStyle,
+  rootStyle,
+  variantLinkButtonStyle,
+  verifyTextStyle,
 } = PersonalStyles;
 
 // Component Definition
@@ -29,16 +34,31 @@ const Personal = (props) => {
   });
 
   return (
-    <View>
+    <View style={rootStyle}>
       <View style={progressContainerStyle}>
         <Text style={progressTitleStyle}>Please complete your personal details:</Text>
         <ProgressBar completeNess={userDetailDataCompleteness * 12.5} />
       </View>
       <PersonalForm />
+      <View style={buttonContainerStyle}>
+        <Text style={verifyTextStyle}>You have not verified your email.</Text>
+        <LinkButton
+          linkText="Click here to verify it."
+          onPress={() => {}}
+          variantStyle={variantLinkButtonStyle}
+        />
+        <Text style={verifyTextStyle}>You have not verified your identity.</Text>
+        <LinkButton
+          linkText="Click here to upload proof of ID."
+          onPress={() => {}}
+          variantStyle={variantLinkButtonStyle}
+        />
+      </View>
     </View>
   );
 };
 
+// Prop Validation
 Personal.propTypes = {
   fetchedUserDetailData: PropTypes.shape({
     userId: PropTypes.number,
