@@ -1,3 +1,6 @@
+// External Dependencies
+import _ from 'lodash';
+
 // Internal Dependencies
 import { fetchRequest } from '../../App/RootUtilities';
 import {
@@ -7,18 +10,22 @@ import {
 
 export const fetchUserDetailData = () => async (dispatch) => {
   // const fetchedUserDetailData = await fetchRequest('http://localhost:8081/personalDetails');
+  const fetchedUserDetailData = {
+    user_id: 1,
+    first_name: '',
+    last_name: '',
+    birthday: '01.01.1900',
+    phone_number: '12345676',
+    email: 'email1@gmail.com',
+    address: '',
+    isEmailVerified: false,
+    isDetailsVerified: false,
+  };
+  const fetchedUserDetailDataToUse = _.mapKeys(fetchedUserDetailData, _.rearg(_.camelCase, 1));
+
   dispatch({
     type: FETCH_USER_DETAIL_DATA,
-    fetchedUserDetailData: {
-      user_id: 1,
-      email: 'email1@gmail.com',
-      phone_number: '12345676',
-      last_name: '',
-      first_name: '',
-      address: '',
-      isEmailVerified: false,
-      isDetailsVerified: false,
-    },
+    fetchedUserDetailData: fetchedUserDetailDataToUse,
   });
 };
 
