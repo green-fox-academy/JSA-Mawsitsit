@@ -18,7 +18,7 @@ export const fetchUserDetailData = () => async (dispatch) => {
     user_id: 1,
     first_name: '',
     last_name: '',
-    birthday: '01.01.1900',
+    birthday: '',
     phone_number: '12345676',
     email: 'email1@gmail.com',
     address: '',
