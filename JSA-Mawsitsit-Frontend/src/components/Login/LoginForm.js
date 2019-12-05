@@ -56,13 +56,17 @@ const LoginForm = (props) => {
       user_identifier: loginInput.userIdentifier,
       password: loginInput.password,
     };
-    const loginPreference = {
-      rmberUserIdentifier: loginInput.rmberUserIdentifier,
-      rmberPassword: loginInput.rmberPassword,
-      autoLogin: loginInput.autoLogin,
-    };
-    await SecureStore.setItemAsync('Mawsitsit_login_info', JSON.stringify(loginInfo));
-    await SecureStore.setItemAsync('Mawsitsit_login_preference', JSON.stringify(loginPreference));
+    if (loginInput.rmberUserIdentifier) {
+      const loginDetail = {
+        user_identifier: loginInput.userIdentifier,
+      };
+      if (loginInput.rmberPassword) {
+        loginDetail.password = loginInput.password;
+        loginDetail.autoLogin = loginInput.autoLogin;
+      }
+      await SecureStore.setItemAsync('Mawsitsit_login_detail', JSON.stringify(loginDetail))
+        .catch((error) => console.log(error));
+    }
     onFetchLogin(loginInfo, navigation);
   };
 
