@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { Button } from 'native-base';
+import * as SecureStore from 'expo-secure-store';
 
 // Internal Dependencies
 import LoginStyle from '../../styles/LoginStyle';
@@ -53,11 +54,17 @@ const LoginForm = (props) => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const loginInfo = {
       user_identifier: loginInput.userIdentifier,
       password: loginInput.password,
     };
+    const loginPreference = {
+      rmberUserIdentifier: loginInput.rmberUserIdentifier,
+      rmberPassword: loginInput.rmberPassword,
+      autoLogin: loginInput.autoLogin,
+    };
+    await SecureStore.setItemAsync('Mawsitsit_login_preference', loginPreference.toString());
     onFetchLogin(loginInfo, navigation);
   };
 

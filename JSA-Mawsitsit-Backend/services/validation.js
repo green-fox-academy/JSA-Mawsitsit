@@ -9,7 +9,7 @@ const validateLogin = (inputPassword, userToLogin) => {
   const validationResult = { userId: '', errorMessage: '' };
 
   if (!userToLogin) {
-    validationResult.errorMessage = 'User doesn\'t exit. Please check your username.';
+    validationResult.errorMessage = 'User doesn\'t exit.';
   } else if (!bcrypt.compareSync(inputPassword, userToLogin.password)) {
     validationResult.errorMessage = 'Password doesn\'t match. Please check your password.';
   } else {

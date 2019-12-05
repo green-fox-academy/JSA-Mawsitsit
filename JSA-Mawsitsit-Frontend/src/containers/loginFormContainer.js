@@ -6,7 +6,7 @@ import LoginForm from '../components/Login/LoginForm';
 import { fetchLoginAction, updateLoginInfoAction } from '../actions/loginAction';
 
 const mapStateToProps = (state) => {
-  const { loginInput, loginResponse } = state;
+  const { loginInput, loginResponse } = state.loginForm;
   return { loginInput, loginResponse };
 };
 
