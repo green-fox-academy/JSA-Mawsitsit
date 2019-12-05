@@ -13,6 +13,7 @@ import * as SecureStore from 'expo-secure-store';
 import LoginStyle from '../../styles/LoginStyle';
 import InputText from '../SharedUnits/InputText';
 import Select from '../SharedUnits/Select';
+import { validateLoginPreference } from '../../../validation/validation';
 
 // Local Variables
 const {
@@ -29,27 +30,23 @@ const LoginForm = (props) => {
     onFetchLogin,
   } = props;
   const navigation = useContext(NavigationContext);
-  const validation = {
-    rmberUserIdentifier: (loginInput.userIdentifier.length !== 0),
-    rmberPassword: (loginInput.password.length !== 0),
-    autoLogin: loginInput.rmberUserIdentifier && loginInput.rmberPassword,
-  };
+  const preferenceValidator = validateLoginPreference(loginInput);
 
   const handleChange = (name, value) => {
     onUpdateLoginInfo(name, value);
-    if (!validation.rmberUserIdentifier) {
+    if (!preferenceValidator.rmberUserIdentifier) {
       onUpdateLoginInfo('rmberUserIdentifier', false);
     }
-    if (!validation.rmberPassword) {
+    if (!preferenceValidator.rmberPassword) {
       onUpdateLoginInfo('rmberPassword', false);
     }
-    if (!validation.autoLogin) {
+    if (!preferenceValidator.autoLogin) {
       onUpdateLoginInfo('autoLogin', false);
     }
   };
 
   const handleSelect = (name, value) => {
-    if ((!loginInput[name] && validation[name]) || loginInput[name]) {
+    if ((!loginInput[name] && preferenceValidator[name]) || loginInput[name]) {
       onUpdateLoginInfo(name, value);
     }
   };
@@ -64,7 +61,8 @@ const LoginForm = (props) => {
       rmberPassword: loginInput.rmberPassword,
       autoLogin: loginInput.autoLogin,
     };
-    await SecureStore.setItemAsync('Mawsitsit_login_preference', loginPreference.toString());
+    await SecureStore.setItemAsync('Mawsitsit_login_info', JSON.stringify(loginInfo));
+    await SecureStore.setItemAsync('Mawsitsit_login_preference', JSON.stringify(loginPreference));
     onFetchLogin(loginInfo, navigation);
   };
 
