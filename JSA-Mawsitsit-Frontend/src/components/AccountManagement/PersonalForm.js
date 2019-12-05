@@ -51,8 +51,15 @@ const Personal = (props) => {
       <IconListItem
         icon={icon}
         key={`${placeholder}-${icon}`}
-        onChange={(value) => onUpdateUserDetailInfo(key, value)}
-        onNavigate={() => appNavigation.navigate('InfoModificationPage')}
+        onNavigate={() => {
+          appNavigation.navigate('InfoModificationPage', {
+            icon,
+            key,
+            onChange: onUpdateUserDetailInfo,
+            placeholder,
+            value: userDetailForm[key],
+          });
+        }}
         placeholder={placeholder}
         value={userDetailForm[key]}
       />

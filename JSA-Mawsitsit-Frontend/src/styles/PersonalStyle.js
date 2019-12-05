@@ -14,19 +14,6 @@ const IconInputStyles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 12,
   },
-  saveButtonStyle: {
-    backgroundColor: 'white',
-    height: 50,
-    justifyContent: 'center',
-    marginTop: 16,
-    shadowColor: 'grey',
-    shadowOffset: {
-      height: 1,
-      width: 1,
-    },
-    shadowOpacity: 0.8,
-    width: 150,
-  },
   saveButtonTextStyle: {
     color: 'rgb(54, 150, 243)',
     fontSize: 24,
