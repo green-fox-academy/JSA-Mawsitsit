@@ -1,13 +1,17 @@
 // External Dependencies
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, {
+  useContext,
+  useEffect,
+} from 'react';
 import { connect } from 'react-redux';
+import { NavigationContext } from 'react-navigation';
 import {
   View,
 } from 'react-native';
 
 // Internal Dependencies
-import IconInput from '../SharedUnits/IconInput';
+import IconListItem from '../SharedUnits/IconListItem';
 import {
   fetchUserDetailData,
   updateUserDetailInfo,
@@ -15,6 +19,8 @@ import {
 
 // Component Definition
 const Personal = (props) => {
+  const appNavigation = useContext(NavigationContext);
+
   const {
     onFetchUserDetailData,
     onUpdateUserDetailInfo,
@@ -42,10 +48,11 @@ const Personal = (props) => {
     } = personalInput;
 
     return (
-      <IconInput
+      <IconListItem
         icon={icon}
         key={`${placeholder}-${icon}`}
         onChange={(value) => onUpdateUserDetailInfo(key, value)}
+        onNavigate={() => appNavigation.navigate('InfoModificationPage')}
         placeholder={placeholder}
         value={userDetailForm[key]}
       />

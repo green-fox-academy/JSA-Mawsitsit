@@ -9,10 +9,11 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 // Internal Dependencies
 import AccountManagementScreen from '../screens/AccountManagementScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
 import HamburgerButton from '../components/Menu/HamburgerButton';
+import InfoModificationPage from '../components/AccountManagement/InfoModificationPage';
+import LoginScreen from '../screens/LoginScreen';
 import Menu from '../components/Menu/Menu';
+import RegisterScreen from '../screens/RegisterScreen';
 
 
 const AuthStack = createStackNavigator({
@@ -23,11 +24,12 @@ const AuthStack = createStackNavigator({
 const PersonalDetailsStack = createStackNavigator(
   {
     AccountManagementScreen,
+    InfoModificationPage,
   },
   {
     defaultNavigationOptions: {
       headerLeft: () => <HamburgerButton />,
-      headerTitle: 'Account management',
+      headerTitle: 'Account Management',
       headerStyle: {
         backgroundColor: '#3696F3',
       },

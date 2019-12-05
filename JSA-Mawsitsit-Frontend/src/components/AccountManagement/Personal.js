@@ -1,7 +1,6 @@
 // External Dependencies
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import {
   Text,
@@ -19,8 +18,6 @@ const {
   buttonContainerStyle,
   progressContainerStyle,
   progressTitleStyle,
-  saveButtonStyle,
-  saveButtonTextStyle,
   variantLinkButtonStyle,
   verifyTextStyle,
 } = PersonalStyles;
@@ -55,11 +52,6 @@ const Personal = (props) => {
           onPress={() => {}}
           variantStyle={variantLinkButtonStyle}
         />
-        <Button
-          style={saveButtonStyle}
-        >
-          <Text style={saveButtonTextStyle}>Save!</Text>
-        </Button>
       </View>
     </View>
   );

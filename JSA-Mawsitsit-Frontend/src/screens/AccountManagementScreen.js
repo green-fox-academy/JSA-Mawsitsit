@@ -9,9 +9,4 @@ const PersonalDetails = () => (
   <SliderBar />
 );
 
-// Navigation Configuration
-PersonalDetails.navigationOptions = {
-  headerTitle: 'Account management',
-};
-
 export default PersonalDetails;
