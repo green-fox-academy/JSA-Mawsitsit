@@ -27,7 +27,7 @@ const fetchLoginAction = (object, navigation) => async (dispatch) => {
   } catch (error) {
     // eslint-disable-next-line no-alert
     // eslint-disable-next-line no-undef
-    alert(error);
+    alert('Unable to connect to the server, please check the network！');
   }
 };
 
