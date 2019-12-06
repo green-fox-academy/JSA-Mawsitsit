@@ -12,6 +12,7 @@ const { verificationLinkRouter } = require('./routes/emailVerificationRouter');
 // Local Variables
 const server = express();
 
+
 server.use(express.json());
 server.use('/register', registerRouter);
 server.use('/login', loginRouter);
