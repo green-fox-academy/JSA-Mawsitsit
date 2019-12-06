@@ -35,8 +35,8 @@ const Menu = () => {
         <View style={menuHeadInsideStyle}>
           <Thumbnail source={{ uri: menuHeaderImage }} />
           <View>
-            <Text style={menuHeadTextStyle}>JSA-Mawsitsit</Text>
-            <Text style={menuHeadTextStyle} note>contact@epam.com</Text>
+            <Text style={menuHeadTextStyle}>JSA Mawsitsit</Text>
+            <Text style={menuHeadTextStyle} note>contact@jpay.com</Text>
           </View>
         </View>
       </View>
