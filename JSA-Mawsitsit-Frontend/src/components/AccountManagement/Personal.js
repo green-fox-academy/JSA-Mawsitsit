@@ -25,10 +25,10 @@ const {
 // Component Definition
 const Personal = (props) => {
   const { fetchedUserDetailData } = props;
-  let userDetailDataCompleteness = 8;
+  let userDetailDataProgress = 8;
   Object.values(fetchedUserDetailData).forEach((fetchedUserDetailValue) => {
     if (fetchedUserDetailValue === '' || fetchedUserDetailValue === false) {
-      userDetailDataCompleteness -= 1;
+      userDetailDataProgress -= 1;
     }
   });
 
@@ -36,22 +36,30 @@ const Personal = (props) => {
     <View>
       <View style={progressContainerStyle}>
         <Text style={progressTitleStyle}>Please complete your personal details:</Text>
-        <ProgressBar completeNess={userDetailDataCompleteness * 12.5} />
+        <ProgressBar progress={userDetailDataProgress * 12.5} />
       </View>
       <PersonalForm />
       <View style={buttonContainerStyle}>
-        <Text style={verifyTextStyle}>You have not verified your email.</Text>
-        <LinkButton
-          linkText="Click here to verify it."
-          onPress={() => {}}
-          variantStyle={variantLinkButtonStyle}
-        />
-        <Text style={verifyTextStyle}>You have not verified your identity.</Text>
-        <LinkButton
-          linkText="Click here to upload proof of ID."
-          onPress={() => {}}
-          variantStyle={variantLinkButtonStyle}
-        />
+        {!fetchedUserDetailData.isEmailVerified && (
+          <>
+            <Text style={verifyTextStyle}>You have not verified your email.</Text>
+            <LinkButton
+              linkText="Click here to verify it."
+              onPress={() => {}}
+              variantStyle={variantLinkButtonStyle}
+            />
+          </>
+        )}
+        {!fetchedUserDetailData.isDetailsVerified && (
+          <>
+            <Text style={verifyTextStyle}>You have not verified your identity.</Text>
+            <LinkButton
+              linkText="Click here to upload proof of ID."
+              onPress={() => {}}
+              variantStyle={variantLinkButtonStyle}
+            />
+          </>
+        )}
       </View>
     </View>
   );

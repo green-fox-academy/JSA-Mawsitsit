@@ -1,5 +1,10 @@
 // External Dependencies
-import _ from 'lodash';
+import {
+  camelCase,
+  mapKeys,
+  rearg,
+} from 'lodash';
+// import { URL } from 'react-native-dotenv';
 
 // Internal Dependencies
 import {
@@ -13,7 +18,7 @@ import {
 } from '../../App/ActionTypes';
 
 export const fetchUserDetailData = () => async (dispatch) => {
-  // const fetchedUserDetailData = await fetchRequest('http://localhost:8081/personalDetails');
+  // const fetchedUserDetailData = await fetchRequest(`${URL}/personalDetails`);
   const fetchedUserDetailData = {
     user_id: 1,
     first_name: '',
@@ -25,7 +30,7 @@ export const fetchUserDetailData = () => async (dispatch) => {
     isEmailVerified: false,
     isDetailsVerified: false,
   };
-  const fetchedUserDetailDataToUse = _.mapKeys(fetchedUserDetailData, _.rearg(_.camelCase, 1));
+  const fetchedUserDetailDataToUse = mapKeys(fetchedUserDetailData, rearg(camelCase, 1));
 
   dispatch({
     type: FETCH_USER_DETAIL_DATA,
@@ -34,7 +39,7 @@ export const fetchUserDetailData = () => async (dispatch) => {
 };
 
 export const updateUserDetailData = (userDetailDataToUpdate) => async (dispatch) => {
-  // const updatedUserDetailData = await fetchRequest('http://localhost:8081/personalDetails', {
+  // const updatedUserDetailData = await fetchRequest(`${URL}/personalDetails`, {
   //   method: 'POST',
   // });
   dispatch({

@@ -21,11 +21,11 @@ const {
 // Component Definition
 const ProgressBar = (props) => {
   const {
-    completeNess,
+    progress,
   } = props;
 
-  const completenessBarStyleToUse = [completenessBarStyle, { width: `${completeNess}%` }];
-  if (completeNess === 100) {
+  const completenessBarStyleToUse = [completenessBarStyle, { width: `${progress}%` }];
+  if (progress === 100) {
     completenessBarStyleToUse.push({ borderBottomRightRadius: 16, borderTopRightRadius: 16 });
   }
 
@@ -33,16 +33,16 @@ const ProgressBar = (props) => {
     <View style={rootStyle}>
       <View style={barContainerStyle}>
         <View style={completenessBarStyleToUse} />
-        <View style={[inCompletenessBarStyle, { width: `${100 - completeNess}%` }]} />
+        <View style={[inCompletenessBarStyle, { width: `${100 - progress}%` }]} />
       </View>
-      <Text style={completeTextStyle}>{`${completeNess}%`}</Text>
+      <Text style={completeTextStyle}>{`${progress}%`}</Text>
     </View>
   );
 };
 
 // Prop Validation
 ProgressBar.propTypes = {
-  completeNess: PropTypes.number.isRequired,
+  progress: PropTypes.number.isRequired,
 };
 
 export default ProgressBar;
