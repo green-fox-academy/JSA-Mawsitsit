@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const authMiddleware = require('../middleware/auth');
 
 // Mock Functions
-const mockToken = jwt.sign({ userId: 1 }, process.env.JWT_PRIVATE_KEY, { expiresIn: 60 });
+const mockToken = jwt.sign({ user_id: 1 }, process.env.JWT_PRIVATE_KEY, { expiresIn: 60 });
 const mockRequest = {
   body: {},
   headers: {},
@@ -34,6 +34,7 @@ describe('auth middleware', () => {
   it('auth with correct token', () => {
     mockRequest.headers = { authorization: `Bearer ${mockToken}` };
     authMiddleware(mockRequest, mockResponse, mockNext);
+
     expect(mockRequest.body.userId).toBe(1);
     expect(mockNext).toBeCalled();
   });
