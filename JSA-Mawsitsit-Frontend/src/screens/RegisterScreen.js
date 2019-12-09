@@ -5,8 +5,8 @@ import {
   Text,
   TextInput,
   View,
-  TouchableOpacity,
 } from 'react-native';
+import { Button } from 'native-base';
 
 // Internal Dependencies
 import { URL } from 'react-native-dotenv';
@@ -202,13 +202,13 @@ const RegisterScreen = (props) => {
       </View>
 
       <View style={buttonContainerStyle}>
-        <TouchableOpacity
+        <Button
           style={buttonStyle}
           onPress={handleSubmit}
           disabled={!validated}
         >
-          <Text style={buttonTextStyle}>Register</Text>
-        </TouchableOpacity>
+          <Text style={buttonTextStyle}>Sign up</Text>
+        </Button>
         <Footer navigation={navigation} />
       </View>
     </View>

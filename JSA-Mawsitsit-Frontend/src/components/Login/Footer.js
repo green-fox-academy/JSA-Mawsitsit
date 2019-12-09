@@ -1,10 +1,7 @@
 // External Dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Text,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 
 // Internal Dependencies
 import LoginStyle from '../../styles/LoginStyle';
@@ -14,11 +11,7 @@ import LinkButton from '../SharedUnits/LinkButton';
 const {
   footerStyle,
   footerFrameStyle,
-  footerFrameInsideStyle,
-  footerTextStyle,
-  variantClickStyle,
   variantPswStyle,
-  footerBottomStyle,
 } = LoginStyle;
 
 
@@ -29,19 +22,13 @@ const Footer = (props) => {
   return (
     <View style={footerStyle}>
       <View style={footerFrameStyle}>
-        <Text style={footerTextStyle}>Don&apos;t have an account?</Text>
-        <View style={footerFrameInsideStyle}>
-          <LinkButton
-            linkText="Click here"
-            variantStyle={variantClickStyle}
-            onPress={() => navigation.navigate('Register')}
-          />
-          <Text style={footerTextStyle}>to create one!</Text>
-        </View>
-      </View>
-      <View style={footerBottomStyle}>
         <LinkButton
-          linkText="Fogotten password"
+          linkText="Create account"
+          variantStyle={variantPswStyle}
+          onPress={() => navigation.navigate('Register')}
+        />
+        <LinkButton
+          linkText="Forgot password?"
           variantStyle={variantPswStyle}
           onPress={() => navigation.navigate('Register')}
         />

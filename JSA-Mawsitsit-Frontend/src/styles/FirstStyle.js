@@ -1,38 +1,25 @@
 // External Dependencies
 import { StyleSheet } from 'react-native';
 
-const LoginStyle = StyleSheet.create({
+const FirstStyle = StyleSheet.create({
   rootStyle: {
     flex: 1,
   },
   headerStyle: {
-    flex: 2,
+    flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   headerTextStyle: {
     top: 35,
     fontSize: 38,
-    fontWeight: '700',
     color: '#FFF',
-  },
-  inputStyle: {
-    flex: 5,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  textInputStyle: {
-    backgroundColor: '#fff',
-    width: 350,
-    borderRadius: 7,
-    height: 45,
-    borderWidth: 10,
-    borderColor: '#000',
+    fontWeight: '700',
   },
   buttonStyle: {
-    width: 300,
+    width: 220,
     height: 50,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -41,29 +28,19 @@ const LoginStyle = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1269e5',
   },
-  switchStyle: {
-    transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }],
-  },
-  selectStyle: {
-    width: 320,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  selectTextStyle: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
   footerStyle: {
     flex: 2,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   footerFrameStyle: {
-    width: 260,
+    width: 230,
     top: 20,
+  },
+  footerFrameInsideStyle: {
+    display: 'flex',
+    width: 220,
+    height: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -71,10 +48,11 @@ const LoginStyle = StyleSheet.create({
   footerTextStyle: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#FFF',
   },
   linkTextStyle: {
-    color: '#fff',
-    fontSize: 22,
+    color: '#FFF',
+    fontSize: 18,
     fontWeight: 'bold',
   },
   variantClickStyle: {
@@ -90,4 +68,4 @@ const LoginStyle = StyleSheet.create({
   },
 });
 
-export default LoginStyle;
+export default FirstStyle;

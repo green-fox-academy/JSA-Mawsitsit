@@ -82,13 +82,6 @@ const LoginForm = (props) => {
         placeholder="Password"
         onChangeText={(value) => handleChange('password', value)}
       />
-      <Button
-        bordered
-        style={buttonStyle}
-        onPress={handleSubmit}
-      >
-        <Text style={btnTextStyle}> Login </Text>
-      </Button>
       <Select
         selectItem="Remember Email/Phone"
         selectValue={loginInput.rmberUserIdentifier}
@@ -104,6 +97,13 @@ const LoginForm = (props) => {
         selectValue={loginInput.autoLogin}
         onChangeSelect={(value) => handleSelect('autoLogin', value)}
       />
+      <Button
+        bordered
+        style={buttonStyle}
+        onPress={handleSubmit}
+      >
+        <Text style={btnTextStyle}>Sign in</Text>
+      </Button>
     </View>
   );
 };
