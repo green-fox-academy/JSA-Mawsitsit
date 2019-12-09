@@ -12,19 +12,15 @@ import {
 
 // Internal Dependencies
 import IconListItem from '../SharedUnits/IconListItem';
-import {
-  fetchUserDetailData,
-  updateUserDetailInfo,
-} from './actions/PersonalAction';
+import { fetchUserDetailData } from './actions/PersonalAction';
 
 // Component Definition
 const Personal = (props) => {
   const appNavigation = useContext(NavigationContext);
 
   const {
+    fetchedUserDetailData,
     onFetchUserDetailData,
-    onUpdateUserDetailInfo,
-    userDetailForm,
   } = props;
 
   useEffect(() => {
@@ -55,13 +51,12 @@ const Personal = (props) => {
           appNavigation.navigate('InfoModificationPage', {
             icon,
             key,
-            onChange: onUpdateUserDetailInfo,
             placeholder,
-            value: userDetailForm[key],
+            value: fetchedUserDetailData[key],
           });
         }}
         placeholder={placeholder}
-        value={userDetailForm[key]}
+        value={fetchedUserDetailData[key]}
       />
     );
   });
@@ -74,12 +69,17 @@ const Personal = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { userDetailForm } = state.AccountManagement.Personal;
-  return { userDetailForm };
+  const {
+    fetchedUserDetailData,
+  } = state.AccountManagement.Personal;
+
+  return {
+    fetchedUserDetailData,
+  };
 };
 
 Personal.propTypes = {
-  userDetailForm: PropTypes.shape({
+  fetchedUserDetailData: PropTypes.shape({
     userId: PropTypes.number,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
@@ -91,14 +91,12 @@ Personal.propTypes = {
     isDetailsVerified: PropTypes.bool,
   }),
   onFetchUserDetailData: PropTypes.func.isRequired,
-  onUpdateUserDetailInfo: PropTypes.func.isRequired,
 };
 
 Personal.defaultProps = {
-  userDetailForm: {},
+  fetchedUserDetailData: {},
 };
 
 export default connect(mapStateToProps, {
   onFetchUserDetailData: fetchUserDetailData,
-  onUpdateUserDetailInfo: updateUserDetailInfo,
 })(Personal);

@@ -4,7 +4,7 @@ import _ from 'lodash';
 // Internal Dependencies
 import {
   createActionCreator,
-  fetchRequest,
+  // fetchRequest,
 } from '../../App/RootUtilities';
 import {
   FETCH_USER_DETAIL_DATA,
@@ -33,13 +33,13 @@ export const fetchUserDetailData = () => async (dispatch) => {
   });
 };
 
-export const updateUserDetailData = () => async (dispatch) => {
-  const updatedUserDetailData = await fetchRequest('http://localhost:8081/personalDetails', {
-    method: 'POST',
-  });
+export const updateUserDetailData = (userDetailDataToUpdate) => async (dispatch) => {
+  // const updatedUserDetailData = await fetchRequest('http://localhost:8081/personalDetails', {
+  //   method: 'POST',
+  // });
   dispatch({
     type: UPDATE_USER_DETAIL_DATA,
-    updatedUserDetailData,
+    updatedUserDetailData: userDetailDataToUpdate,
   });
 };
 

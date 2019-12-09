@@ -6,11 +6,16 @@ import {
   Button,
   Text,
 } from 'native-base';
+import { connect } from 'react-redux';
 import { View } from 'react-native';
 
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
 import InfoModificationPageStyles from '../../styles/InfoModificationPageStyle';
+import {
+  updateUserDetailData,
+  updateUserDetailInfo,
+} from './actions/PersonalAction';
 
 // Local Variables
 const {
@@ -23,11 +28,16 @@ const {
 
 // Component Definition
 const InfoModificationPage = (props) => {
-  const { navigation } = props;
+  const {
+    navigation,
+    onUpdateUserDetailData,
+    onUpdateUserDetailInfo,
+    userDetailForm,
+  } = props;
+
   const {
     icon,
     key,
-    onChange,
     placeholder,
     value,
   } = navigation.state.params;
@@ -45,12 +55,16 @@ const InfoModificationPage = (props) => {
       </View>
       <IconInput
         icon={icon}
-        onChange={(valueToUpdate) => onChange(key, valueToUpdate)}
+        onChange={(valueToUpdate) => onUpdateUserDetailInfo(key, valueToUpdate)}
         placeholder={placeholder}
-        value={value}
+        value={userDetailForm[key] || value}
       />
       <Button
         style={doneButtonStyle}
+        onPress={() => {
+          onUpdateUserDetailData({ [key]: userDetailForm[key] });
+          navigation.goBack();
+        }}
         transparent
       >
         <Text style={doneButtonTextStyle}>DONE</Text>
@@ -62,16 +76,19 @@ const InfoModificationPage = (props) => {
 // Prop Validation
 InfoModificationPage.propTypes = {
   navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
     state: PropTypes.shape({
       params: PropTypes.shape({
         icon: PropTypes.string.isRequired,
         key: PropTypes.string.isRequired,
-        onChange: PropTypes.func.isRequired,
         placeholder: PropTypes.string.isRequired,
         value: PropTypes.string,
       }),
     }),
   }),
+  onUpdateUserDetailData: PropTypes.func.isRequired,
+  onUpdateUserDetailInfo: PropTypes.func.isRequired,
+  userDetailForm: PropTypes.shape({}).isRequired,
 };
 
 InfoModificationPage.defaultProps = {
@@ -92,4 +109,11 @@ InfoModificationPage.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Info Modification',
 });
 
-export default InfoModificationPage;
+const mapStateToProps = (state) => ({
+  userDetailForm: state.AccountManagement.Personal.userDetailForm,
+});
+
+export default connect(mapStateToProps, {
+  onUpdateUserDetailData: updateUserDetailData,
+  onUpdateUserDetailInfo: updateUserDetailInfo,
+})(InfoModificationPage);

@@ -8,25 +8,26 @@ import {
 
 const INITIAL_STATE = {
   fetchedUserDetailData: {},
-  userDetailForm: {},
   updatedUserDetailData: {},
+  userDetailForm: {},
 };
 
 const fetchUserDetailData = (state, action) => ({
   ...state,
   fetchedUserDetailData: action.fetchedUserDetailData,
-  userDetailForm: action.fetchedUserDetailData,
 });
 
 const updateUserDetailData = (state, action) => ({
   ...state,
-  updatedUserDetailData: action.updatedUserDetailData,
+  fetchedUserDetailData: {
+    ...state.fetchedUserDetailData,
+    ...action.updatedUserDetailData,
+  },
 });
 
 const updateUserDetailInfo = (state, action) => ({
   ...state,
   userDetailForm: {
-    ...state.userDetailForm,
     [action.prop]: action.value,
   },
 });
