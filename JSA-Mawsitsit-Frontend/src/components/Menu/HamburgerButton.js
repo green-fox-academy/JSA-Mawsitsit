@@ -25,8 +25,10 @@ const HamburgerButton = () => {
 HamburgerButton.propTypes = {
   navigation: PropTypes.shape({
     openDrawer: PropTypes.func,
-  }).isRequired,
-
+  }),
+};
+HamburgerButton.defaultProps = {
+  navigation: {},
 };
 
 export default HamburgerButton;
