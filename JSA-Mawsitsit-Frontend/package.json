@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "expo-font": "^7.0.0",
     "expo-linear-gradient": "^7.0.1",
     "lodash": "^4.17.15",
     "native-base": "^2.13.8",
