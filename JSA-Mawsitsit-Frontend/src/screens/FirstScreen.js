@@ -1,8 +1,10 @@
 // External Dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import {
+  View,
+  ImageBackground,
+} from 'react-native';
 
 // Internal Dependencies
 import FirstStyle from '../styles/FirstStyle';
@@ -17,15 +19,14 @@ const FirstScreen = (props) => {
   const { navigation } = props;
   return (
     <View style={rootStyle}>
-      <LinearGradient
-        colors={['#97a8e8', '#869fe7', '#437ee6', '#1269e5']}
-        style={rootStyle}
-        start={[0, 0]}
-        end={[1, 1]}
+      <ImageBackground
+        source={{ uri: 'https://i.pinimg.com/564x/a7/3f/b6/a73fb617b48b1e37f39f380f3ba448f3.jpg' }}
+        style={{ width: '100%', height: '100%' }}
+        imageStyle={{ opacity: 0.7 }}
       >
         <Header />
         <Footer navigation={navigation} />
-      </LinearGradient>
+      </ImageBackground>
     </View>
   );
 };
