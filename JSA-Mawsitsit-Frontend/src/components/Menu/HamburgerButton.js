@@ -28,7 +28,6 @@ HamburgerButton.propTypes = {
     openDrawer: PropTypes.func,
   }),
 };
-
 HamburgerButton.defaultProps = {
   navigation: {},
 };

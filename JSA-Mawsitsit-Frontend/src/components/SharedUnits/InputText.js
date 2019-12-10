@@ -13,6 +13,7 @@ const { textInputStyle } = LoginStyle;
 // Component Definition
 const InputText = (props) => {
   const {
+    isAutoCapital,
     placeholder,
     onChangeText,
   } = props;
@@ -20,6 +21,7 @@ const InputText = (props) => {
     <View>
       <Item regular style={textInputStyle}>
         <Input
+          autoCapitalize={isAutoCapital}
           secureTextEntry={placeholder === 'Password'}
           placeholder={placeholder}
           onChangeText={onChangeText}
@@ -30,8 +32,13 @@ const InputText = (props) => {
 };
 
 InputText.propTypes = {
+  isAutoCapital: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
+};
+
+InputText.defaultProps = {
+  isAutoCapital: 'none',
 };
 
 export default InputText;

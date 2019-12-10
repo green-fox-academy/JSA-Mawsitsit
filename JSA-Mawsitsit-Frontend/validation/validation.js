@@ -56,3 +56,9 @@ export const passwordCheck = (password, passwordConfirm) => {
   }
   return checkMessage;
 };
+
+export const validateLoginPreference = (loginInput) => ({
+  rmberUserIdentifier: (loginInput.userIdentifier.length !== 0),
+  rmberPassword: (loginInput.password.length !== 0),
+  autoLogin: loginInput.rmberUserIdentifier && loginInput.rmberPassword,
+});

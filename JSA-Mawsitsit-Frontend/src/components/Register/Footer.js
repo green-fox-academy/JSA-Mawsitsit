@@ -34,7 +34,6 @@ Footer.propTypes = {
     navigate: PropTypes.func,
   }),
 };
-
 Footer.defaultProps = {
   navigation: {},
 };

@@ -1,5 +1,6 @@
 // External Dependencies
 const express = require('express');
+const cors = require('cors');
 
 // Internal Dependencies
 const registerRouter = require('./routes/registerRouter');
@@ -12,7 +13,7 @@ const { verificationLinkRouter } = require('./routes/emailVerificationRouter');
 // Local Variables
 const server = express();
 
-
+server.use(cors());
 server.use(express.json());
 server.use('/register', registerRouter);
 server.use('/login', loginRouter);
