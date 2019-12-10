@@ -16,6 +16,7 @@ const HamburgerButton = () => {
           color="white"
           name="menu"
           size={24}
+          style={{ marginLeft: 12 }}
         />
       </Button>
     </View>
@@ -25,8 +26,11 @@ const HamburgerButton = () => {
 HamburgerButton.propTypes = {
   navigation: PropTypes.shape({
     openDrawer: PropTypes.func,
-  }).isRequired,
+  }),
+};
 
+HamburgerButton.defaultProps = {
+  navigation: {},
 };
 
 export default HamburgerButton;

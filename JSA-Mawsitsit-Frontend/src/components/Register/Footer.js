@@ -10,7 +10,7 @@ import LinkButton from '../SharedUnits/LinkButton';
 // Local Variables
 const {
   footerStyle,
-  variantBackToSignInStyle,
+  variantLinkButtonStyle,
 } = RegisterStyle;
 
 
@@ -22,7 +22,7 @@ const Footer = (props) => {
     <View style={footerStyle}>
       <LinkButton
         linkText="Sign in to an existing account"
-        variantStyle={variantBackToSignInStyle}
+        variantStyle={variantLinkButtonStyle}
         onPress={() => navigation.navigate('Login')}
       />
     </View>
@@ -32,7 +32,11 @@ const Footer = (props) => {
 Footer.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
-  }).isRequired,
+  }),
+};
+
+Footer.defaultProps = {
+  navigation: {},
 };
 
 export default Footer;

@@ -16,8 +16,8 @@ const {
   footerFrameStyle,
   footerFrameInsideStyle,
   footerTextStyle,
-  variantClickStyle,
-  variantPswStyle,
+  registerButtonStyle,
+  forgetPasswordButtonStyle,
   footerBottomStyle,
 } = LoginStyle;
 
@@ -33,7 +33,7 @@ const Footer = (props) => {
         <View style={footerFrameInsideStyle}>
           <LinkButton
             linkText="Click here"
-            variantStyle={variantClickStyle}
+            variantStyle={registerButtonStyle}
             onPress={() => navigation.navigate('Register')}
           />
           <Text style={footerTextStyle}>to create one!</Text>
@@ -42,7 +42,7 @@ const Footer = (props) => {
       <View style={footerBottomStyle}>
         <LinkButton
           linkText="Fogotten password"
-          variantStyle={variantPswStyle}
+          variantStyle={forgetPasswordButtonStyle}
           onPress={() => navigation.navigate('Register')}
         />
       </View>
@@ -53,7 +53,11 @@ const Footer = (props) => {
 Footer.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
-  }).isRequired,
+  }),
+};
+
+Footer.defaultProps = {
+  navigation: {},
 };
 
 export default Footer;

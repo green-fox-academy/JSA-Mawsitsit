@@ -56,8 +56,12 @@ const Menu = () => {
 
 Menu.propTypes = {
   navigation: PropTypes.shape({
-    closeDrawer: PropTypes.func,
-  }).isRequired,
+    openDrawer: PropTypes.func,
+  }),
+};
+
+Menu.defaultProps = {
+  navigation: {},
 };
 
 export default Menu;
