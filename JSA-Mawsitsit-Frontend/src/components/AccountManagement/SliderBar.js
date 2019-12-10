@@ -1,6 +1,5 @@
 // External Dependencies
 import React from 'react';
-import { Text } from 'react-native';
 import {
   Container,
   Tab,
@@ -9,7 +8,7 @@ import {
 
 // Internal Dependencies
 import PersonalDetailsStyle from '../../styles/PersonalDetailsStyle';
-// import PersonalDetails from './PersonalDetails';
+import Personal from './Personal';
 
 const { tabUnderlineStyle, tabTextStyle } = PersonalDetailsStyle;
 
@@ -17,7 +16,7 @@ const SliderBar = () => (
   <Container>
     <Tabs tabBarUnderlineStyle={tabUnderlineStyle}>
       <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="PERSONAL">
-        <Text>Welcome to Personal Details page~</Text>
+        <Personal />
       </Tab>
       <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="SECURITY" />
       <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="FINANCIAL" />

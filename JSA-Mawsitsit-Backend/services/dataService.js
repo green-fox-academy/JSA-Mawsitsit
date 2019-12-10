@@ -68,9 +68,54 @@ const saveUserDetailData = async (userToRegister) => {
   ).catch((error) => { throw error; });
 };
 
+
+const sendUserDetailData = async (userId) => {
+  const sendUserDetailQueryStatement = 'SELECT * FROM user_detail WHERE user_id = ?;';
+  const sendUserDetailQueryInput = [userId];
+
+  const response = await mysqlPromisedQuery(
+    mysqlConnection,
+    sendUserDetailQueryStatement,
+    sendUserDetailQueryInput,
+  ).catch((error) => { throw error; });
+
+  return response[0];
+};
+
+
+const sendEmailToUser = async (userId) => {
+  const sendUserDetailQueryStatement = 'SELECT email FROM user_detail WHERE user_id = ?;';
+  const sendUserDetailQueryInput = [userId];
+
+  const response = await mysqlPromisedQuery(
+    mysqlConnection,
+    sendUserDetailQueryStatement,
+    sendUserDetailQueryInput,
+  ).catch((error) => { throw error; });
+
+  return response[0];
+};
+
+
+const verificationLink = async (userEmail) => {
+  const verificationLinkQueryStatement = 'UPDATE user_detail SET isEmailVerified=true where email = ?;';
+  const verificationLinkQueryInput = [userEmail];
+
+  await mysqlPromisedQuery(
+    mysqlConnection,
+    verificationLinkQueryStatement,
+    verificationLinkQueryInput,
+  ).catch((error) => { throw error; });
+  return true;
+};
+
+
 module.exports = {
   checkIdentifier,
   loginUser,
   registerUser,
   saveUserDetailData,
+  sendUserDetailData,
+  sendEmailToUser,
+  verificationLink,
 };

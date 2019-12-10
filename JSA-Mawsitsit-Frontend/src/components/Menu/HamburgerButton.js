@@ -16,6 +16,7 @@ const HamburgerButton = () => {
           color="white"
           name="menu"
           size={24}
+          style={{ marginLeft: 12 }}
         />
       </Button>
     </View>
