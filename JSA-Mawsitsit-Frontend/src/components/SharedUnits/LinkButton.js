@@ -1,18 +1,16 @@
 // External Dependencies
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Button } from 'native-base';
 import {
   Text,
-  View,
 } from 'react-native';
-import { Button } from 'native-base';
 
 // Internal Dependencies
-import LoginStyle from '../../styles/LoginStyle';
+import LinkButtonStyles from '../../styles/LinkButtonStyle';
 
 // Local Variables
-const { linkTextStyle } = LoginStyle;
-
+const { linkButtonTextStyle } = LinkButtonStyles;
 
 // Component Definition
 const LinkButton = (props) => {
@@ -23,20 +21,26 @@ const LinkButton = (props) => {
   } = props;
 
   return (
-    <View>
-      <Button transparent onPress={onPress}>
-        <Text style={{ ...linkTextStyle, ...variantStyle }}>{linkText}</Text>
-      </Button>
-    </View>
+    <Button
+      onPress={onPress}
+      transparent
+    >
+      <Text style={[linkButtonTextStyle, variantStyle]}>
+        {linkText}
+      </Text>
+    </Button>
   );
 };
 
+// Prop Validation
 LinkButton.propTypes = {
   linkText: PropTypes.string.isRequired,
-  variantStyle: Text.propTypes.style,
   onPress: PropTypes.func.isRequired,
+  variantStyle: Text.propTypes.style,
 };
+
 LinkButton.defaultProps = {
   variantStyle: {},
 };
+
 export default LinkButton;

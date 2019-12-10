@@ -6,9 +6,10 @@
   },
   "root": true,
   "globals": {
-    "fetch": true,
     "describe": true,
+    "expect": true,
+    "fetch": true,
     "it": true,
-    "expect": true
+    "window": true
   }
 }

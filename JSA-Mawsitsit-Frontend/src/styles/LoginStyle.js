@@ -81,6 +81,11 @@ const LoginStyle = StyleSheet.create({
     fontStyle: 'italic',
   },
   variantPswStyle: {
+    color: '#fff',
+    fontSize: 15,
+  },
+  forgetPasswordButtonStyle: {
+    color: 'white',
     fontSize: 15,
   },
   footerBottomStyle: {

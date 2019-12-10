@@ -72,10 +72,9 @@ const RegisterStyle = StyleSheet.create(
       alignItems: 'center',
       justifyContent: 'center',
     },
-    variantBackToSignInStyle: {
-      top: 20,
+    variantLinkButtonStyle: {
       fontSize: 15,
-      color: '#000',
+      top: 20,
     },
   },
 );
