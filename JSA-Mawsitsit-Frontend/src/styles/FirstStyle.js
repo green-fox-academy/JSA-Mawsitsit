@@ -58,9 +58,6 @@ const FirstStyle = StyleSheet.create({
   variantClickStyle: {
     fontStyle: 'italic',
   },
-  variantPswStyle: {
-    fontSize: 15,
-  },
   footerBottomStyle: {
     width: 200,
     alignItems: 'center',

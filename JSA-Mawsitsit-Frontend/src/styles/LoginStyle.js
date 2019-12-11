@@ -12,7 +12,7 @@ const LoginStyle = StyleSheet.create({
   },
   headerTextStyle: {
     top: 35,
-    fontSize: 38,
+    fontSize: 40,
     fontWeight: '700',
     color: '#FFF',
   },
@@ -20,14 +20,6 @@ const LoginStyle = StyleSheet.create({
     flex: 5,
     alignItems: 'center',
     justifyContent: 'space-around',
-  },
-  textInputStyle: {
-    backgroundColor: '#fff',
-    width: 350,
-    borderRadius: 7,
-    height: 45,
-    borderWidth: 10,
-    borderColor: '#000',
   },
   buttonStyle: {
     width: 300,
@@ -42,7 +34,7 @@ const LoginStyle = StyleSheet.create({
     color: '#1269e5',
   },
   switchStyle: {
-    transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }],
+    transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],
   },
   selectStyle: {
     width: 320,
@@ -52,7 +44,7 @@ const LoginStyle = StyleSheet.create({
     justifyContent: 'space-between',
   },
   selectTextStyle: {
-    color: '#fff',
+    color: '#FFF',
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -68,30 +60,10 @@ const LoginStyle = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  footerTextStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  linkTextStyle: {
-    color: '#fff',
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  variantClickStyle: {
-    fontStyle: 'italic',
-  },
   variantPswStyle: {
     color: '#fff',
     fontSize: 15,
-  },
-  forgetPasswordButtonStyle: {
-    color: 'white',
-    fontSize: 15,
-  },
-  footerBottomStyle: {
-    width: 200,
-    alignItems: 'center',
-    bottom: 30,
+    fontWeight: 'bold',
   },
 });
 

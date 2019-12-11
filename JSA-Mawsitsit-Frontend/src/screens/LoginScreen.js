@@ -25,7 +25,7 @@ const LoginScreen = (props) => {
       <ImageBackground
         source={{ uri: 'https://i.pinimg.com/564x/a7/3f/b6/a73fb617b48b1e37f39f380f3ba448f3.jpg' }}
         style={{ width: '100%', height: '100%' }}
-        imageStyle={{ opacity: 0.7 }}
+        imageStyle={{ opacity: 0.4 }}
       >
         <Header />
         <LoginForm />

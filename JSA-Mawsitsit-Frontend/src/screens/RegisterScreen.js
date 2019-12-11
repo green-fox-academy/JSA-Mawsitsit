@@ -18,6 +18,7 @@ import {
   passwordValidate,
   passwordCheck,
 } from '../../validation/validation';
+// import IconInput from '../components/SharedUnits/IconInput';
 import PasswordStrength from '../components/Register/PasswordStrength';
 import RegisterStyle from '../styles/RegisterStyle';
 
