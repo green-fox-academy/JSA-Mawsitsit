@@ -11,7 +11,7 @@ const FirstStyle = StyleSheet.create({
     justifyContent: 'center',
   },
   headerTextStyle: {
-    top: 35,
+    top: 45,
     fontSize: 38,
     color: '#FFF',
     fontWeight: '700',

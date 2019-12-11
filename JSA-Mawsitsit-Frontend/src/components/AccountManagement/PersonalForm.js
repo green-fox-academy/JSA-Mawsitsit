@@ -34,6 +34,7 @@ const Personal = (props) => {
     { icon: 'cellphone', key: 'phoneNumber', placeholder: 'Phone Number' },
     { icon: 'email-outline', key: 'email', placeholder: 'Email' },
     { icon: 'home-outline', key: 'address', placeholder: 'Address' },
+    { icon: 'account-card-details', key: 'idVerification', placeholder: 'ID Verification' },
   ];
 
   const personalInputs = personalInputData.map((personalInput) => {
