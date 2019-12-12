@@ -14,14 +14,15 @@ const App = () => {
 
   const loadFont = async () => {
     await ExpoFont.loadAsync({
+      LakkiReddy: require('native-base/Fonts/LakkiReddy.ttf'), // eslint-disable-line global-require
       Roboto: require('native-base/Fonts/Roboto.ttf'), // eslint-disable-line global-require
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'), // eslint-disable-line global-require
     });
+    setAppStatus(true);
   };
 
   useEffect(() => {
     loadFont();
-    setAppStatus(true);
   }, []);
 
   return appIsReady

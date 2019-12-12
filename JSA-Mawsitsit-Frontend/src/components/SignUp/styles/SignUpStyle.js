@@ -4,8 +4,29 @@ import { StyleSheet } from 'react-native';
 const RegisterStyle = StyleSheet.create(
   {
     rootStyle: {
+      alignItems: 'center',
       flex: 1,
+      justifyContent: 'space-around',
+    },
+    logoStyle: {
+      color: 'white',
+      fontFamily: 'LakkiReddy',
+      fontSize: 96,
+    },
+    signUpButtonStyle: {
+      backgroundColor: 'white',
+      height: 50,
       justifyContent: 'center',
+      width: 200,
+    },
+    signUpButtonTextStyle: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: '#3696F3',
+    },
+    buttonContainerStyle: {
+      top: 150,
+      alignItems: 'center',
     },
     containerStyle: {
       marginTop: 100,
@@ -56,22 +77,6 @@ const RegisterStyle = StyleSheet.create(
     },
     warningBorderColor: {
       borderBottomColor: 'red',
-    },
-    buttonTextStyle: {
-      fontSize: 25,
-      fontWeight: 'bold',
-      color: '#FFF',
-    },
-    buttonContainerStyle: {
-      top: 150,
-      alignItems: 'center',
-    },
-    buttonStyle: {
-      width: 300,
-      height: 50,
-      backgroundColor: '#1269e5',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     variantLinkButtonStyle: {
       fontSize: 15,
