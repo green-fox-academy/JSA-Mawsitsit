@@ -1,3 +1,6 @@
+// Sign Up Action Types
+export const UPDATE_SIGN_UP_INFO = 'UPDATE_SIGN_UP_INFO';
+
 // Personal Action Types
 export const FETCH_USER_DETAIL_DATA = 'FETCH_USER_DETAIL_DATA';
 export const UPDATE_USER_DETAIL_DATA = 'UPDATE_USER_DETAIL_DATA';
