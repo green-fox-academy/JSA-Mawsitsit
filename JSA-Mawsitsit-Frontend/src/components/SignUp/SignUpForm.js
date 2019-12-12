@@ -5,6 +5,12 @@ import { View } from 'react-native';
 
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
+import SignUpFormStyle from './styles/SignUpFormStyle';
+
+// Local Variables
+const {
+  rootStyle,
+} = SignUpFormStyle;
 
 // Component Definitions
 const SignUpForm = () => {
@@ -24,13 +30,14 @@ const SignUpForm = () => {
       <IconInput
         icon={icon}
         key={key}
+        onChange={() => {}}
         placeholder={placeholder}
       />
     );
   });
 
   return (
-    <View>
+    <View style={rootStyle}>
       {signUpInputs}
     </View>
   );

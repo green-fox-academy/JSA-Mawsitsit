@@ -5,6 +5,7 @@ const RegisterStyle = StyleSheet.create(
   {
     rootStyle: {
       flex: 1,
+      justifyContent: 'center',
     },
     containerStyle: {
       marginTop: 100,
