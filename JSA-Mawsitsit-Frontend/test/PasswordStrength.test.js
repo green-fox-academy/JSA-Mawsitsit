@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import PasswordStrength from '../src/components/Register/PasswordStrength';
+import PasswordStrength from '../src/components/SignUp/PasswordStrength';
 
 describe('<PasswordStrength />', () => {
   it('has 2 childs', () => {

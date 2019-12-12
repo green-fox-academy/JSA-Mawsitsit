@@ -4,7 +4,7 @@ import {
   View,
   Text,
 } from 'react-native';
-import RegisterStyle from '../../styles/RegisterStyle';
+import RegisterStyle from './styles/SignUpStyle';
 
 // Local Variables
 const {

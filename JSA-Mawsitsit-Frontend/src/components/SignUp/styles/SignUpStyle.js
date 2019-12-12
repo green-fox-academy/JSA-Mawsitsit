@@ -73,8 +73,7 @@ const RegisterStyle = StyleSheet.create(
       justifyContent: 'center',
     },
     variantLinkButtonStyle: {
-      fontSize: 18,
-      color: '#FFF',
+      fontSize: 15,
       top: 20,
     },
   },

@@ -15,13 +15,13 @@ import HamburgerButton from '../components/Menu/HamburgerButton';
 import InfoModificationPage from '../components/AccountManagement/InfoModificationPage';
 import LoginScreen from '../screens/LoginScreen';
 import Menu from '../components/Menu/Menu';
-import RegisterScreen from '../screens/RegisterScreen';
+import SignUp from '../components/SignUp/SignUp';
 
 
 const AuthStack = createStackNavigator({
   First: FirstScreen,
   Login: LoginScreen,
-  Register: RegisterScreen,
+  SignUp,
 });
 
 const WelcomePageStack = createStackNavigator(
