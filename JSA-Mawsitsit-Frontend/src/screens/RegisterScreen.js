@@ -5,7 +5,6 @@ import {
   Text,
   TextInput,
   View,
-  ImageBackground,
 } from 'react-native';
 import { Button } from 'native-base';
 
@@ -79,150 +78,144 @@ const RegisterScreen = (props) => {
     setInputText(initInputText);
     setInputError(initInputError);
     postResult(register);
+    navigation.navigate('Login');
   };
 
   return (
     <View style={rootStyle}>
-      <ImageBackground
-        source={{ uri: 'https://i.pinimg.com/564x/a7/3f/b6/a73fb617b48b1e37f39f380f3ba448f3.jpg' }}
-        style={{ width: '100%', height: '100%' }}
-        imageStyle={{ opacity: 0.7 }}
-      >
-        <View style={containerStyle}>
-          <Text style={inputError.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
-            E-mail
-          </Text>
-          <TextInput
-            style={inputError.emailError
-              ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-            value={inputText.email}
-            textContentType="emailAddress"
-            autoCapitalize="none"
-            placeholder="Email"
-            onChangeText={(value) => handleChange('email', value)}
-            onBlur={() => {
-              const emailError = emailValidate(inputText.email);
-              setInputError({
-                ...inputError,
-                emailError,
-              });
-            }}
-          />
-          <View>
-            {Boolean(inputError.emailError)
-              && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.emailError}</Text>}
-          </View>
-          <Text
-            style={inputError.phoneNumberError ? { ...textStyle, ...warningTextColor } : textStyle}
-          >
-            Phone number
-          </Text>
-          <TextInput
-            style={inputError.phoneNumberError
-              ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-            value={inputText.phoneNumber}
-            textContentType="telephoneNumber"
-            autoCapitalize="none"
-            placeholder="phone number"
-            onChangeText={(value) => handleChange('phoneNumber', value)}
-            onBlur={() => {
-              const phoneNumberError = phoneNumberValidate(inputText.phoneNumber);
-              setInputError({
-                ...inputError,
-                phoneNumberError,
-              });
-            }}
-          />
-          <View>
-            {Boolean(inputError.phoneNumberError) && (
-              <Text style={{ ...textStyle, ...warningTextColor }}>
-                {inputError.phoneNumberError}
-              </Text>
-            )}
-          </View>
-          <Text
-            style={inputError.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}
-          >
-            Password
-          </Text>
-          <TextInput
-            style={inputError.passwordMessage
-              ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-            value={inputText.password}
-            secureTextEntry
-            textContentType="password"
-            autoCapitalize="none"
-            placeholder="password"
-            onChangeText={(value) => {
-              handleChange('password', value);
-              const passwordMessage = passwordValidate(value);
-              setInputError({
-                ...inputError,
-                passwordMessage,
-              });
-            }}
-            onBlur={() => {
-              const passwordMessage = passwordValidate(inputText.password);
-              setInputError({
-                ...inputError,
-                passwordMessage,
-              });
-            }}
-          />
+      <View style={containerStyle}>
+        <Text style={inputError.emailError ? { ...textStyle, ...warningTextColor } : textStyle}>
+          E-mail
+        </Text>
+        <TextInput
+          style={inputError.emailError
+            ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+          value={inputText.email}
+          textContentType="emailAddress"
+          autoCapitalize="none"
+          placeholder="Email"
+          onChangeText={(value) => handleChange('email', value)}
+          onBlur={() => {
+            const emailError = emailValidate(inputText.email);
+            setInputError({
+              ...inputError,
+              emailError,
+            });
+          }}
+        />
+        <View>
+          {Boolean(inputError.emailError)
+            && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.emailError}</Text>}
+        </View>
+        <Text
+          style={inputError.phoneNumberError ? { ...textStyle, ...warningTextColor } : textStyle}
+        >
+          Phone number
+        </Text>
+        <TextInput
+          style={inputError.phoneNumberError
+            ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+          value={inputText.phoneNumber}
+          textContentType="telephoneNumber"
+          autoCapitalize="none"
+          placeholder="phone number"
+          onChangeText={(value) => handleChange('phoneNumber', value)}
+          onBlur={() => {
+            const phoneNumberError = phoneNumberValidate(inputText.phoneNumber);
+            setInputError({
+              ...inputError,
+              phoneNumberError,
+            });
+          }}
+        />
+        <View>
+          {Boolean(inputError.phoneNumberError) && (
+            <Text style={{ ...textStyle, ...warningTextColor }}>
+              {inputError.phoneNumberError}
+            </Text>
+          )}
+        </View>
+        <Text
+          style={inputError.passwordMessage ? { ...textStyle, ...warningTextColor } : textStyle}
+        >
+          Password
+        </Text>
+        <TextInput
+          style={inputError.passwordMessage
+            ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+          value={inputText.password}
+          secureTextEntry
+          textContentType="password"
+          autoCapitalize="none"
+          placeholder="password"
+          onChangeText={(value) => {
+            handleChange('password', value);
+            const passwordMessage = passwordValidate(value);
+            setInputError({
+              ...inputError,
+              passwordMessage,
+            });
+          }}
+          onBlur={() => {
+            const passwordMessage = passwordValidate(inputText.password);
+            setInputError({
+              ...inputError,
+              passwordMessage,
+            });
+          }}
+        />
 
-          <View>
-            {Boolean(inputError.passwordMessage)
-              && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
-          </View>
-
-          <Text style={inputError.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
-            Password confirmation
-          </Text>
-          <TextInput
-            style={inputError.checkMessage
-              ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
-            value={inputText.passwordConfirm}
-            secureTextEntry
-            textContentType="password"
-            autoCapitalize="none"
-            placeholder="password"
-            onChangeText={(value) => {
-              handleChange('passwordConfirm', value);
-              const checkMessage = passwordCheck(inputText.password, value);
-              setInputError({
-                ...inputError,
-                checkMessage,
-              });
-            }}
-            onBlur={() => {
-              const checkMessage = passwordCheck(inputText.password, inputText.passwordConfirm);
-              setInputError({
-                ...inputError,
-                checkMessage,
-              });
-            }}
-          />
-          <View>
-            {Boolean(inputError.checkMessage) && (
-              <Text style={{ ...textStyle, ...warningTextColor }}>
-                {inputError.checkMessage}
-              </Text>
-            )}
-          </View>
+        <View>
+          {Boolean(inputError.passwordMessage)
+            && (<PasswordStrength passwordMessage={inputError.passwordMessage} />)}
         </View>
 
-        <View style={buttonContainerStyle}>
-          <Button
-            style={buttonStyle}
-            onPress={handleSubmit}
-            disabled={!validated}
-          >
-            <Text style={buttonTextStyle}>Sign up</Text>
-          </Button>
-          <Footer navigation={navigation} />
+        <Text style={inputError.checkMessage ? { ...textStyle, ...warningTextColor } : textStyle}>
+          Password confirmation
+        </Text>
+        <TextInput
+          style={inputError.checkMessage
+            ? { ...textInputStyle, ...warningBorderColor } : textInputStyle}
+          value={inputText.passwordConfirm}
+          secureTextEntry
+          textContentType="password"
+          autoCapitalize="none"
+          placeholder="password"
+          onChangeText={(value) => {
+            handleChange('passwordConfirm', value);
+            const checkMessage = passwordCheck(inputText.password, value);
+            setInputError({
+              ...inputError,
+              checkMessage,
+            });
+          }}
+          onBlur={() => {
+            const checkMessage = passwordCheck(inputText.password, inputText.passwordConfirm);
+            setInputError({
+              ...inputError,
+              checkMessage,
+            });
+          }}
+        />
+        <View>
+          {Boolean(inputError.checkMessage) && (
+            <Text style={{ ...textStyle, ...warningTextColor }}>
+              {inputError.checkMessage}
+            </Text>
+          )}
         </View>
-      </ImageBackground>
+      </View>
 
+      <View style={buttonContainerStyle}>
+        <Button
+          style={buttonStyle}
+          onPress={handleSubmit}
+          disabled={!validated}
+        >
+          <Text style={buttonTextStyle}>Sign up</Text>
+        </Button>
+        <Footer navigation={navigation} />
+      </View>
     </View>
   );
 };

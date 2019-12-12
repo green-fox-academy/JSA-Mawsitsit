@@ -14,7 +14,7 @@ const fetchLoginAction = (object, navigation) => async (dispatch) => {
     const loginResponse = await result.json();
     if (loginResponse.auth) {
       await SecureStore.setItemAsync('Mawsitsit_token', loginResponse.token);
-      navigation.navigate('WelcomeScreen');
+      navigation.navigate('PersonalDetailsStack');
     } else {
       // eslint-disable-next-line no-alert
       // eslint-disable-next-line no-undef
