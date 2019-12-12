@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import LoginStyle from '../../styles/LoginStyle';
+import FirstStyle from '../../styles/FirstStyle';
 
 // Local Variables
 const {
   headerStyle,
   headerTextStyle,
-} = LoginStyle;
+} = FirstStyle;
 
 // Component Definition
 const Header = () => (

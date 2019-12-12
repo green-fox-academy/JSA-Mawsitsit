@@ -11,7 +11,7 @@ import * as SecureStore from 'expo-secure-store';
 
 // Internal Dependencies
 import LoginStyle from '../../styles/LoginStyle';
-import InputText from '../SharedUnits/InputText';
+import IconInput from '../SharedUnits/IconInput';
 import Select from '../SharedUnits/Select';
 import { validateLoginPreference } from '../../../validation/validation';
 
@@ -72,23 +72,20 @@ const LoginForm = (props) => {
 
   return (
     <View style={inputStyle}>
-      <InputText
+      <IconInput
+        icon="account-circle-outline"
         autoCapitalize="none"
+        onChange={(value) => handleChange('userIdentifier', value)}
         placeholder="Email Address or Phone number"
-        onChangeText={(value) => handleChange('userIdentifier', value)}
+        value={loginInput.userIdentifier}
       />
-      <InputText
+      <IconInput
+        icon="onepassword"
         autoCapitalize="none"
+        onChange={(value) => handleChange('password', value)}
         placeholder="Password"
-        onChangeText={(value) => handleChange('password', value)}
+        value={loginInput.password}
       />
-      <Button
-        bordered
-        style={buttonStyle}
-        onPress={handleSubmit}
-      >
-        <Text style={btnTextStyle}> Login </Text>
-      </Button>
       <Select
         selectItem="Remember Email/Phone"
         selectValue={loginInput.rmberUserIdentifier}
@@ -104,6 +101,13 @@ const LoginForm = (props) => {
         selectValue={loginInput.autoLogin}
         onChangeSelect={(value) => handleSelect('autoLogin', value)}
       />
+      <Button
+        bordered
+        style={buttonStyle}
+        onPress={handleSubmit}
+      >
+        <Text style={btnTextStyle}>Sign in</Text>
+      </Button>
     </View>
   );
 };

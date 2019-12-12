@@ -5,7 +5,6 @@ const LinkButtonStyles = StyleSheet.create({
   linkButtonTextStyle: {
     fontSize: 20,
     fontWeight: 'bold',
-    textDecorationLine: 'underline',
   },
 });
 

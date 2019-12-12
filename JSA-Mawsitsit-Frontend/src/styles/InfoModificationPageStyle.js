@@ -24,6 +24,13 @@ const InfoModificationPageStyles = StyleSheet.create({
   modificationSubtitleStyle: {
     fontSize: 18,
   },
+  emailVerificationStyle: {
+    borderRadius: 10,
+    borderTopColor: 'black',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    top: 30,
+  },
 });
 
 export default InfoModificationPageStyles;

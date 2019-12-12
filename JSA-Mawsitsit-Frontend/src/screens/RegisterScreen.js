@@ -5,8 +5,8 @@ import {
   Text,
   TextInput,
   View,
-  TouchableOpacity,
 } from 'react-native';
+import { Button } from 'native-base';
 
 // Internal Dependencies
 import { URL } from 'react-native-dotenv';
@@ -17,6 +17,7 @@ import {
   passwordValidate,
   passwordCheck,
 } from '../../validation/validation';
+// import IconInput from '../components/SharedUnits/IconInput';
 import PasswordStrength from '../components/Register/PasswordStrength';
 import RegisterStyle from '../styles/RegisterStyle';
 
@@ -77,6 +78,7 @@ const RegisterScreen = (props) => {
     setInputText(initInputText);
     setInputError(initInputError);
     postResult(register);
+    navigation.navigate('Login');
   };
 
   return (
@@ -196,19 +198,22 @@ const RegisterScreen = (props) => {
           }}
         />
         <View>
-          {Boolean(inputError.checkMessage)
-            && <Text style={{ ...textStyle, ...warningTextColor }}>{inputError.checkMessage}</Text>}
+          {Boolean(inputError.checkMessage) && (
+            <Text style={{ ...textStyle, ...warningTextColor }}>
+              {inputError.checkMessage}
+            </Text>
+          )}
         </View>
       </View>
 
       <View style={buttonContainerStyle}>
-        <TouchableOpacity
+        <Button
           style={buttonStyle}
           onPress={handleSubmit}
           disabled={!validated}
         >
-          <Text style={buttonTextStyle}>Register</Text>
-        </TouchableOpacity>
+          <Text style={buttonTextStyle}>Sign up</Text>
+        </Button>
         <Footer navigation={navigation} />
       </View>
     </View>

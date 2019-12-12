@@ -8,18 +8,15 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import LinkButton from '../SharedUnits/LinkButton';
+// import LinkButton from '../SharedUnits/LinkButton';
 import PersonalForm from './PersonalForm';
 import PersonalStyles from '../../styles/PersonalStyle';
 import ProgressBar from '../SharedUnits/ProgressBar';
 
 // Local Variables
 const {
-  buttonContainerStyle,
   progressContainerStyle,
   progressTitleStyle,
-  variantLinkButtonStyle,
-  verifyTextStyle,
 } = PersonalStyles;
 
 // Component Definition
@@ -39,7 +36,7 @@ const Personal = (props) => {
         <ProgressBar progress={userDetailDataProgress * 12.5} />
       </View>
       <PersonalForm />
-      <View style={buttonContainerStyle}>
+      {/* <View style={buttonContainerStyle}>
         {!fetchedUserDetailData.isEmailVerified && (
           <>
             <Text style={verifyTextStyle}>You have not verified your email.</Text>
@@ -60,7 +57,7 @@ const Personal = (props) => {
             />
           </>
         )}
-      </View>
+      </View> */}
     </View>
   );
 };

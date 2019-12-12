@@ -8,6 +8,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Internal Dependencies
+import FirstScreen from '../screens/FirstScreen';
 import AccountManagementScreen from '../screens/AccountManagementScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import HamburgerButton from '../components/Menu/HamburgerButton';
@@ -18,6 +19,7 @@ import RegisterScreen from '../screens/RegisterScreen';
 
 
 const AuthStack = createStackNavigator({
+  First: FirstScreen,
   Login: LoginScreen,
   Register: RegisterScreen,
 });

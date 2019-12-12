@@ -10,8 +10,10 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 
 // Internal Dependencies
+import LinkButton from '../SharedUnits/LinkButton';
 import IconInput from '../SharedUnits/IconInput';
 import InfoModificationPageStyles from '../../styles/InfoModificationPageStyle';
+import PersonalStyles from '../../styles/PersonalStyle';
 import {
   updateUserDetailData,
   updateUserDetailInfo,
@@ -24,7 +26,12 @@ const {
   modificationTitleContainerStyle,
   modificationTitleStyle,
   modificationSubtitleStyle,
+  emailVerificationStyle,
 } = InfoModificationPageStyles;
+
+const {
+  variantLinkButtonStyle,
+} = PersonalStyles;
 
 // Component Definition
 const InfoModificationPage = (props) => {
@@ -69,6 +76,18 @@ const InfoModificationPage = (props) => {
       >
         <Text style={doneButtonTextStyle}>DONE</Text>
       </Button>
+      {(key === 'email') && (
+        <View style={emailVerificationStyle}>
+          {/* {!fetchedUserDetailData.isEmailVerified && ( */}
+          <Text>You have not verified your identity.</Text>
+          <LinkButton
+            linkText="Click here to upload proof of ID."
+            onPress={() => { }}
+            variantStyle={variantLinkButtonStyle}
+          />
+          {/* )} */}
+        </View>
+      )}
     </View>
   );
 };
