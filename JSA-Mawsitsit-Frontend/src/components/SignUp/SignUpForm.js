@@ -7,6 +7,7 @@ import { View } from 'react-native';
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
 import SignUpFormStyle from './styles/SignUpFormStyle';
+import validateSignUp from '../App/Validations';
 import { updateSignUpInfo } from './actions/SignUpAction';
 
 // Local Variables
@@ -32,14 +33,19 @@ const SignUpForm = (props) => {
       key,
       placeholder,
     } = signUpInput;
+    const value = signUpForm[key];
+    const errorText = signUpForm[`${key}Error`];
+    const validationToUse = validateSignUp[key];
 
     return (
       <IconInput
+        errorText={errorText}
         icon={icon}
         key={key}
-        onChange={(value) => onUpdateSignUpInfo(key, value)}
+        onBlur={() => onUpdateSignUpInfo(`${key}Error`, validationToUse(value))}
+        onChange={(valueToUpdate) => onUpdateSignUpInfo(key, valueToUpdate)}
         placeholder={placeholder}
-        value={signUpForm[key]}
+        value={value}
       />
     );
   });

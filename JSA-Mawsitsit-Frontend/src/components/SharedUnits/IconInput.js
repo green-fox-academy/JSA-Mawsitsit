@@ -5,6 +5,7 @@ import React from 'react';
 import {
   Input,
   Item,
+  Text,
 } from 'native-base';
 import { View } from 'react-native';
 
@@ -13,14 +14,18 @@ import IconInputStyles from '../../styles/IconInputStyle';
 
 // Local Variables
 const {
+  errorTextStyle,
   iconStyle,
+  inputContainerStyle,
   rootStyle,
 } = IconInputStyles;
 
 // Component Definition
 const IconInput = (props) => {
   const {
+    errorText,
     icon,
+    onBlur,
     onChange,
     isAutoCapital,
     placeholder,
@@ -29,36 +34,43 @@ const IconInput = (props) => {
 
   return (
     <View style={rootStyle}>
-      <Item>
-        <MaterialCommunityIcons
-          style={iconStyle}
-          name={icon}
-          size={24}
-        />
-        <Input
-          autoCapitalize={isAutoCapital}
-          secureTextEntry={placeholder === 'Password'}
-          onChangeText={onChange}
-          placeholder={placeholder}
-          value={value}
-        />
-      </Item>
+      <View style={inputContainerStyle}>
+        <Item error={Boolean(errorText)}>
+          <MaterialCommunityIcons
+            style={iconStyle}
+            name={icon}
+            size={24}
+          />
+          <Input
+            autoCapitalize={isAutoCapital}
+            secureTextEntry={placeholder === 'Password'}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            placeholder={placeholder}
+            value={value}
+          />
+        </Item>
+      </View>
+      {Boolean(errorText) && <Text style={errorTextStyle}>{errorText}</Text>}
     </View>
   );
 };
 
 // Prop Validation
 IconInput.propTypes = {
+  errorText: PropTypes.string,
   icon: PropTypes.string.isRequired,
+  isAutoCapital: PropTypes.string,
+  onBlur: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
-  isAutoCapital: PropTypes.string,
 };
 
 IconInput.defaultProps = {
-  value: '',
+  errorText: '',
   isAutoCapital: 'none',
+  value: '',
 };
 
 export default IconInput;

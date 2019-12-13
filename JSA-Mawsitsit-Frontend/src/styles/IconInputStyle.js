@@ -3,13 +3,19 @@ import { StyleSheet } from 'react-native';
 
 const IconInputStyles = StyleSheet.create({
   rootStyle: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginHorizontal: 16,
+  },
+  errorTextStyle: {
+    color: 'red',
+    marginTop: 3,
   },
   iconStyle: {
     marginRight: 12,
+  },
+  inputContainerStyle: {
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
 
