@@ -19,10 +19,11 @@ const fetchUserDetailData = (state, action) => ({
 
 const updateUserDetailData = (state, action) => ({
   ...state,
-  fetchedUserDetailData: {
-    ...state.fetchedUserDetailData,
-    ...action.updatedUserDetailData,
-  },
+  updatedUserDetailData: action.updatedUserDetailData,
+  // fetchedUserDetailData: {
+  //   ...state.fetchedUserDetailData,
+  //   ...action.updatedUserDetailData,
+  // },
 });
 
 const updateUserDetailInfo = (state, action) => ({
