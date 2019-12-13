@@ -21,11 +21,13 @@ const Personal = (props) => {
   const {
     fetchedUserDetailData,
     onFetchUserDetailData,
+    updatedUserDetailData,
   } = props;
 
   useEffect(() => {
+    console.log('!');
     onFetchUserDetailData();
-  }, [onFetchUserDetailData]);
+  }, [onFetchUserDetailData, updatedUserDetailData]);
 
   const personalInputData = [
     { icon: 'alpha-f-box-outline', key: 'firstName', placeholder: 'First Name' },
@@ -53,6 +55,7 @@ const Personal = (props) => {
             icon,
             key,
             placeholder,
+            isEmailVerified: fetchedUserDetailData.isEmailVerified,
             value: fetchedUserDetailData[key],
           });
         }}
@@ -72,10 +75,12 @@ const Personal = (props) => {
 const mapStateToProps = (state) => {
   const {
     fetchedUserDetailData,
+    updatedUserDetailData,
   } = state.AccountManagement.Personal;
 
   return {
     fetchedUserDetailData,
+    updatedUserDetailData,
   };
 };
 
@@ -92,10 +97,12 @@ Personal.propTypes = {
     isDetailsVerified: PropTypes.bool,
   }),
   onFetchUserDetailData: PropTypes.func.isRequired,
+  updatedUserDetailData: PropTypes.shape({}),
 };
 
 Personal.defaultProps = {
   fetchedUserDetailData: {},
+  updatedUserDetailData: {},
 };
 
 export default connect(mapStateToProps, {
