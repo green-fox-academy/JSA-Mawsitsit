@@ -15,19 +15,18 @@ const fetchLoginAction = (object, navigation) => async (dispatch) => {
     if (loginResponse.auth) {
       await SecureStore.setItemAsync('Mawsitsit_token', loginResponse.token);
       navigation.navigate('PersonalDetailsStack');
-    } else {
-      // eslint-disable-next-line no-alert
-      // eslint-disable-next-line no-undef
-      alert(loginResponse.error);
     }
     dispatch({
       type: LOGIN_USER,
       loginResponse,
     });
   } catch (error) {
-    // eslint-disable-next-line no-alert
-    // eslint-disable-next-line no-undef
-    alert('Unable to connect to the server, please check the network！');
+    const loginResponse = {};
+    loginResponse.error = 'Unable to connect to the server, please check the network！';
+    dispatch({
+      type: LOGIN_USER,
+      loginResponse,
+    });
   }
 };
 

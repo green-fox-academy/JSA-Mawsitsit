@@ -8,7 +8,7 @@ const initLoginResponse = {
 const loginButtonReducer = (state = initLoginResponse, action) => {
   if (action.type === LOGIN_USER) {
     return {
-      ...action.response,
+      ...action.loginResponse,
     };
   }
   return state;

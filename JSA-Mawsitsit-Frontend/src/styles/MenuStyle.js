@@ -39,11 +39,6 @@ const MenuStyle = StyleSheet.create({
     fontWeight: '300',
     fontSize: 20,
   },
-  menuBackButtonStyle: {
-    width: '30%',
-    left: 200,
-    top: 300,
-  },
 });
 
 export default MenuStyle;
