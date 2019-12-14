@@ -25,9 +25,10 @@ const IconInput = (props) => {
   const {
     errorText,
     icon,
+    isAutoCapitalize,
+    isSecureTextEntry,
     onBlur,
     onChange,
-    isAutoCapital,
     placeholder,
     value,
   } = props;
@@ -42,8 +43,8 @@ const IconInput = (props) => {
             size={24}
           />
           <Input
-            autoCapitalize={isAutoCapital}
-            secureTextEntry={placeholder === 'Password'}
+            autoCapitalize={isAutoCapitalize}
+            secureTextEntry={isSecureTextEntry}
             onBlur={onBlur}
             onChangeText={onChange}
             placeholder={placeholder}
@@ -60,7 +61,8 @@ const IconInput = (props) => {
 IconInput.propTypes = {
   errorText: PropTypes.string,
   icon: PropTypes.string.isRequired,
-  isAutoCapital: PropTypes.string,
+  isAutoCapitalize: PropTypes.string,
+  isSecureTextEntry: PropTypes.bool,
   onBlur: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
@@ -69,7 +71,8 @@ IconInput.propTypes = {
 
 IconInput.defaultProps = {
   errorText: '',
-  isAutoCapital: 'none',
+  isAutoCapitalize: 'none',
+  isSecureTextEntry: false,
   value: '',
 };
 

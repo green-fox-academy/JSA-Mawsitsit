@@ -43,7 +43,13 @@ const SignUpForm = (props) => {
         <IconInput
           errorText={errorText}
           icon={icon}
-          onBlur={() => onUpdateSignUpInfo(`${key}Error`, validationToUse(value))}
+          isSecureTextEntry={Boolean(key === 'password' || key === 'passwordConfirmation')}
+          onBlur={() => {
+            if (key === 'passwordConfirmation') {
+              return onUpdateSignUpInfo(`${key}Error`, validationToUse(signUpForm.password, value));
+            }
+            return onUpdateSignUpInfo(`${key}Error`, validationToUse(value));
+          }}
           onChange={(valueToUpdate) => {
             onUpdateSignUpInfo(key, valueToUpdate);
             if (key === 'password') {
@@ -77,6 +83,10 @@ SignUpForm.propTypes = {
     password: PropTypes.string,
     passwordConfirmation: PropTypes.string,
     passwordStrength: PropTypes.string,
+    emailEmailError: PropTypes.string,
+    phoneNumberError: PropTypes.string,
+    passwordError: PropTypes.string,
+    passwordConfirmationError: PropTypes.string,
   }),
   onUpdateSignUpInfo: PropTypes.func.isRequired,
 };
@@ -88,6 +98,10 @@ SignUpForm.defaultProps = {
     password: '',
     passwordConfirmation: '',
     passwordStrength: '',
+    emailEmailError: '',
+    phoneNumberError: '',
+    passwordError: '',
+    passwordConfirmationError: '',
   }),
 };
 

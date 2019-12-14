@@ -9,11 +9,11 @@ const INITIAL_STATE = {
   phoneNumber: '',
   password: '',
   passwordConfirmation: '',
+  passwordStrength: '',
   emailEmailError: '',
   phoneNumberError: '',
   passwordError: '',
   passwordConfirmationError: '',
-  passwordStrength: '',
 };
 
 const updateSignUpInfo = (state, action) => ({

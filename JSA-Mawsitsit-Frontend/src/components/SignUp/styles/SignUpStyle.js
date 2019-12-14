@@ -25,62 +25,11 @@ const RegisterStyle = StyleSheet.create(
       color: '#3696F3',
     },
     buttonContainerStyle: {
-      top: 150,
       alignItems: 'center',
     },
-    containerStyle: {
-      marginTop: 100,
-      marginLeft: 20,
-      height: 350,
-      width: '90%',
-    },
-    // password strength
-    passwordStrengthStyle: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    barStyle: {
-      marginTop: 10,
-      height: 12,
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    baseBarStyle: {
-      backgroundColor: '#48BBEC',
-    },
-    weakBarStyle: {
-      width: 60,
-      backgroundColor: 'red',
-    },
-    mediumBarStyle: {
-      width: 120,
-      backgroundColor: 'orange',
-    },
-    strongBarStyle: {
-      width: 180,
-      backgroundColor: 'green',
-    },
-    textStyle: {
-      marginTop: 10,
-      fontSize: 14,
-    },
-    warningTextColor: {
-      color: 'red',
-    },
-    textInputStyle: {
-      marginTop: 10,
-      fontSize: 16,
-      borderBottomWidth: 1,
-      borderBottomColor: '#b9c6c3',
-    },
-    warningBorderColor: {
-      borderBottomColor: 'red',
-    },
-    variantLinkButtonStyle: {
+    variantLinkButtonTextStyle: {
+      color: 'white',
       fontSize: 15,
-      top: 20,
     },
   },
 );
