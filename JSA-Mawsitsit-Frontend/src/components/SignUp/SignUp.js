@@ -5,6 +5,7 @@ import {
   Button,
   Text,
 } from 'native-base';
+import { connect } from 'react-redux';
 import {
   ImageBackground,
   KeyboardAvoidingView,
@@ -15,6 +16,7 @@ import {
 import LinkButton from '../SharedUnits/LinkButton';
 import SignUpForm from './SignUpForm';
 import SignUpStyle from './styles/SignUpStyle';
+import { signUpUser } from './actions/SignUpAction';
 
 // Local Variables
 const {
@@ -28,7 +30,11 @@ const {
 
 // Component Definitions
 const SignUp = (props) => {
-  const { navigation } = props;
+  const {
+    navigation,
+    onSignUpUser,
+    userToSignUp,
+  } = props;
 
   return (
     <KeyboardAvoidingView
@@ -44,7 +50,7 @@ const SignUp = (props) => {
         <SignUpForm />
         <View style={buttonContainerStyle}>
           <Button
-            onPress={() => {}}
+            onPress={() => onSignUpUser(userToSignUp, navigation)}
             style={signUpButtonStyle}
           >
             <Text style={signUpButtonTextStyle}>Sign Up!</Text>
@@ -65,10 +71,21 @@ SignUp.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }),
+  onSignUpUser: PropTypes.func.isRequired,
+  userToSignUp: PropTypes.shape({
+    email: PropTypes.string,
+    phoneNumber: PropTypes.string,
+    password: PropTypes.string,
+  }),
 };
 
 SignUp.defaultProps = {
   navigation: {},
+  userToSignUp: PropTypes.shape({
+    email: '',
+    phoneNumber: '',
+    password: '',
+  }),
 };
 
 // Navigation Configuration
@@ -76,4 +93,22 @@ SignUp.navigationOptions = {
   headerShown: false,
 };
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  const {
+    email,
+    phoneNumber,
+    password,
+  } = state.SignUpForm;
+
+  return {
+    userToSignUp: {
+      email,
+      phone_number: phoneNumber,
+      password,
+    },
+  };
+};
+
+export default connect(mapStateToProps, {
+  onSignUpUser: signUpUser,
+})(SignUp);

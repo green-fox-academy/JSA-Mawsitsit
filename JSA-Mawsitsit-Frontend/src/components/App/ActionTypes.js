@@ -1,4 +1,5 @@
 // Sign Up Action Types
+export const SIGN_UP_USER_SUCCESS = 'SIGN_UP_USER_SUCCESS';
 export const UPDATE_SIGN_UP_INFO = 'UPDATE_SIGN_UP_INFO';
 
 // Personal Action Types

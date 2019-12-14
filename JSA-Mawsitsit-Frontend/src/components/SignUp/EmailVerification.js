@@ -7,9 +7,9 @@ import {
   View,
   Text,
 } from 'react-native';
-import IconInput from '../components/SharedUnits/IconInput';
-import VerificationStyle from '../styles/VerificationStyle';
-import Footer from '../components/VerificationPage/Footer';
+import IconInput from '../SharedUnits/IconInput';
+import VerificationStyle from '../../styles/VerificationStyle';
+import Footer from '../VerificationPage/Footer';
 
 // Local Variables
 const {

@@ -5,11 +5,11 @@ import {
 } from '../../App/ActionTypes';
 
 const INITIAL_STATE = {
-  email: '',
-  phoneNumber: '',
-  password: '',
-  passwordConfirmation: '',
-  passwordStrength: '',
+  email: 'sacrednoone@gmail.com',
+  phoneNumber: '21234567',
+  password: 'password1',
+  passwordConfirmation: 'password1',
+  passwordStrength: 'Medium',
   emailEmailError: '',
   phoneNumberError: '',
   passwordError: '',
