@@ -10,37 +10,20 @@ import { createStackNavigator } from 'react-navigation-stack';
 // Internal Dependencies
 import FirstScreen from '../screens/FirstScreen';
 import AccountManagementScreen from '../screens/AccountManagementScreen';
-import WelcomeScreen from '../screens/WelcomeScreen';
 import HamburgerButton from '../components/Menu/HamburgerButton';
 import InfoModificationPage from '../components/AccountManagement/InfoModificationPage';
 import LoginScreen from '../screens/LoginScreen';
+import VerificationScreen from '../screens/VerificationScreen';
 import Menu from '../components/Menu/Menu';
 import SignUp from '../components/SignUp/SignUp';
 
 
 const AuthStack = createStackNavigator({
+  VerificationScreen,
   First: FirstScreen,
   Login: LoginScreen,
   SignUp,
 });
-
-const WelcomePageStack = createStackNavigator(
-  {
-    WelcomeScreen,
-  },
-  {
-    defaultNavigationOptions: {
-      headerLeft: () => <HamburgerButton />,
-      headerTitle: 'Welcome page',
-      headerStyle: {
-        backgroundColor: '#3696F3',
-      },
-      headerTitleStyle: {
-        color: 'white',
-      },
-    },
-  },
-);
 
 const PersonalDetailsStack = createStackNavigator(
   {
@@ -63,7 +46,6 @@ const PersonalDetailsStack = createStackNavigator(
 
 
 const DrawerNavigation = createDrawerNavigator({
-  WelcomePageStack,
   PersonalDetailsStack,
 }, {
   contentComponent: () => <Menu />,

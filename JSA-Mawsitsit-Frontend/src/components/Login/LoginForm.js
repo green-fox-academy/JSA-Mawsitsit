@@ -20,12 +20,14 @@ const {
   inputStyle,
   buttonStyle,
   btnTextStyle,
+  warningTextStyle,
 } = LoginStyle;
 
 // Component Definition
 const LoginForm = (props) => {
   const {
     loginInput,
+    loginResponse,
     onUpdateLoginInfo,
     onFetchLogin,
   } = props;
@@ -101,6 +103,13 @@ const LoginForm = (props) => {
         selectValue={loginInput.autoLogin}
         onChangeSelect={(value) => handleSelect('autoLogin', value)}
       />
+      <View>
+        {Boolean(loginResponse.error) && (
+          <Text style={warningTextStyle}>
+            {loginResponse.error}
+          </Text>
+        )}
+      </View>
       <Button
         bordered
         style={buttonStyle}
@@ -123,6 +132,7 @@ LoginForm.propTypes = {
   loginResponse: PropTypes.shape({
     auth: PropTypes.bool,
     token: PropTypes.string,
+    error: PropTypes.string,
   }).isRequired,
   onFetchLogin: PropTypes.func.isRequired,
   onUpdateLoginInfo: PropTypes.func.isRequired,

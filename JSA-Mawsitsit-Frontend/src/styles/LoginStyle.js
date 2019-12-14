@@ -34,6 +34,12 @@ const LoginStyle = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1269e5',
   },
+  warningTextStyle: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'red',
+  },
   switchStyle: {
     transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],
   },

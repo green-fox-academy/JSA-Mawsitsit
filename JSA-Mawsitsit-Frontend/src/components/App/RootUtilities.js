@@ -1,6 +1,9 @@
+// External Dependency
+import * as SecureStore from 'expo-secure-store';
+
 // Fetch Helper
 export const fetchRequest = async (url, options = {}) => {
-  const userToken = '';
+  const userToken = await SecureStore.getItemAsync('Mawsitsit_token');
   const optionsToUse = options;
   optionsToUse.headers = options.headers || {};
   optionsToUse.headers.authorization = `Bearer ${userToken}`;
