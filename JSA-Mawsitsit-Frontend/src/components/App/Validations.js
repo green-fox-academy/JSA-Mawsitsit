@@ -6,7 +6,7 @@ const validateEmail = (email) => {
 
 const validatePhoneNumber = (phoneNumber) => {
   if (phoneNumber === '') return 'Please provide a phone number.';
-  if (phoneNumber.length < 8) return 'Phone number must be at least 8 numbers long.';
+  if (phoneNumber.length < 7) return 'Phone number must be at least 8 numbers long.';
   return '';
 };
 
@@ -16,15 +16,16 @@ const checkPasswordStrength = (password) => {
   // eslint-disable-next-line no-useless-escape
   const strongPassword = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*-])(?=.{8,})');
 
-  if (strongPassword.test(password)) return 'Strong password.';
-  if (mediumPassword.test(password)) return 'Medium password.';
-  if (weakPassword.test(password)) return 'Weak password.';
+  if (strongPassword.test(password)) return 'Great';
+  if (mediumPassword.test(password)) return 'Medium';
+  if (weakPassword.test(password)) return 'Weak';
   return '';
 };
 
 const validatePassword = (password) => {
-  if (password.length < 8) return 'Password must be at least 8 characters long.';
-  return checkPasswordStrength(password);
+  if (password === '') return 'Please provide a password.';
+  if (password.length < 7) return 'Password must be at least 8 characters long.';
+  return '';
 };
 
 const validatePasswordComfirmation = (password, passwordConfirmation) => {
@@ -37,4 +38,5 @@ export default {
   phoneNumber: validatePhoneNumber,
   password: validatePassword,
   passwordConfirmation: validatePasswordComfirmation,
+  passwordStrength: checkPasswordStrength,
 };

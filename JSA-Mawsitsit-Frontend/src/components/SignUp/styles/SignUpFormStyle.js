@@ -1,7 +1,7 @@
 // External Dependencies
 import { StyleSheet } from 'react-native';
 
-const signUpStyles = StyleSheet.create({
+const signUpFormStyles = StyleSheet.create({
   rootStyle: {
     backgroundColor: 'white',
     borderRadius: 25,
@@ -10,4 +10,4 @@ const signUpStyles = StyleSheet.create({
   },
 });
 
-export default signUpStyles;
+export default signUpFormStyles;

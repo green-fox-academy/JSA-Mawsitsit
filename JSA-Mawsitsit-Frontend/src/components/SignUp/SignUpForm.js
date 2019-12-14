@@ -6,6 +6,7 @@ import { View } from 'react-native';
 
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
+import PasswordStrengthBar from './PasswordStrengthBar';
 import SignUpFormStyle from './styles/SignUpFormStyle';
 import validateSignUp from '../App/Validations';
 import { updateSignUpInfo } from './actions/SignUpAction';
@@ -38,15 +39,26 @@ const SignUpForm = (props) => {
     const validationToUse = validateSignUp[key];
 
     return (
-      <IconInput
-        errorText={errorText}
-        icon={icon}
-        key={key}
-        onBlur={() => onUpdateSignUpInfo(`${key}Error`, validationToUse(value))}
-        onChange={(valueToUpdate) => onUpdateSignUpInfo(key, valueToUpdate)}
-        placeholder={placeholder}
-        value={value}
-      />
+      <View key={key}>
+        <IconInput
+          errorText={errorText}
+          icon={icon}
+          onBlur={() => onUpdateSignUpInfo(`${key}Error`, validationToUse(value))}
+          onChange={(valueToUpdate) => {
+            onUpdateSignUpInfo(key, valueToUpdate);
+            if (key === 'password') {
+              onUpdateSignUpInfo('passwordStrength', validateSignUp.passwordStrength(valueToUpdate));
+            }
+          }}
+          placeholder={placeholder}
+          value={value}
+        />
+        {Boolean(key === 'password' && signUpForm.password.length > 7) && (
+          <PasswordStrengthBar
+            passwordStrength={signUpForm.passwordStrength}
+          />
+        )}
+      </View>
     );
   });
 
@@ -64,6 +76,7 @@ SignUpForm.propTypes = {
     phoneNumber: PropTypes.string,
     password: PropTypes.string,
     passwordConfirmation: PropTypes.string,
+    passwordStrength: PropTypes.string,
   }),
   onUpdateSignUpInfo: PropTypes.func.isRequired,
 };
@@ -74,6 +87,7 @@ SignUpForm.defaultProps = {
     phoneNumber: '',
     password: '',
     passwordConfirmation: '',
+    passwordStrength: '',
   }),
 };
 
