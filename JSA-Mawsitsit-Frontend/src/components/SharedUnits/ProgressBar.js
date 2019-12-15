@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import ProgressBarStyles from '../../styles/ProgressBarStyle';
+import ProgressBarStyles from './styles/ProgressBarStyle';
 
 // Local Variables
 const {

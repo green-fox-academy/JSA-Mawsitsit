@@ -11,7 +11,7 @@ import { View } from 'react-native';
 
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
-import InfoModificationPageStyles from '../../styles/InfoModificationPageStyle';
+import InfoModificationPageStyles from './styles/InfoModificationPageStyle';
 
 import {
   updateUserDetailData,
@@ -40,10 +40,13 @@ const InfoModificationPage = (props) => {
   const {
     icon,
     key,
+    modificationSubtitle,
     placeholder,
     value,
   } = navigation.state.params;
 
+  const modificationSubtitleToUse = modificationSubtitle
+    || `Indicating your ${placeholder} below lets JPay know how to work better for you.`;
 
   return (
     <View>
@@ -53,21 +56,19 @@ const InfoModificationPage = (props) => {
           note
           style={modificationSubtitleStyle}
         >
-          {`Indicating your ${placeholder} below lets JPay know how to work better for you.`}
+          {modificationSubtitleToUse}
         </Text>
       </View>
       <IconInput
         icon={icon}
+        isSecureTextEntry={Boolean(key === 'password')}
         onChange={(valueToUpdate) => onUpdateUserDetailInfo(key, valueToUpdate)}
         placeholder={placeholder}
-        value={userDetailForm[key] || value}
+        value={userDetailForm[key] !== undefined ? userDetailForm[key] : value}
       />
       <Button
         style={doneButtonStyle}
-        onPress={() => {
-          onUpdateUserDetailData({ [key]: userDetailForm[key] });
-          navigation.goBack();
-        }}
+        onPress={() => onUpdateUserDetailData(key, userDetailForm[key], navigation)}
         transparent
       >
         <Text style={doneButtonTextStyle}>DONE</Text>
@@ -78,11 +79,13 @@ const InfoModificationPage = (props) => {
 
 // Prop Validation
 InfoModificationPage.propTypes = {
+  modificationSubtitle: PropTypes.string,
   navigation: PropTypes.shape({
     goBack: PropTypes.func.isRequired,
     state: PropTypes.shape({
       params: PropTypes.shape({
         icon: PropTypes.string.isRequired,
+        modificationSubtitle: PropTypes.string,
         key: PropTypes.string.isRequired,
         placeholder: PropTypes.string.isRequired,
         value: PropTypes.string,
@@ -95,6 +98,7 @@ InfoModificationPage.propTypes = {
 };
 
 InfoModificationPage.defaultProps = {
+  modificationSubtitle: '',
   navigation: {},
 };
 

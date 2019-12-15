@@ -8,7 +8,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Internal Dependencies
-import AccountManagementScreen from '../screens/AccountManagementScreen';
+import AccountManagement from '../components/AccountManagement/AccountManagement';
 import EmailVerification from '../components/SignUp/EmailVerification';
 import FirstScreen from '../screens/FirstScreen';
 import HamburgerButton from '../components/Menu/HamburgerButton';
@@ -27,7 +27,7 @@ const AuthStack = createStackNavigator({
 
 const PersonalDetailsStack = createStackNavigator(
   {
-    AccountManagementScreen,
+    AccountManagement,
     InfoModificationPage,
   },
   {

@@ -6,13 +6,11 @@ import React, {
 } from 'react';
 import { connect } from 'react-redux';
 import { NavigationContext } from 'react-navigation';
-import {
-  View,
-} from 'react-native';
+import { ScrollView } from 'react-native';
 
 // Internal Dependencies
-import IconListItem from '../SharedUnits/IconListItem';
-import { fetchUserDetailData } from './actions/PersonalAction';
+import IconListItem from '../../SharedUnits/IconListItem';
+import { fetchUserDetailData } from '../actions/PersonalAction';
 
 // Component Definition
 const Personal = (props) => {
@@ -31,7 +29,7 @@ const Personal = (props) => {
   const personalInputData = [
     { icon: 'alpha-f-box-outline', key: 'firstName', placeholder: 'First Name' },
     { icon: 'alpha-l-box-outline', key: 'lastName', placeholder: 'Last Name' },
-    { icon: 'cake', placeholder: 'Birthday', key: 'birthday' },
+    { icon: 'cake', key: 'birthday', placeholder: 'Birthday' },
     { icon: 'cellphone', key: 'phoneNumber', placeholder: 'Phone Number' },
     { icon: 'email-outline', key: 'email', placeholder: 'Email' },
     { icon: 'home-outline', key: 'address', placeholder: 'Address' },
@@ -44,6 +42,7 @@ const Personal = (props) => {
       key,
       placeholder,
     } = personalInput;
+    const emailModificationSubtitle = 'Indicating your email below lets JPay know how to work better for you. But please notice that changing your email will force you to verify the new email again.';
 
     return (
       <IconListItem
@@ -53,8 +52,8 @@ const Personal = (props) => {
           appNavigation.navigate('InfoModificationPage', {
             icon,
             key,
+            modificationSubtitle: key === 'email' ? emailModificationSubtitle : '',
             placeholder,
-            isEmailVerified: fetchedUserDetailData.isEmailVerified,
             value: fetchedUserDetailData[key],
           });
         }}
@@ -65,9 +64,9 @@ const Personal = (props) => {
   });
 
   return (
-    <View>
+    <ScrollView>
       {personalInputs}
-    </View>
+    </ScrollView>
   );
 };
 

@@ -3,11 +3,8 @@ import { StyleSheet } from 'react-native';
 
 const IconListItemStyles = StyleSheet.create({
   rootStyle: {
-    // alignItems: 'center',
-    // display: 'flex',
-    // flexDirection: 'row',
     marginHorizontal: 16,
-    marginVertical: 8,
+    marginVertical: 12,
   },
   iconStyle: {
     marginRight: 12,

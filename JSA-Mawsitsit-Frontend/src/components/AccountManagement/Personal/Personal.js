@@ -10,8 +10,8 @@ import {
 // Internal Dependencies
 // import LinkButton from '../SharedUnits/LinkButton';
 import PersonalForm from './PersonalForm';
-import PersonalStyles from '../../styles/PersonalStyle';
-import ProgressBar from '../SharedUnits/ProgressBar';
+import PersonalStyles from '../styles/PersonalStyle';
+import ProgressBar from '../../SharedUnits/ProgressBar';
 
 // Local Variables
 const {
@@ -24,40 +24,20 @@ const Personal = (props) => {
   const { fetchedUserDetailData } = props;
   let userDetailDataProgress = 8;
   Object.values(fetchedUserDetailData).forEach((fetchedUserDetailValue) => {
-    if (fetchedUserDetailValue === '' || fetchedUserDetailValue === false) {
+    if (fetchedUserDetailValue === '' || fetchedUserDetailValue === 0) {
       userDetailDataProgress -= 1;
     }
   });
 
   return (
     <View>
-      <View style={progressContainerStyle}>
-        <Text style={progressTitleStyle}>Please complete your personal details:</Text>
-        <ProgressBar progress={userDetailDataProgress * 12.5} />
-      </View>
+      {userDetailDataProgress !== 8 && (
+        <View style={progressContainerStyle}>
+          <Text style={progressTitleStyle}>Please complete your personal details:</Text>
+          <ProgressBar progress={userDetailDataProgress * 12.5} />
+        </View>
+      )}
       <PersonalForm />
-      {/* <View style={buttonContainerStyle}>
-        {!fetchedUserDetailData.isEmailVerified && (
-          <>
-            <Text style={verifyTextStyle}>You have not verified your email.</Text>
-            <LinkButton
-              linkText="Click here to verify it."
-              onPress={() => {}}
-              variantStyle={variantLinkButtonStyle}
-            />
-          </>
-        )}
-        {!fetchedUserDetailData.isDetailsVerified && (
-          <>
-            <Text style={verifyTextStyle}>You have not verified your identity.</Text>
-            <LinkButton
-              linkText="Click here to upload proof of ID."
-              onPress={() => {}}
-              variantStyle={variantLinkButtonStyle}
-            />
-          </>
-        )}
-      </View> */}
     </View>
   );
 };

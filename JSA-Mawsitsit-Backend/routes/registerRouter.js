@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 
 // Internal Dependencies
 const {
-  registerUser,
-  saveUserDetailData,
   checkIdentifier,
+  registerUser,
 } = require('../services/dataService');
+const { savePersonalData } = require('../services/personalDataService');
 const { validateRegister } = require('../services/validation');
 
 const registerRouter = express.Router();
@@ -37,7 +37,7 @@ registerRouter.post('/', async (req, res) => {
     };
 
     const userId = await registerUser(userToRegister);
-    await saveUserDetailData({ userId, email, phoneNumber });
+    await savePersonalData({ userId, email, phoneNumber });
 
     jwt.sign({ user_id: userId }, process.env.JWT_PRIVATE_KEY, (error, token) => {
       if (error) return res.status(500).json({ error: error.toString().split(': ')[1] });
