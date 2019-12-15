@@ -9,6 +9,7 @@ import {
 // Internal Dependencies
 import AccountManagementStyle from './styles/AccountManagementStyle';
 import Personal from './Personal/Personal';
+import Secure from './Secure/Secure';
 
 // Local Variables
 const {
@@ -26,7 +27,13 @@ const AccountManagement = () => (
       >
         <Personal />
       </Tab>
-      <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="SECURITY" />
+      <Tab
+        activeTextStyle={tabTextStyle}
+        textStyle={tabTextStyle}
+        heading="SECURITY"
+      >
+        <Secure />
+      </Tab>
       <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="FINANCIAL" />
     </Tabs>
   </Container>

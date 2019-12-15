@@ -3,10 +3,11 @@ import { combineReducers } from 'redux';
 
 // Internal Reducer
 import PersonalReducer from './PersonalReducer';
+import SecureReducer from './SecureReducer';
 
 const AccountManagementReducer = combineReducers({
   Financial: () => null,
-  Security: () => null,
+  Secure: SecureReducer,
   Personal: PersonalReducer,
 });
 

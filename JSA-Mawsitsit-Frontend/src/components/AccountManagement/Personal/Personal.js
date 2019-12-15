@@ -31,10 +31,12 @@ const Personal = (props) => {
 
   return (
     <View>
-      <View style={progressContainerStyle}>
-        <Text style={progressTitleStyle}>Please complete your personal details:</Text>
-        <ProgressBar progress={userDetailDataProgress * 12.5} />
-      </View>
+      {userDetailDataProgress !== 8 && (
+        <View style={progressContainerStyle}>
+          <Text style={progressTitleStyle}>Please complete your personal details:</Text>
+          <ProgressBar progress={userDetailDataProgress * 12.5} />
+        </View>
+      )}
       <PersonalForm />
     </View>
   );
