@@ -40,11 +40,7 @@ const Footer = (props) => {
 };
 
 Footer.propTypes = {
-//   navigation: PropTypes.shape({
-//     navigate: PropTypes.func,
-//   }).isRequired,
   onPress: PropTypes.func.isRequired,
 };
-
 
 export default Footer;

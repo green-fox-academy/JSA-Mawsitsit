@@ -20,7 +20,7 @@ const {
   inputStyle,
   buttonStyle,
   btnTextStyle,
-  warningTextStyle,
+  loginFormStyle,
 } = LoginStyle;
 
 // Component Definition
@@ -74,20 +74,24 @@ const LoginForm = (props) => {
 
   return (
     <View style={inputStyle}>
-      <IconInput
-        icon="account-circle-outline"
-        autoCapitalize="none"
-        onChange={(value) => handleChange('userIdentifier', value)}
-        placeholder="Email Address or Phone number"
-        value={loginInput.userIdentifier}
-      />
-      <IconInput
-        icon="onepassword"
-        autoCapitalize="none"
-        onChange={(value) => handleChange('password', value)}
-        placeholder="Password"
-        value={loginInput.password}
-      />
+      <View style={loginFormStyle}>
+        <IconInput
+          icon="account-circle-outline"
+          autoCapitalize="none"
+          onChange={(value) => handleChange('userIdentifier', value)}
+          placeholder="Email Address or Phone number"
+          value={loginInput.userIdentifier}
+        />
+        <IconInput
+          icon="onepassword"
+          autoCapitalize="none"
+          isSecureTextEntry
+          onChange={(value) => handleChange('password', value)}
+          placeholder="Password"
+          value={loginInput.password}
+          errorText={loginResponse.error}
+        />
+      </View>
       <Select
         selectItem="Remember Email/Phone"
         selectValue={loginInput.rmberUserIdentifier}
@@ -103,13 +107,6 @@ const LoginForm = (props) => {
         selectValue={loginInput.autoLogin}
         onChangeSelect={(value) => handleSelect('autoLogin', value)}
       />
-      <View>
-        {Boolean(loginResponse.error) && (
-          <Text style={warningTextStyle}>
-            {loginResponse.error}
-          </Text>
-        )}
-      </View>
       <Button
         bordered
         style={buttonStyle}

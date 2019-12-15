@@ -5,6 +5,12 @@ const LoginStyle = StyleSheet.create({
   rootStyle: {
     flex: 1,
   },
+  loginFormStyle: {
+    backgroundColor: 'white',
+    borderRadius: 25,
+    marginHorizontal: 16,
+    opacity: 0.7,
+  },
   headerStyle: {
     flex: 2,
     alignItems: 'center',
@@ -33,12 +39,6 @@ const LoginStyle = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     color: '#1269e5',
-  },
-  warningTextStyle: {
-    marginTop: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'red',
   },
   switchStyle: {
     transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],

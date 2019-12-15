@@ -7,11 +7,11 @@ import {
 } from '../../App/ActionTypes';
 
 const INITIAL_STATE = {
-  email: 'sacrednoone@gmail.com',
-  phoneNumber: '21234567',
-  password: 'password1',
-  passwordConfirmation: 'password1',
-  passwordStrength: 'Medium',
+  email: '',
+  phoneNumber: '',
+  password: '',
+  passwordConfirmation: '',
+  passwordStrength: '',
   emailEmailError: '',
   phoneNumberError: '',
   passwordError: '',

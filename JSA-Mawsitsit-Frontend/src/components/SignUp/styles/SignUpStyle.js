@@ -8,11 +8,6 @@ const RegisterStyle = StyleSheet.create(
       flex: 1,
       justifyContent: 'space-around',
     },
-    logoStyle: {
-      color: 'white',
-      fontFamily: 'LakkiReddy',
-      fontSize: 96,
-    },
     signUpButtonStyle: {
       backgroundColor: 'white',
       height: 50,
@@ -28,7 +23,7 @@ const RegisterStyle = StyleSheet.create(
       alignItems: 'center',
     },
     variantLinkButtonTextStyle: {
-      color: 'white',
+      color: '#3696F3',
       fontSize: 15,
     },
   },
