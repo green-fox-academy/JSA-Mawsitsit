@@ -1,78 +1,118 @@
 // External Dependencies
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Button } from 'native-base';
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  Text,
+  View,
+} from 'react-native';
 
 // Internal Dependencies
-import {
-  View,
-  Text,
-} from 'react-native';
 import IconInput from '../SharedUnits/IconInput';
-import VerificationStyle from '../../styles/VerificationStyle';
-import Footer from '../VerificationPage/Footer';
+import EmailVerificationStyle from './styles/EmailVerificationStyle';
+import {
+  updateSignUpInfo,
+  verifyEmail,
+} from './actions/SignUpAction';
 
 // Local Variables
 const {
-  verificationInputStyle,
-  verificationTextStyle,
-} = VerificationStyle;
-
-const initIsCodeRight = true;
+  emailVerificationTitleStyle,
+  emailVerificationSubtitleStyle,
+  inputContainerStyle,
+  rootStyle,
+  titleContainerStyle,
+  verifyButtonStyle,
+  verifyButtonTextStyle,
+} = EmailVerificationStyle;
 
 const VerificationScreen = (props) => {
-  const { navigation } = props;
+  const {
+    emailVerificationCode,
+    emailVerificationError,
+    navigation,
+    onUpdateSignUpInfo,
+    onVerifyEmail,
+  } = props;
+  const { emailToVerify } = navigation.state.params;
 
-  const [verificationCode, setVerificationCode] = useState('');
-  const [isCodeRight, setIsCodeRight] = useState(initIsCodeRight);
-
-  const handleVerify = async (object) => {
-    const res = await fetch('http://localhost:3001/verificationCode', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(object),
-    });
-    const isCodeVerified = await res.json();
-    return isCodeVerified;
-  };
-
-  const handlePress = async () => {
-    const inputCode = { code: verificationCode };
-    const isCodeVerified = await handleVerify(inputCode);
-    if (isCodeVerified.verified) {
-      navigation.navigate('DrawerNavigation');
-    } else {
-      setIsCodeRight(false);
-    }
-  };
   return (
-    <View>
-      <View style={verificationInputStyle}>
-        <Text style={verificationTextStyle}>Please input verification code</Text>
-        <IconInput
-          icon="code-tags"
-          autoCapitalize="none"
-          onChange={(value) => setVerificationCode(value)}
-          value={verificationCode}
-        />
-        <Footer onPress={handlePress} navigation={navigation} />
-        {isCodeRight ? <Text /> : <Text>Error code!</Text>}
-      </View>
-    </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior="padding"
+    >
+      <ImageBackground
+        imageStyle={{ opacity: 0.65 }}
+        source={{ uri: 'https://i.pinimg.com/564x/5a/0f/fe/5a0ffe73533de7e6f1f6e3926c809204.jpg' }}
+        style={rootStyle}
+      >
+        <View style={titleContainerStyle}>
+          <Text style={emailVerificationTitleStyle}>Email Verification</Text>
+          <Text style={emailVerificationSubtitleStyle}>{`Please enter the 6 alphabetical code sent to ${emailToVerify}`}</Text>
+        </View>
+        <View style={inputContainerStyle}>
+          <IconInput
+            errorText={emailVerificationError}
+            icon="shield-key-outline"
+            onChange={(value) => onUpdateSignUpInfo('emailVerificationCode', value)}
+            placeholder="Email Verification Code"
+            value={emailVerificationCode}
+          />
+        </View>
+        <Button
+          onPress={() => onVerifyEmail(emailVerificationCode, navigation)}
+          style={verifyButtonStyle}
+        >
+          <Text style={verifyButtonTextStyle}>Verify!</Text>
+        </Button>
+      </ImageBackground>
+    </KeyboardAvoidingView>
   );
 };
 
+// Prop Validations
+VerificationScreen.propTypes = {
+  emailVerificationCode: PropTypes.string,
+  emailVerificationError: PropTypes.string,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        emailToVerify: PropTypes.string.isRequired,
+      }),
+    }),
+  }),
+  onUpdateSignUpInfo: PropTypes.func.isRequired,
+  onVerifyEmail: PropTypes.func.isRequired,
+};
+
+VerificationScreen.defaultProps = {
+  emailVerificationCode: '',
+  emailVerificationError: '',
+  navigation: {},
+};
 
 // Navigation Configuration
 VerificationScreen.navigationOptions = {
   headerShown: false,
 };
-VerificationScreen.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }),
-};
-VerificationScreen.defaultProps = {
-  navigation: {},
+
+const mapStateToProps = (state) => {
+  const {
+    emailVerificationCode,
+    emailVerificationError,
+  } = state.SignUpForm;
+
+  return {
+    emailVerificationCode,
+    emailVerificationError,
+  };
 };
 
-export default VerificationScreen;
+export default connect(mapStateToProps, {
+  onUpdateSignUpInfo: updateSignUpInfo,
+  onVerifyEmail: verifyEmail,
+})(VerificationScreen);
