@@ -7,15 +7,23 @@ import {
 } from 'native-base';
 
 // Internal Dependencies
-import PersonalDetailsStyle from '../../styles/PersonalDetailsStyle';
-import Personal from './Personal';
+import AccountManagementStyle from './styles/AccountManagementStyle';
+import Personal from './Personal/Personal';
 
-const { tabUnderlineStyle, tabTextStyle } = PersonalDetailsStyle;
+// Local Variables
+const {
+  tabTextStyle,
+  tabUnderlineStyle,
+} = AccountManagementStyle;
 
-const SliderBar = () => (
+const AccountManagement = () => (
   <Container>
     <Tabs tabBarUnderlineStyle={tabUnderlineStyle}>
-      <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="PERSONAL">
+      <Tab
+        activeTextStyle={tabTextStyle}
+        textStyle={tabTextStyle}
+        heading="PERSONAL"
+      >
         <Personal />
       </Tab>
       <Tab activeTextStyle={tabTextStyle} textStyle={tabTextStyle} heading="SECURITY" />
@@ -24,4 +32,4 @@ const SliderBar = () => (
   </Container>
 );
 
-export default SliderBar;
+export default AccountManagement;

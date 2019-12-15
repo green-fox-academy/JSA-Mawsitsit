@@ -11,7 +11,7 @@ import { View } from 'react-native';
 
 // Internal Dependencies
 import IconInput from '../SharedUnits/IconInput';
-import InfoModificationPageStyles from '../../styles/InfoModificationPageStyle';
+import InfoModificationPageStyles from './styles/InfoModificationPageStyle';
 
 import {
   updateUserDetailData,

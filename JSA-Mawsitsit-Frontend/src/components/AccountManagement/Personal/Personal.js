@@ -10,8 +10,8 @@ import {
 // Internal Dependencies
 // import LinkButton from '../SharedUnits/LinkButton';
 import PersonalForm from './PersonalForm';
-import PersonalStyles from '../../styles/PersonalStyle';
-import ProgressBar from '../SharedUnits/ProgressBar';
+import PersonalStyles from '../styles/PersonalStyle';
+import ProgressBar from '../../SharedUnits/ProgressBar';
 
 // Local Variables
 const {
@@ -24,7 +24,7 @@ const Personal = (props) => {
   const { fetchedUserDetailData } = props;
   let userDetailDataProgress = 8;
   Object.values(fetchedUserDetailData).forEach((fetchedUserDetailValue) => {
-    if (fetchedUserDetailValue === '' || fetchedUserDetailValue === false) {
+    if (fetchedUserDetailValue === '' || fetchedUserDetailValue === 0) {
       userDetailDataProgress -= 1;
     }
   });
@@ -36,28 +36,6 @@ const Personal = (props) => {
         <ProgressBar progress={userDetailDataProgress * 12.5} />
       </View>
       <PersonalForm />
-      {/* <View style={buttonContainerStyle}>
-        {!fetchedUserDetailData.isEmailVerified && (
-          <>
-            <Text style={verifyTextStyle}>You have not verified your email.</Text>
-            <LinkButton
-              linkText="Click here to verify it."
-              onPress={() => {}}
-              variantStyle={variantLinkButtonStyle}
-            />
-          </>
-        )}
-        {!fetchedUserDetailData.isDetailsVerified && (
-          <>
-            <Text style={verifyTextStyle}>You have not verified your identity.</Text>
-            <LinkButton
-              linkText="Click here to upload proof of ID."
-              onPress={() => {}}
-              variantStyle={variantLinkButtonStyle}
-            />
-          </>
-        )}
-      </View> */}
     </View>
   );
 };
@@ -72,8 +50,8 @@ Personal.propTypes = {
     email: PropTypes.string,
     phoneNumber: PropTypes.string,
     address: PropTypes.string,
-    isEmailVerified: PropTypes.bool,
-    isDetailsVerified: PropTypes.bool,
+    isEmailVerified: PropTypes.number,
+    isDetailsVerified: PropTypes.number,
   }),
 };
 

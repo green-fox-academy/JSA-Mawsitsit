@@ -12,7 +12,7 @@ import {
 import { View } from 'react-native';
 
 // Internal Dependencies
-import IconListItemStyles from '../../styles/IconListItemStyle';
+import IconListItemStyles from './styles/IconListItemStyle';
 
 // Local Variables
 const {
@@ -43,8 +43,8 @@ const IconInput = (props) => {
           />
         </Left>
         <Body>
-          <Text>{placeholder}</Text>
-          {Boolean(value) && <Text note>{value}</Text>}
+          <Text note={Boolean(value)}>{placeholder}</Text>
+          {Boolean(value) && <Text>{value}</Text>}
         </Body>
         <Right>
           <MaterialCommunityIcons

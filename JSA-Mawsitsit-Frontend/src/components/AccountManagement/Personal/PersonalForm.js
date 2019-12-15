@@ -6,13 +6,11 @@ import React, {
 } from 'react';
 import { connect } from 'react-redux';
 import { NavigationContext } from 'react-navigation';
-import {
-  View,
-} from 'react-native';
+import { ScrollView } from 'react-native';
 
 // Internal Dependencies
-import IconListItem from '../SharedUnits/IconListItem';
-import { fetchUserDetailData } from './actions/PersonalAction';
+import IconListItem from '../../SharedUnits/IconListItem';
+import { fetchUserDetailData } from '../actions/PersonalAction';
 
 // Component Definition
 const Personal = (props) => {
@@ -25,7 +23,6 @@ const Personal = (props) => {
   } = props;
 
   useEffect(() => {
-    console.log('!');
     onFetchUserDetailData();
   }, [onFetchUserDetailData, updatedUserDetailData]);
 
@@ -66,9 +63,9 @@ const Personal = (props) => {
   });
 
   return (
-    <View>
+    <ScrollView>
       {personalInputs}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -93,8 +90,8 @@ Personal.propTypes = {
     email: PropTypes.string,
     phoneNumber: PropTypes.string,
     address: PropTypes.string,
-    isEmailVerified: PropTypes.bool,
-    isDetailsVerified: PropTypes.bool,
+    isEmailVerified: PropTypes.number,
+    isDetailsVerified: PropTypes.number,
   }),
   onFetchUserDetailData: PropTypes.func.isRequired,
   updatedUserDetailData: PropTypes.shape({}),
