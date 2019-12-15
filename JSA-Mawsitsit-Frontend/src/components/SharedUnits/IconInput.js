@@ -63,7 +63,7 @@ IconInput.propTypes = {
   icon: PropTypes.string.isRequired,
   isAutoCapitalize: PropTypes.string,
   isSecureTextEntry: PropTypes.bool,
-  onBlur: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string,
@@ -74,6 +74,7 @@ IconInput.defaultProps = {
   isAutoCapitalize: 'none',
   isSecureTextEntry: false,
   value: '',
+  onBlur: () => { },
 };
 
 export default IconInput;

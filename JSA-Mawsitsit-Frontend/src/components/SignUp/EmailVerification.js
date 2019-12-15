@@ -46,7 +46,7 @@ const VerificationScreen = (props) => {
     >
       <ImageBackground
         imageStyle={{ opacity: 0.65 }}
-        source={{ uri: 'https://i.pinimg.com/564x/5a/0f/fe/5a0ffe73533de7e6f1f6e3926c809204.jpg' }}
+        source={{ uri: 'https://i.pinimg.com/564x/a7/3f/b6/a73fb617b48b1e37f39f380f3ba448f3.jpg' }}
         style={rootStyle}
       >
         <View style={titleContainerStyle}>

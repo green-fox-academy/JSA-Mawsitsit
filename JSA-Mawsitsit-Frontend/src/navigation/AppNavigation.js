@@ -21,7 +21,7 @@ import SignUp from '../components/SignUp/SignUp';
 const AuthStack = createStackNavigator({
   First: FirstScreen,
   Login: LoginScreen,
-  SignUp,
+  Register: SignUp,
   EmailVerification,
 });
 
