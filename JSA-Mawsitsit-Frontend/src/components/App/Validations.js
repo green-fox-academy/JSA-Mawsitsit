@@ -6,7 +6,7 @@ const validateEmail = (email) => {
 
 const validatePhoneNumber = (phoneNumber) => {
   if (phoneNumber === '') return 'Please provide a phone number.';
-  if (phoneNumber.length < 7) return 'Phone number must be at least 8 numbers long.';
+  if (phoneNumber.length < 8) return 'Phone number must be at least 8 numbers long.';
   return '';
 };
 
@@ -24,7 +24,7 @@ const checkPasswordStrength = (password) => {
 
 const validatePassword = (password) => {
   if (password === '') return 'Please provide a password.';
-  if (password.length < 7) return 'Password must be at least 8 characters long.';
+  if (password.length < 8) return 'Password must be at least 8 characters long.';
   return '';
 };
 

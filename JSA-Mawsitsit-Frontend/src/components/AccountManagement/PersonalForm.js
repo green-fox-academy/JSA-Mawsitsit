@@ -25,7 +25,6 @@ const Personal = (props) => {
   } = props;
 
   useEffect(() => {
-    console.log('!');
     onFetchUserDetailData();
   }, [onFetchUserDetailData, updatedUserDetailData]);
 
@@ -93,8 +92,8 @@ Personal.propTypes = {
     email: PropTypes.string,
     phoneNumber: PropTypes.string,
     address: PropTypes.string,
-    isEmailVerified: PropTypes.bool,
-    isDetailsVerified: PropTypes.bool,
+    isEmailVerified: PropTypes.number,
+    isDetailsVerified: PropTypes.number,
   }),
   onFetchUserDetailData: PropTypes.func.isRequired,
   updatedUserDetailData: PropTypes.shape({}),
