@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 
 // Internal Dependencies
-import RegisterStyle from '../../styles/RegisterStyle';
+import RegisterStyle from './styles/SignUpStyle';
 import LinkButton from '../SharedUnits/LinkButton';
 
 // Local Variables

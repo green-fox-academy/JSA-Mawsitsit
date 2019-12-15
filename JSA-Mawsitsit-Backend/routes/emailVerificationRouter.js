@@ -6,11 +6,12 @@ const verificationCodeRouter = require('express').Router();
 const fetch = require('node-fetch');
 
 // Internal Dependencies
+const authMiddleWare = require('../middleware/auth');
 const { sendEmailToUser, verificationLink } = require('../services/dataService');
 
 let securityCode = '';
 // Endpoints which can verify emails to user
-sendEmailRouter.post('/', async (req, res) => {
+sendEmailRouter.post('/', authMiddleWare, async (req, res) => {
   const { userId } = req.body;
   const { email } = await sendEmailToUser(userId);
   const link = `http://localhost:3001/verificationLink?email=${email}`;

@@ -1,3 +1,8 @@
+// Sign Up Action Types
+export const SIGN_UP_USER_SUCCESS = 'SIGN_UP_USER_SUCCESS';
+export const UPDATE_SIGN_UP_INFO = 'UPDATE_SIGN_UP_INFO';
+export const VERIFY_EMAIL_FAIL = 'VERIFY_EMAIL_FAIL';
+
 // Personal Action Types
 export const FETCH_USER_DETAIL_DATA = 'FETCH_USER_DETAIL_DATA';
 export const UPDATE_USER_DETAIL_DATA = 'UPDATE_USER_DETAIL_DATA';
