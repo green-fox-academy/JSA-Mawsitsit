@@ -5,7 +5,7 @@ const cors = require('cors');
 // Internal Dependencies
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
-const personalDetailsRouter = require('./routes/personalDetailsRouter');
+const personalRouter = require('./routes/personalRouter');
 const authMiddleware = require('./middleware/auth');
 const { sendEmailRouter } = require('./routes/emailVerificationRouter');
 const { verificationLinkRouter } = require('./routes/emailVerificationRouter');
@@ -19,7 +19,7 @@ server.use(cors());
 server.use(express.json());
 server.use('/register', registerRouter);
 server.use('/login', loginRouter);
-server.use('/personalDetails', authMiddleware, personalDetailsRouter);
+server.use('/personal', authMiddleware, personalRouter);
 server.use('/sendEmail', authMiddleware, sendEmailRouter);
 server.use('/verificationLink', verificationLinkRouter);
 server.use('/verificationCode', verificationCodeRouter);

@@ -56,33 +56,6 @@ const registerUser = async (userToRegister) => {
   return response.insertId;
 };
 
-const saveUserDetailData = async (userToRegister) => {
-  const { userId, email, phoneNumber } = userToRegister;
-  const saveUserDetailQueryInput = [userId, email, phoneNumber];
-  const saveUserDetailQueryStatement = 'INSERT INTO user_detail (user_id, email, phone_number) VALUES (?, ?, ?);';
-
-  await mysqlPromisedQuery(
-    mysqlConnection,
-    saveUserDetailQueryStatement,
-    saveUserDetailQueryInput,
-  ).catch((error) => { throw error; });
-};
-
-
-const sendUserDetailData = async (userId) => {
-  const sendUserDetailQueryStatement = 'SELECT * FROM user_detail WHERE user_id = ?;';
-  const sendUserDetailQueryInput = [userId];
-
-  const response = await mysqlPromisedQuery(
-    mysqlConnection,
-    sendUserDetailQueryStatement,
-    sendUserDetailQueryInput,
-  ).catch((error) => { throw error; });
-
-  return response[0];
-};
-
-
 const sendEmailToUser = async (userId) => {
   const sendUserDetailQueryStatement = 'SELECT email FROM user_detail WHERE user_id = ?;';
   const sendUserDetailQueryInput = [userId];
@@ -114,8 +87,6 @@ module.exports = {
   checkIdentifier,
   loginUser,
   registerUser,
-  saveUserDetailData,
-  sendUserDetailData,
   sendEmailToUser,
   verificationLink,
 };

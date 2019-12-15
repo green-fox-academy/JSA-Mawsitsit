@@ -60,14 +60,11 @@ const InfoModificationPage = (props) => {
         icon={icon}
         onChange={(valueToUpdate) => onUpdateUserDetailInfo(key, valueToUpdate)}
         placeholder={placeholder}
-        value={userDetailForm[key] || value}
+        value={userDetailForm[key] !== undefined ? userDetailForm[key] : value}
       />
       <Button
         style={doneButtonStyle}
-        onPress={() => {
-          onUpdateUserDetailData({ [key]: userDetailForm[key] });
-          navigation.goBack();
-        }}
+        onPress={() => onUpdateUserDetailData(key, userDetailForm[key], navigation)}
         transparent
       >
         <Text style={doneButtonTextStyle}>DONE</Text>
