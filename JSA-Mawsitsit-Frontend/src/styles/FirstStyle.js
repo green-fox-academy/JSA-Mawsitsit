@@ -12,7 +12,7 @@ const FirstStyle = StyleSheet.create({
   },
   headerTextStyle: {
     top: 45,
-    fontSize: 38,
+    fontSize: 68,
     color: '#FFF',
     fontWeight: '700',
   },
@@ -22,6 +22,7 @@ const FirstStyle = StyleSheet.create({
     backgroundColor: '#FFF',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 8,
   },
   btnTextStyle: {
     fontSize: 25,
@@ -34,6 +35,8 @@ const FirstStyle = StyleSheet.create({
     justifyContent: 'space-around',
   },
   footerFrameStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 230,
     top: 20,
   },

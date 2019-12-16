@@ -15,8 +15,6 @@ import LinkButton from '../SharedUnits/LinkButton';
 const {
   footerStyle,
   footerFrameStyle,
-  footerFrameInsideStyle,
-  footerTextStyle,
   linkTextStyle,
   buttonStyle,
   btnTextStyle,
@@ -36,14 +34,11 @@ const Footer = (props) => {
         >
           <Text style={btnTextStyle}>Sign up</Text>
         </Button>
-        <View style={footerFrameInsideStyle}>
-          <Text style={footerTextStyle}>Already a user?</Text>
-          <LinkButton
-            linkText="Sign in"
-            variantStyle={linkTextStyle}
-            onPress={() => navigation.navigate('Login')}
-          />
-        </View>
+        <LinkButton
+          linkText="Already an user? Sign in!"
+          variantStyle={linkTextStyle}
+          onPress={() => navigation.navigate('Login')}
+        />
       </View>
     </View>
   );

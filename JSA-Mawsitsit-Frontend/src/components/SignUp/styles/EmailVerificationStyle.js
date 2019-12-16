@@ -15,6 +15,7 @@ const emailVerificationStyles = StyleSheet.create({
   emailVerificationSubtitleStyle: {
     color: 'white',
     fontSize: 18,
+    fontWeight: '500',
     marginHorizontal: 8,
   },
   inputContainerStyle: {
@@ -38,6 +39,10 @@ const emailVerificationStyles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#3696F3',
+  },
+  variantLinkButtonTextStyle: {
+    color: 'white',
+    fontSize: 18,
   },
 });
 
