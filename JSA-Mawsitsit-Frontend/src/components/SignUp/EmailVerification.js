@@ -11,8 +11,9 @@ import {
 } from 'react-native';
 
 // Internal Dependencies
-import IconInput from '../SharedUnits/IconInput';
 import EmailVerificationStyle from './styles/EmailVerificationStyle';
+import IconInput from '../SharedUnits/IconInput';
+import LinkButton from '../SharedUnits/LinkButton';
 import {
   updateSignUpInfo,
   verifyEmail,
@@ -27,6 +28,7 @@ const {
   titleContainerStyle,
   verifyButtonStyle,
   verifyButtonTextStyle,
+  variantLinkButtonTextStyle,
 } = EmailVerificationStyle;
 
 const VerificationScreen = (props) => {
@@ -37,7 +39,8 @@ const VerificationScreen = (props) => {
     onUpdateSignUpInfo,
     onVerifyEmail,
   } = props;
-  const { emailToVerify } = navigation.state.params;
+  // const { emailToVerify } = navigation.state.params;
+  const emailToVerify = 'sacrednoone@gmail.com';
 
   return (
     <KeyboardAvoidingView
@@ -51,7 +54,7 @@ const VerificationScreen = (props) => {
       >
         <View style={titleContainerStyle}>
           <Text style={emailVerificationTitleStyle}>Email Verification</Text>
-          <Text style={emailVerificationSubtitleStyle}>{`Please enter the 6 alphabetical code sent to ${emailToVerify}`}</Text>
+          <Text style={emailVerificationSubtitleStyle}>{`Please enter the 6 alphanumeric code sent to ${emailToVerify}`}</Text>
         </View>
         <View style={inputContainerStyle}>
           <IconInput
@@ -68,6 +71,11 @@ const VerificationScreen = (props) => {
         >
           <Text style={verifyButtonTextStyle}>Verify!</Text>
         </Button>
+        <LinkButton
+          linkText="Resend the email."
+          onPress={() => {}}
+          variantStyle={variantLinkButtonTextStyle}
+        />
       </ImageBackground>
     </KeyboardAvoidingView>
   );

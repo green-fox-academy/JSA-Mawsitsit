@@ -23,7 +23,7 @@ const Footer = (props) => {
     <View style={footerStyle}>
       <View style={footerFrameStyle}>
         <LinkButton
-          linkText="Create account"
+          linkText="Create account?"
           variantStyle={variantPswStyle}
           onPress={() => navigation.navigate('Register')}
         />

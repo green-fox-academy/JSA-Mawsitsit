@@ -23,8 +23,8 @@ const RegisterStyle = StyleSheet.create(
       alignItems: 'center',
     },
     variantLinkButtonTextStyle: {
-      color: '#3696F3',
-      fontSize: 15,
+      color: 'white',
+      fontSize: 18,
     },
   },
 );

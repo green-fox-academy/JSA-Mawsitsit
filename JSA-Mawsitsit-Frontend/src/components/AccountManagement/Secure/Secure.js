@@ -9,14 +9,11 @@ import {
 
 // Internal Dependencies
 import IconListItem from '../../SharedUnits/IconListItem';
-// import SecurelStyles from '../styles/SecureStyle';
 
 // Component Definition
 const Personal = (props) => {
   const appNavigation = useContext(NavigationContext);
-
   const { fetchedUserSecureData } = props;
-  console.log(fetchedUserSecureData);
 
   return (
     <View>
@@ -46,7 +43,7 @@ Personal.propTypes = {
 
 Personal.defaultProps = {
   fetchedUserSecureData: {
-    password: 'password1',
+    password: '',
   },
 };
 
